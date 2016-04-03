@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from .forms import CrawlForm
 from .forms import SearchForm
+from .forms import ClassificationForm
 
 def get_query(request):
     if request.method == 'GET':
@@ -22,8 +23,26 @@ def get_query(request):
 
 def result(request):
     return render(request, 'results.html')
+
 def classification(request):
-    return render(request, 'classification.html')
+    print "Classification waala page"
+    if request.method == 'GET':
+        form = ClassificationForm(request.GET)
+        if form.is_valid():
+            print "Valid Form"
+            headline = form.cleaned_data['headline']
+            keywords = form.cleaned_data['keywords']
+            content = form.cleaned_data['content']
+            print headline,keywords,content
+            return HttpResponseRedirect('/results/')
+
+    else:
+        form = ClassificationForm()
+
+    return render(request, 'classification.html', {'form': form})
+
+
+
 def index(request):
     print "Index waala page"
     if request.method == 'GET':
@@ -54,6 +73,7 @@ def crawl(request):
         # check whether it's valid:
         if form.is_valid():
             print "Valid Form"
+            print form.cleaned_data['crawlSelection']
             for item in form.cleaned_data['crawlSelection']:
                 print item
             return HttpResponseRedirect('/results/')
