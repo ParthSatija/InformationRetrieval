@@ -12,8 +12,8 @@ from sklearn.ensemble import VotingClassifier
 from sklearn import feature_extraction
 import string
 from sklearn.metrics import precision_recall_fscore_support
-from Main.Utility.MySQL import MySQL
-from Main.lemmatization import lemmatization
+from HealthNews.Utility.MySQL import MySQL
+from HealthNews.Main.lemmatization import lemmatization
 
 lem = lemmatization()
 database_name = "cz4034"

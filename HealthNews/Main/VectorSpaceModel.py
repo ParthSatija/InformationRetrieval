@@ -1,7 +1,7 @@
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import string
-from Utility.MySQL import MySQL
+from HealthNews.Utility.MySQL import MySQL
 from textblob.classifiers import NaiveBayesClassifier
 
 database_name = "CZ4034"

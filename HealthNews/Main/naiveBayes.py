@@ -1,6 +1,6 @@
 from stringold import maketrans
 
-from Utility.MySQL import MySQL
+from HealthNews.Utility.MySQL import MySQL
 from textblob.classifiers import NaiveBayesClassifier
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize

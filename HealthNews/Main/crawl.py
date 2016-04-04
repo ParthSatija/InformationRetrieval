@@ -3,7 +3,7 @@ import json
 import requests
 import datetime
 
-from Main.Utility.MySQL import MySQL
+from HealthNews.Utility.MySQL import MySQL
 
 
 class crawl(object):

@@ -1,5 +1,5 @@
 import os, json
-from Utility.MySQL import MySQL
+from HealthNews.Utility.MySQL import MySQL
 
 database_name = "CZ4034"
 table_name = "CZ4034_original"
