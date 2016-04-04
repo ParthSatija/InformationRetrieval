@@ -7,14 +7,17 @@ from HealthNews.Utility.MySQL import MySQL
 
 
 class crawl:
-    #############NEED TO CHANGE, dynamic_crawl takes in a list
     def __init__(self):
         print ("Instantiated")
+
     def dynamic_crawl(self, crawl_list):
-        print "Dynamically crawling: ",crawl_list
+        print "Dynamically crawling: ", crawl_list
+        result = ""
+        for i in crawl_list:
+            result += self.dynamic_crawl_old(i) + "\n"
+            #Call Indexing to add new documents to solr.
     def dynamic_crawl_old(self, crawl_term):
         mysql_object = MySQL()
-
         """
         Health - Health
         Health & Fitness - Health&Fitness
