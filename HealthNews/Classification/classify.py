@@ -80,9 +80,6 @@ class classify(object):
             weights=[1, 1, 1, 1, 1, 2, 2, 0])
 
         cv = feature_extraction.text.CountVectorizer(vocabulary=dict)
-        model_used = ["SVM", "LOGISTIC REGRESSION", "GAUSSIAN NB",
-                      "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
-                      "Voting", "Voting With Weights"]
         model_list = [model1, model2, model3, model4, model5, model6, model7, model8, model9, model10]
 
         for counter_model in range(0, len(model_list)):

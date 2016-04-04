@@ -1,0 +1,608 @@
+{
+  "status": "OK",
+  "response": {
+    "docs": [
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "When 800 students at the University of New Hampshire set out to learn about nutrition, the lessons hit closer to home than many of them expected. To make the classes more engaging, the professors had the students take tests to measure health indicators like cholesterol and blood sugar levels and blood pressure. The students also calculated their body mass indexes.",
+        "headline": {
+          "main": "In This Class, a Flunked Test Is a Health Wake-Up Call",
+          "kicker": "VITAL SIGNS"
+        },
+        "abstract": "Jesse Stabile Morrell of University of New Hampshire leads awareness program for 800 students taking nutrition class; tests students for various health indicators and finds many are already overweight, have high blood pressure or other potential health problems emerging; drawing (M)",
+        "print_page": "6",
+        "word_count": 225,
+        "_id": "4fd25ffe8eb7c8105d80fc59",
+        "snippet": "When 800 students at the University of New Hampshire set out to learn about nutrition, the lessons hit closer to home than many of them expected.     To make the classes more engaging, the professors had the students take tests to measure health...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9402EEDE153EF930A35754C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "persons",
+            "value": "MORRELL, JESSE STABILE"
+          },
+          {
+            "name": "organizations",
+            "value": "UNIVERSITY OF NEW HAMPSHIRE"
+          },
+          {
+            "name": "subject",
+            "value": "DIET AND NUTRITION"
+          },
+          {
+            "name": "subject",
+            "value": "WEIGHT"
+          },
+          {
+            "name": "subject",
+            "value": "COLLEGES AND UNIVERSITIES"
+          },
+          {
+            "name": "subject",
+            "value": "MEDICINE AND HEALTH"
+          },
+          {
+            "name": "subject",
+            "value": "RESEARCH"
+          },
+          {
+            "name": "subject",
+            "value": "BLOOD PRESSURE"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Eric",
+              "rank": 1,
+              "lastname": "NAGOURNEY"
+            }
+          ],
+          "original": "By ERIC NAGOURNEY"
+        },
+        "document_type": "article",
+        "pub_date": "2007-07-03T00:00:00Z",
+        "section_name": "Education; Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "Two new studies shed light on the role obesity may play in causing heart attacks and, surprisingly, keeping them from being fatal. In one study, published by the European Heart Journal, researchers followed more than 1,600 patients who were given angioplasty and, usually, stents after a type of heart attack known as unstable angina/non-ST-segment elevation. They found that the obese and very obese patients were only half as likely as those of normal weight to die in the three years after the attack.",
+        "headline": {
+          "main": "In Studies, Surprise Findings On Obesity and Heart Attacks",
+          "kicker": "VITAL SIGNS"
+        },
+        "abstract": "Two new studies on heart attacks find that obese people are more likely to survive attack than those people of normal weight; one study appears in European Heart Journal and other was presented at American Society of Echocardiography meeting; possible reasons for better survival discussed (M)",
+        "print_page": "6",
+        "word_count": 230,
+        "_id": "4fd276068eb7c8105d835f07",
+        "snippet": "Two new studies shed light on the role obesity may play in causing heart attacks and, surprisingly, keeping them from being fatal.     In one study, published by the European Heart Journal, researchers followed more than 1,600 patients who were given...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9F02E5DD153EF930A35754C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "organizations",
+            "value": "EUROPEAN HEART JOURNAL"
+          },
+          {
+            "name": "subject",
+            "value": "HEART"
+          },
+          {
+            "name": "subject",
+            "value": "WEIGHT"
+          },
+          {
+            "name": "subject",
+            "value": "AMERICAN SOCIETY OF ECHOCARDIOGRAPHY"
+          },
+          {
+            "name": "subject",
+            "value": "RESEARCH"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Eric",
+              "rank": 1,
+              "lastname": "NAGOURNEY"
+            }
+          ],
+          "original": "By ERIC NAGOURNEY"
+        },
+        "document_type": "article",
+        "pub_date": "2007-07-03T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "THE FACTS It sounds like a joke, or perhaps just an urban legend that grew out of Dr. Seuss's ''Green Eggs and Ham.'' But food scientists say this one is no myth. The reality is that green potatoes contain high levels of a toxin, solanine, which can cause nausea, headaches and neurological problems.",
+        "headline": {
+          "main": "Green potatoes are poisonous.",
+          "kicker": "REALLY?"
+        },
+        "abstract": null,
+        "print_page": "5",
+        "word_count": 237,
+        "_id": "4fd25ffe8eb7c8105d80fc5d",
+        "snippet": "THE FACTS     It sounds like a joke, or perhaps just an urban legend that grew out of Dr. Seuss's  ''Green Eggs and Ham.'' But  food scientists say  this one is no myth. The reality is that green potatoes contain high levels of a toxin, solanine,...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9500E1DA1731F930A35754C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Anahad",
+              "rank": 1,
+              "lastname": "O'CONNOR"
+            }
+          ],
+          "original": "By ANAHAD O'CONNOR"
+        },
+        "document_type": "article",
+        "pub_date": "2007-07-03T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "THE CLAIM Caffeine can increase the risk of miscarriage. THE FACTS With more than 80 percent of Americans consuming it in some form or another every day, caffeine is easily the nation's most popular drug, far ahead of nicotine and alcohol. So when studies first suggested decades ago that caffeine could increase the risk of miscarriage, it raised alarm. Why exactly it might pose such a risk remains unclear, but numerous studies in recent years have investigated the link.",
+        "headline": {
+          "main": "REALLY?"
+        },
+        "abstract": "Research fails to find link between low caffeine intake during pregnancy and miscarriage, but warns there could be risks in drinking large amounts of caffeine while pregnant; drawing (M)",
+        "print_page": "5",
+        "word_count": 289,
+        "_id": "4fd25d0b8eb7c8105d80b315",
+        "snippet": "THE CLAIM  Caffeine can increase the risk of miscarriage.    THE FACTS  With more than 80 percent of Americans consuming it in some form or another every day, caffeine is easily the nation's most popular drug, far ahead of nicotine and alcohol. So...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9C00E5DB1130F936A35755C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "subject",
+            "value": "PREGNANCY AND OBSTETRICS"
+          },
+          {
+            "name": "subject",
+            "value": "CAFFEINE"
+          },
+          {
+            "name": "subject",
+            "value": "MISCARRIAGES"
+          },
+          {
+            "name": "subject",
+            "value": "RESEARCH"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Anahad",
+              "rank": 1,
+              "lastname": "O'CONNOR"
+            }
+          ],
+          "original": "By ANAHAD O'CONNOR"
+        },
+        "document_type": "article",
+        "pub_date": "2007-06-05T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "Substituting a half-cup of soy nuts -- baked soybeans -- for other types of protein in a healthy diet may help lower a postmenopausal woman's blood pressure, a small study has found. For four weeks, 60 women, average age 53, followed a low-cholesterol diet that provided 30 percent energy from fat, 15 percent from protein and 55 percent from carbohydrates. Then the researchers divided them into two groups for an eight-week test.",
+        "headline": {
+          "main": "Soy Nuts Seem to Help Women's Blood Pressure",
+          "kicker": "VITAL SIGNS: PREVENTION"
+        },
+        "abstract": "Dr Francine K Welty of Harvard University leads study that finds including unsalted soy nuts in diet can reduce blood pressure of postmenopausal women; research is published in Archives of Internal Medicine; drawing (M)",
+        "print_page": "6",
+        "word_count": 269,
+        "_id": "4fd27c488eb7c8105d842498",
+        "snippet": "Substituting a half-cup of soy nuts -- baked soybeans -- for other types of protein in a healthy diet may help lower a postmenopausal woman's blood pressure, a small study  has found.     For four weeks, 60 women, average age 53, followed a...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9B05E4DB1130F936A35755C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "persons",
+            "value": "WELTY, FRANCINE K"
+          },
+          {
+            "name": "organizations",
+            "value": "HARVARD UNIVERSITY"
+          },
+          {
+            "name": "organizations",
+            "value": "ARCHIVES OF INTERNAL MEDICINE"
+          },
+          {
+            "name": "subject",
+            "value": "DIET AND NUTRITION"
+          },
+          {
+            "name": "subject",
+            "value": "WOMEN"
+          },
+          {
+            "name": "subject",
+            "value": "MENOPAUSE"
+          },
+          {
+            "name": "subject",
+            "value": "RESEARCH"
+          },
+          {
+            "name": "subject",
+            "value": "BLOOD PRESSURE"
+          },
+          {
+            "name": "subject",
+            "value": "SOYBEANS"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Nicholas",
+              "rank": 1,
+              "lastname": "Bakalar"
+            }
+          ],
+          "original": "By Nicholas Bakalar"
+        },
+        "document_type": "article",
+        "pub_date": "2007-06-05T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "People with diabetes have too much sugar in their blood, so a drug that lowers blood sugar ought to be a good treatment, right? Maybe not. Consider the diabetes drug Avandia, or rosiglitazone, which was approved in 1999. It lowers blood sugar, and about a million people in the United States have been taking it for Type 2 diabetes, the most common form of the disease. But last week, doctors reported that Avandia might increase the risk of heart attacks.",
+        "headline": {
+          "main": "Effective, Yes, But Is It Safe? A Drug's Risks",
+          "kicker": "SECOND OPINION"
+        },
+        "abstract": "Pharmaceutical research, which often involves lengthy trials of new drugs, maintains delicate balance between getting important drugs out on market for patients and performing enough research to ensure drug is safe for consumer; drug trials discussed (M)",
+        "print_page": "5",
+        "word_count": 881,
+        "_id": "4fd27b938eb7c8105d84111d",
+        "snippet": "People with diabetes have too much sugar in their blood, so a drug that lowers blood sugar ought to be a good treatment, right?     Maybe not. Consider the diabetes drug Avandia, or rosiglitazone, which was approved in 1999. It lowers blood sugar,...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=990CE3DF1430F93AA15756C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "subject",
+            "value": "DRUGS (PHARMACEUTICALS)"
+          },
+          {
+            "name": "subject",
+            "value": "ETHICS"
+          },
+          {
+            "name": "subject",
+            "value": "CONSUMER PROTECTION"
+          },
+          {
+            "name": "subject",
+            "value": "MEDICINE AND HEALTH"
+          },
+          {
+            "name": "subject",
+            "value": "RESEARCH"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Denise",
+              "rank": 1,
+              "lastname": "Grady"
+            }
+          ],
+          "original": "By Denise Grady"
+        },
+        "document_type": "article",
+        "pub_date": "2007-05-29T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "As a growing number of Americans are learning, surviving cancer can mean slipping into a rabbit hole of long-term medical problems -- from premature menopause and sexual dysfunction to more debilitating side effects of chemotherapy and radiation, like heart disease and even new cancers. The realization that cancer and its aftermath can go on for years has given rise to a medical specialty known as survivorship. At several major hospitals around the country, survivor programs financed by the Lance Armstrong Foundation are focusing on life after cancer.",
+        "headline": {
+          "main": "Cancer Care Seeks to Take Patients Beyond Survival"
+        },
+        "abstract": "Increasing number of major hospitals and cancer treatment centers are starting survivor programs to help patients deal with medical and emotional repercussions of cancer; research shows that more than 62 percent of cancer survivors have at least one chronic condition and of those who do, nearly 28 percent have severe or life-threatening condition; medical experts say that age and type of cancer treatment are key factors in development of post-cancer plan for survivors; photo (M)",
+        "print_page": "5",
+        "word_count": 1366,
+        "_id": "4fd25d088eb7c8105d80b0ed",
+        "snippet": "As a growing number of Americans are learning, surviving cancer can mean slipping into a rabbit hole of long-term medical problems -- from premature menopause and sexual dysfunction to more debilitating side effects of chemotherapy and radiation,...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9406E0DE1F31F931A15756C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "subject",
+            "value": "AGE, CHRONOLOGICAL"
+          },
+          {
+            "name": "subject",
+            "value": "DRUGS (PHARMACEUTICALS)"
+          },
+          {
+            "name": "subject",
+            "value": "CANCER"
+          },
+          {
+            "name": "subject",
+            "value": "DOCTORS"
+          },
+          {
+            "name": "subject",
+            "value": "MEDICINE AND HEALTH"
+          },
+          {
+            "name": "subject",
+            "value": "HOSPITALS"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Leslie",
+              "rank": 1,
+              "lastname": "BERGER"
+            }
+          ],
+          "original": "By LESLIE BERGER"
+        },
+        "document_type": "article",
+        "pub_date": "2007-05-22T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "Scientists have discovered yet another reason that alcohol might be good for you. Using pooled data from 12 studies and more than 750,000 subjects, researchers found that moderate alcohol consumption -- about a drink a day -- is associated with a decreased risk of renal cell carcinoma, one type of kidney cancer. The paper, which will appear in the June 16 issue of The Journal of the National Cancer Institute, covered only prospective studies that involved at least 25 cases of renal cell cancer, that assessed long-term intake of a variety of foods and beverages, and that included information on nondietary factors. During the 7- to 20-year follow-up, researchers found 1,430 cases of renal cell cancer.",
+        "headline": {
+          "main": "Alcohol Is Tied to Lower Risk Of One Type of Kidney Cancer",
+          "kicker": "VITAL SIGNS: OUTCOMES"
+        },
+        "abstract": "Jung Eun Lee, Brigham and Women's Hospital, Boston, research fellow, leads study that finds moderate drinking may help prevent one type of renal cell cancer; research is published in Journal of the National Cancer Institute (M)",
+        "print_page": "6",
+        "word_count": 325,
+        "_id": "4fd2751e8eb7c8105d8345ad",
+        "snippet": "Scientists have discovered yet another reason that alcohol might be good for you. Using pooled data from 12 studies and more than 750,000 subjects, researchers found that moderate alcohol consumption -- about a drink a day -- is associated with a...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9F06E7DD1F31F931A15756C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "persons",
+            "value": "LEE, JUNG EUN"
+          },
+          {
+            "name": "organizations",
+            "value": "JOURNAL OF THE NATIONAL CANCER INSTITUTE"
+          },
+          {
+            "name": "organizations",
+            "value": "BRIGHAM AND WOMEN'S HOSPITAL"
+          },
+          {
+            "name": "subject",
+            "value": "CANCER"
+          },
+          {
+            "name": "subject",
+            "value": "RESEARCH"
+          },
+          {
+            "name": "subject",
+            "value": "ALCOHOLIC BEVERAGES"
+          },
+          {
+            "name": "subject",
+            "value": "KIDNEYS"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Nicholas",
+              "rank": 1,
+              "lastname": "Bakalar"
+            }
+          ],
+          "original": "By Nicholas Bakalar"
+        },
+        "document_type": "article",
+        "pub_date": "2007-05-22T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "The bone loss caused by gum disease is associated with an increased risk for tongue cancer, and the more the bone loss, the greater the risk, researchers report. Scientists evaluated bone loss around the teeth in 51 men with newly diagnosed tongue cancer and in 54 men without the diagnosis. X-rays were taken of the men's jaws, and a radiologist who did not know the cancer status of the men measured the amount of bone loss. The study took place from 1999 to 2005.",
+        "headline": {
+          "main": "Vicious Cycle of Gum Disease, Bone Loss and Cancer",
+          "kicker": "VITAL SIGNS: AT THE DENTIST'S"
+        },
+        "abstract": "Dr Frank A Scannapieco, School of Dental Medicine at State University of New York, Buffalo, oral biology professor, leads study that shows that people with gum disease are at increased risk of developing tongue cancer; research is published in journal Archives of Otolaryngology: Head & Neck Surgery; drawing (M)",
+        "print_page": "6",
+        "word_count": 264,
+        "_id": "4fd28fdf8eb7c8105d867153",
+        "snippet": "The bone loss caused by gum disease is associated with an increased risk for tongue cancer, and the more the bone loss, the greater the risk, researchers report.     Scientists evaluated bone loss around the teeth in 51 men with newly diagnosed...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9B04E7DD1F31F931A15756C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "persons",
+            "value": "SCANNAPIECO, FRANK A"
+          },
+          {
+            "name": "organizations",
+            "value": "ARCHIVES OF OTOLARYNGOLOGY: HEAD & NECK SURGERY"
+          },
+          {
+            "name": "organizations",
+            "value": "STATE UNIVERSITY OF NEW YORK"
+          },
+          {
+            "name": "subject",
+            "value": "CANCER"
+          },
+          {
+            "name": "subject",
+            "value": "GUMS (MOUTH)"
+          },
+          {
+            "name": "subject",
+            "value": "TONGUE"
+          },
+          {
+            "name": "subject",
+            "value": "RESEARCH"
+          },
+          {
+            "name": "subject",
+            "value": "TEETH AND DENTISTRY"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Nicholas",
+              "rank": 1,
+              "lastname": "Bakalar"
+            }
+          ],
+          "original": "By Nicholas Bakalar"
+        },
+        "document_type": "article",
+        "pub_date": "2007-05-22T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Health&Fitness",
+        "lead_paragraph": "A diet rich in fruits, vegetables, fish, poultry and whole grain foods may offer protection against chronic lung disease, a new study suggests, in addition to the other benefits of such a regimen. Researchers studied more than 42,000 male health professionals enrolled in a long-term study that began in 1986. All filled out food frequency questionnaires, and the scientists ranked them by how closely they followed what the authors call the ''prudent'' diet, or how much they stuck to a ''Western'' diet dominated by refined grains, cured and red meats, sweets and French fries. The study appeared online May 15 in Thorax.",
+        "headline": {
+          "main": "A Healthy Diet May Keep Chronic Lung Disease at Bay",
+          "kicker": "VITAL SIGNS: NUTRITION"
+        },
+        "abstract": "Raphaelle Varraso leads study on impact of diet on risk of developing chronic obstructive pulmonary disease; research, which is published in journal Thorax, suggests that healthy diet can offer some protection against COPD; drawing (M)",
+        "print_page": "6",
+        "word_count": 281,
+        "_id": "4fd2b0b98eb7c8105d8a0a30",
+        "snippet": "A diet rich in fruits, vegetables, fish, poultry and whole grain foods may offer protection against chronic lung disease, a new study suggests, in addition to the other benefits of such a regimen.     Researchers studied more than 42,000 male health...",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://query.nytimes.com/gst/fullpage.html?res=9907E7DD1F31F931A15756C0A9619C8B63",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "name": "persons",
+            "value": "VARRASO, RAPHAELLE"
+          },
+          {
+            "name": "organizations",
+            "value": "THORAX"
+          },
+          {
+            "name": "subject",
+            "value": "DIET AND NUTRITION"
+          },
+          {
+            "name": "subject",
+            "value": "CHRONIC OBSTRUCTIVE PULMONARY DISEASE"
+          },
+          {
+            "name": "subject",
+            "value": "RESEARCH"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "firstname": "Nicholas",
+              "rank": 1,
+              "lastname": "Bakalar"
+            }
+          ],
+          "original": "By Nicholas Bakalar"
+        },
+        "document_type": "article",
+        "pub_date": "2007-05-22T00:00:00Z",
+        "section_name": "Health"
+      }
+    ],
+    "meta": {
+      "hits": 484,
+      "offset": 0,
+      "time": 63
+    }
+  },
+  "copyright": "Copyright (c) 2013 The New York Times Company.  All Rights Reserved."
+}
