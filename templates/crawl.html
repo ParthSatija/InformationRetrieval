@@ -16,22 +16,22 @@
 
 <body style="background:#DCDCDC">
 
-    <div class="container">
-        <ul class="nav nav-pills nav-justified ">
-            <li role="presentation"><a href="/">Search</a></li>
-            <li role="presentation" class="active"><a href="/crawl/">Crawl</a></li>
-            <li role="presentation"><a href="/classification/">Classification</a></li>
-        </ul>
-    </div>
-    
-    <div class="col-xs-12" style="height:80px;"></div>
-    
-    <div class="container-fluid" id="img_row">
-        <img src="The_New_York_Times_logo.png" class="img-responsive center-block">
-    </div>
-    
-    <div class="col-xs-12" style="height:80px;"></div>
+<div class="container">
+    <ul class="nav nav-pills nav-justified ">
+        <li role="presentation"><a href="/">Search</a></li>
+        <li role="presentation" class="active"><a href="/crawl/">Crawl</a></li>
+        <li role="presentation"><a href="/classification/">Classification</a></li>
+    </ul>
+</div>
 
+<div class="col-xs-12" style="height:80px;"></div>
+
+<div class="container-fluid" id="img_row">
+    <img src="{% static 'img/The_New_York_Times_logo.png' %}" class="img-responsive center-block">
+</div>
+
+<div class="col-xs-12" style="height:80px;"></div>
+<form action="/crawl" method="get" id="crawlForm" name="crawlForm">
     <div class="container col-md-4">
     </div>
     <div class="container col-md-4">
@@ -41,44 +41,36 @@
             </div>
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item checkbox" style="padding-left:125px;background:#DCDCDC">
-                        <label class="text-primary"><input type="checkbox" value=""><strong><em>Health</em></strong></label>
-                    </li>
-                    <li class="list-group-item checkbox" style="padding-left:125px;background:#DCDCDC">
-                        <label class="text-success"><input type="checkbox" value=""><strong><em>Health & Fitness</em></strong></label>
-                    </li>
-                    <li class="list-group-item checkbox" style="padding-left:125px;background:#DCDCDC">
-                        <label class="text-info"><input type="checkbox" value=""><strong><em>Health & Nutrition</em></strong></label>
-                    </li>
-                    <li class="list-group-item checkbox" style="padding-left:125px;background:#DCDCDC">
-                        <label class="text-warning"><input type="checkbox" value=""><strong><em>Men's Health</em></strong></label>
-                    </li>
-                    <li class="list-group-item checkbox" style="padding-left:125px;background:#DCDCDC">
-                        <label class="text-danger"><input type="checkbox" value=""><strong><em>Women's Health</em></strong></label>
-                    </li>
+                    {% for choice in form.crawlSelection %}
+
+                        <li class="list-group-item checkbox" style="padding-left:125px;background:#DCDCDC">
+                            {{ choice }}
+                        </li>
+                    {% endfor %}
+
                 </ul>
             </div>
         </div>
     </div>
-    
+
     <div class="col-xs-12" style="height:20px;"></div>
-            
+
     <div class="container col-md-5"></div>
     <div class="container col-md-1">
-        <div class="btn btn-primary btn-md" href="#" role="button">Crawl</div>
+        <div class="btn btn-primary btn-md" href="/crawl" role="button" onclick="document.forms['crawlForm'].submit()">Crawl</div>
     </div>
     <div class="container col-md-1">
-    <div class="btn btn-danger btn-md" id="UncheckAll" role="button">Uncheck All</div>
+        <div class="btn btn-danger btn-md" id="UncheckAll" role="button">Uncheck All</div>
     </div>
-    
+
     <div class="col-xs-12" style="height:80px;"></div>
-    
+
     <script>
         $("#UncheckAll").click(function(){
             $("input[type='checkbox']").prop('checked',false);
         });
     </script>
-   
+</form>
 </body>
 
 </html>

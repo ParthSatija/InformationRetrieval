@@ -16,62 +16,62 @@
 
 <body style="background:#DCDCDC">
 
+<div class="container">
+    <ul class="nav nav-pills nav-justified ">
+        <li role="presentation"><a href="/">Search</a></li>
+        <li role="presentation"><a href="/crawl/">Crawl</a></li>
+        <li role="presentation" class="active"><a href="/classification/">Classification</a></li>
+    </ul>
+</div>
+
+<div class="col-xs-12" style="height:80px;"></div>
+
+<div class="container-fluid" id="img_row">
+    <img src="{% static 'img/The_New_York_Times_logo.png' %}" class="img-responsive center-block">
+</div>
+
+<div class="col-xs-12" style="height:80px;"></div>
+<form action="/classification/" method="get" name="classifyForm" id="classifyForm">
     <div class="container">
-        <ul class="nav nav-pills nav-justified ">
-            <li role="presentation"><a href="/">Search</a></li>
-            <li role="presentation"><a href="/crawl/">Crawl</a></li>
-            <li role="presentation" class="active"><a href="/classification/">Classification</a></li>
-        </ul>
+        <div class="row">
+            <div class="input-group col-md-6 center-block">
+                <input type="text" class="form-control" id="headline" name="headline" placeholder="Enter Headline..." aria-describedby="basic-addon1">
+            </div>
+        </div>
     </div>
-    
-    <div class="col-xs-12" style="height:80px;"></div>
-    
-    <div class="container-fluid" id="img_row">
-        <img src="The_New_York_Times_logo.png" class="img-responsive center-block">
-    </div>
-    
-    <div class="col-xs-12" style="height:80px;"></div>
+
+    <div class="col-xs-12" style="height:20px;"></div>
 
     <div class="container">
         <div class="row">
             <div class="input-group col-md-6 center-block">
-                <input type="text" class="form-control" id="Input1" placeholder="Enter Headline..." aria-describedby="basic-addon1">
+                <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Enter Keyword..." aria-describedby="basic-addon2">
             </div>
         </div>
     </div>
-    
+
     <div class="col-xs-12" style="height:20px;"></div>
-    
+
     <div class="container">
         <div class="row">
             <div class="input-group col-md-6 center-block">
-                <input type="text" class="form-control" id="Input2" placeholder="Enter Keyword..." aria-describedby="basic-addon2">
+                <input type="text" class="form-control" id="content" name="content" placeholder="Enter Main Content..." aria-describedby="basic-addon3">
             </div>
         </div>
     </div>
-    
+
     <div class="col-xs-12" style="height:20px;"></div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="input-group col-md-6 center-block">
-                <input type="text" class="form-control" id="Input3" placeholder="Enter Main Content..." aria-describedby="basic-addon3">
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-xs-12" style="height:20px;"></div>
-            
+
     <div class="container col-md-5"></div>
     <div class="container col-md-1">
-        <div class="btn btn-primary btn-md" href="#" role="button">Classify</div>
+        <div class="btn btn-primary btn-md" href="/results/" role="button" onclick="document.forms['classifyForm'].submit()">Classify</div>
     </div>
     <div class="container col-md-1">
-    <div class="btn btn-danger btn-md" id="ClearAll" role="button">Clear All</div>
+        <div class="btn btn-danger btn-md" id="ClearAll" role="button">Clear All</div>
     </div>
-    
+
     <div class="col-xs-12" style="height:80px;"></div>
-    
+
     <script>
         $("#ClearAll").click(function(){
             $("#Input1").val('');
@@ -79,8 +79,8 @@
             $("#Input3").val('');
         });
     </script>
-    
-   
+</form>
+
 </body>
 
 </html>
