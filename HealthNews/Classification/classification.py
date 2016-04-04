@@ -14,7 +14,7 @@ import string
 from sklearn.metrics import precision_recall_fscore_support
 from HealthNews.Utility.MySQL import MySQL
 from HealthNews.Main.lemmatization import lemmatization
-
+############################MOVE TO CLASSIFY########################################
 lem = lemmatization()
 database_name = "cz4034"
 table_name = "CZ4034_Original"

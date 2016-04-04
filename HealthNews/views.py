@@ -5,6 +5,7 @@ from .forms import CrawlForm
 from .forms import SearchForm
 from .forms import ClassificationForm
 from HealthNews.Crawl.crawl import crawl
+from HealthNews.Classification.classify import classify
 
 def view_result(request):
     return render(request, 'results.html')
@@ -18,7 +19,8 @@ def view_classification(request):
             headline = form.cleaned_data['headline']
             keywords = form.cleaned_data['keywords']
             content = form.cleaned_data['content']
-            print headline,keywords,content
+            classify_obj = classify()
+            classify_obj.classify_on(headline,keywords,content)
             return HttpResponseRedirect('/results/')
 
     else:
