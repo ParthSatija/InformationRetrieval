@@ -35,7 +35,8 @@
     <div class="container">
         <div class="row">
             <div class="input-group col-md-6 center-block">
-                <input type="text" class="form-control" id="headline" name="headline" placeholder="Enter Headline..." aria-describedby="basic-addon1">
+                <input type="text" class="form-control" id="headline" name="headline" placeholder="Enter Headline..."
+                       aria-describedby="basic-addon1">
             </div>
         </div>
     </div>
@@ -45,7 +46,8 @@
     <div class="container">
         <div class="row">
             <div class="input-group col-md-6 center-block">
-                <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Enter Keyword..." aria-describedby="basic-addon2">
+                <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Enter Keyword..."
+                       aria-describedby="basic-addon2">
             </div>
         </div>
     </div>
@@ -55,19 +57,34 @@
     <div class="container">
         <div class="row">
             <div class="input-group col-md-6 center-block">
-                <textarea class="form-control" id="content" name="content" placeholder="Enter Main Content..." aria-describedby="basic-addon3" rows="10" style="resize: none"></textarea>
+                <textarea class="form-control" id="content" name="content" placeholder="Enter Main Content..."
+                          aria-describedby="basic-addon3" rows="10" style="resize: none"></textarea>
             </div>
         </div>
     </div>
 
     <div class="col-xs-12" style="height:20px;"></div>
-
-    <div class="container col-md-5"></div>
-    <div class="container col-md-1">
-        <div class="btn btn-primary btn-md" href="/results/" role="button" onclick="document.forms['classifyForm'].submit()">Classify</div>
+    <div class="col-md-12">
+        <div class="container col-md-4"></div>
+        <div class="container col-md-2">
+            <center>
+                <input type="submit" class="btn btn-primary btn-md" value="Classify" style="width: 135px;">
+            </center>
+        </div>
+        <div class="container col-md-2">
+            <center>
+                <input type="button" class="btn btn-danger btn-md" onclick="reset();ShowHide();" value="Clear"
+                       style="width: 135px;">
+            </center>
+        </div>
+        <div class="container col-md-4"></div>
     </div>
-    <div class="container col-md-1">
-        <div class="btn btn-danger btn-md" id="ClearAll" onclick="document.forms['classifyForm'].reset();">Clear All</div>
+    <div class="container col-md-12" style="height:20px;"></div>
+    <div class="container col-md-4"></div>
+    <div class="container col-md-4">
+        <center>
+            <input type="submit" class="btn btn-success btn-md" value="Show Statistics" style="width: 357px;">
+        </center>
     </div>
 
     <div class="col-xs-12" style="height:80px;"></div>
