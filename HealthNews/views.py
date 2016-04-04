@@ -4,27 +4,12 @@ from django.http import HttpResponseRedirect
 from .forms import CrawlForm
 from .forms import SearchForm
 from .forms import ClassificationForm
+from HealthNews.Crawl.crawl import crawl
 
-def get_query(request):
-    if request.method == 'GET':
-        # create a form instance and populate it with data from the request:
-        form = SearchForm(request.GET)
-        # check whether it's valid:
-        if form.is_valid():
-            query_result = form.cleaned_data['query']
-            print query_result
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = SearchForm()
-
-    return render(request, 'classification.html', {'form': form})
-
-def result(request):
+def view_result(request):
     return render(request, 'results.html')
 
-def classification(request):
+def view_classification(request):
     print "Classification waala page"
     if request.method == 'GET':
         form = ClassificationForm(request.GET)
@@ -43,7 +28,7 @@ def classification(request):
 
 
 
-def index(request):
+def view_index(request):
     print "Index waala page"
     if request.method == 'GET':
         # create a form instance and populate it with data from the request:
@@ -65,7 +50,7 @@ def index(request):
 
     return render(request, 'index.html', {'form': form})
 
-def crawl(request):
+def view_crawl(request):
     print "Crawl waala page"
     if request.method == 'GET':
         # create a form instance and populate it with data from the request:
@@ -73,9 +58,10 @@ def crawl(request):
         # check whether it's valid:
         if form.is_valid():
             print "Valid Form"
-            print form.cleaned_data['crawlSelection']
-            for item in form.cleaned_data['crawlSelection']:
-                print item
+            selection_list = form.cleaned_data['crawlSelection']
+            print selection_list
+            crawl_obj = crawl()
+            crawl_obj.dynamic_crawl(selection_list)
             return HttpResponseRedirect('/results/')
 
     # if a GET (or any other method) we'll create a blank form

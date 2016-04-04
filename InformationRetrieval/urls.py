@@ -3,9 +3,9 @@ from django.contrib import admin
 from HealthNews import views
 
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', views.view_index),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^results/', views.result),
-    url(r'^classification/', views.classification),
-    url(r'^crawl/', views.crawl)
+    url(r'^results/', views.view_result),
+    url(r'^classification/', views.view_classification),
+    url(r'^crawl/', views.view_crawl)
 ]
