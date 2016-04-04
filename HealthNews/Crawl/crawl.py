@@ -4,7 +4,7 @@ import json
 import requests
 import datetime
 from HealthNews.Main.jsonToDatabase import jsonToDatabase
-
+from HealthNews.Main.indexing import Indexing
 from HealthNews.Utility.MySQL import MySQL
 
 
@@ -96,6 +96,7 @@ class crawl:
                 pages += 1
             if (pages > 0):
                 json_to_database = jsonToDatabase()
+                index = Indexing()
                 print("Number of pages = " + str(pages))
                 for i in range(0, pages):
                     url = prefix + "?&" + fq + "&" + sort + "&" + last_date.strftime(
@@ -119,7 +120,7 @@ class crawl:
                     with open(os.getcwd() + "/jsonFiles/" + JSON_FILE_NAME + str(count_num) + ".json", 'r') as jsonFile:
                         data = json.load(jsonFile)
                         json_to_database.add_to_database(data)
-
+                        index.send_file_to_Solr(data)
 
                 mysql_object.execute_query(
                     "UPDATE crawl_date set count = " + str(count_num) + " where news_desk = \"" + str(news_desk) + "\"")
