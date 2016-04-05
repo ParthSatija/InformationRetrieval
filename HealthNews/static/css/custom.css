@@ -1,0 +1,23 @@
+.modal-header, h4, .close {
+    background-color: #939393;
+    color: white !important;
+    text-align: center;
+    font-size: 24px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-content  {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+.modal-footer {
+    background-color: #f9f9f9;
+}
+
+.modal-body {
+    max-height: calc(70vh - 50px);
+    overflow-y: auto;
+}
