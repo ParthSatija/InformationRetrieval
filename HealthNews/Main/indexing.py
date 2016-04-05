@@ -1,12 +1,13 @@
 from urllib2 import urlopen
-
+from HealthNews.Main.lemmatization import lemmatization
 import pysolr, os, json
 import simplejson
 
 
 class Indexing(object):
     def __init__(self):
-        solr = pysolr.Solr('http://localhost:8983/solr/test', timeout=10)
+        self.solr = pysolr.Solr('http://localhost:8983/solr/test', timeout=10)
+        self.lem = lemmatization()
 
     def delete_index(self):
         # Delete existing indexed json files in solr
@@ -18,21 +19,37 @@ class Indexing(object):
             current_response = data["response"]["docs"][j]
             DocId = current_response["_id"].lower()
             print current_response
+            jsondata["docID"] = DocId
             # checking if news desk exists
             if ('news_desk' in current_response and current_response["news_desk"] is not None):
-                jsondata["news_desk"] = current_response["news_desk"].lower()
+                jsondata["news_desk"] = " ".join(
+                    self.lem.lemmatizeWord(self.lem.removeStopWords(current_response["news_desk"].lower().split(" "))))
 
             # checking if print headline and main headline exists
             if ('headline' in current_response and current_response["headline"] is not None):
-                jsondata["headline"] = current_response["headline"].lower()
+                k = current_response["headline"]
+                d = dict()
+                for key, value in k.iteritems():
+                    d[" ".join(self.lem.lemmatizeWord(self.lem.removeStopWords(key.lower().split(" "))))] = " ".join(
+                        self.lem.lemmatizeWord(self.lem.removeStopWords(value.lower().split())))
+                jsondata['headline'] = d
 
-            # checking if lead paragraph exists
+                # checking if lead paragraph exists
             if ('lead_paragraph' in current_response and current_response["lead_paragraph"] is not None):
-                jsondata["lead_paragraph"] = current_response["lead_paragraph"].lower()
+                jsondata["lead_paragraph"] = " ".join(self.lem.lemmatizeWord(
+                    self.lem.removeStopWords(current_response["lead_paragraph"].lower().split())))
 
             if ('keywords' in current_response and current_response["keywords"] is not None):
-                jsondata["keywords"] = current_response["keywords"].lower()
-
+                k = current_response["keywords"]
+                l = []
+                for x in k:
+                    d = dict()
+                    for key, v in x.iteritems():
+                        d[" ".join(self.lem.lemmatizeWord(key.lower().split(" ")))] = " ".join(
+                            self.lem.lemmatizeWord(v.lower().split(" ")))
+                        # d.add(key.lower(), v.lower())
+                    l.append(d)
+                jsondata["keywords"] = l
             if ('multimedia' in current_response and current_response["multimedia"] is not None):
                 jsondata["multimedia"] = "true"
             else:
@@ -49,9 +66,10 @@ class Indexing(object):
         print len(rsp["response"]["docs"])
         print rsp["response"]["docs"]
         return rsp["response"]["docs"]
-        #print "keywords:\n"
-        #for result in rsp["response"]["docs"]:
+        # print "keywords:\n"
+        # for result in rsp["response"]["docs"]:
         #    print(result)
+
 
 obj = Indexing()
 print(obj.search("http://localhost:8983/solr/test/select?q=health&wt=json&rows=9999"))
