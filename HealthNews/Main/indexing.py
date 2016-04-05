@@ -52,10 +52,10 @@ class Indexing(object):
         #print "keywords:\n"
         #for result in rsp["response"]["docs"]:
         #    print(result)
-
+"""
 obj = Indexing()
 print(obj.search("http://localhost:8983/solr/test/select?q=health&wt=json&rows=9999"))
-
+"""
 # conn = urlopen('http://localhost:8983/solr/test/select?q=keywords:*\:*Obesity*&wt=json&rows=15&fl=keywords')
 
 # # fields 'and'

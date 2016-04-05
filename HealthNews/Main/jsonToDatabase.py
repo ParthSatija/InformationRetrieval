@@ -122,16 +122,16 @@ class jsonToDatabase:
                 continue
         self.mysql_object.close_db()
 
+def transferall():
+    # change the following path accordingly!
+    path = os.getcwd() + "\\jsonFiles"
+    transfer_to_database = jsonToDatabase()
 
-# change the following path accordingly!
-path = os.getcwd() + "\\jsonFiles"
-transfer_to_database = jsonToDatabase()
-
-for i in os.listdir(path):
-    if (i.endswith(".json")):
-        with open(path + "\\" + i) as data_file:
-            # if(os.stat(data_file).st_size == 0):
-            #    continue
-            print(data_file.name)
-            data = json.load(data_file)
-            transfer_to_database.add_to_database(data)
+    for i in os.listdir(path):
+        if (i.endswith(".json")):
+            with open(path + "\\" + i) as data_file:
+                # if(os.stat(data_file).st_size == 0):
+                #    continue
+                print(data_file.name)
+                data = json.load(data_file)
+                transfer_to_database.add_to_database(data)
