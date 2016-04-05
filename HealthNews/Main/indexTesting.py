@@ -1,3 +1,4 @@
+"""
 import pysolr, os, json
 
 solr = pysolr.Solr('http://localhost:8983/solr/test', timeout=10)
@@ -245,7 +246,7 @@ solr.commit()
 results = solr.search('*')
 for result in results:
     print(result)
-
+"""
 
 
 """

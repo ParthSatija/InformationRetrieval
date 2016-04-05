@@ -2,16 +2,16 @@ import os, json
 from HealthNews.Utility.MySQL import MySQL
 
 
-class jsonToDatabase(object):
+class jsonToDatabase:
     def __init__(self):
-        database_name = "CZ4034"
-        table_name = "CZ4034_original"
+        self.database_name = "CZ4034"
+        self.table_name = "CZ4034_original"
 
-        mysql_object = MySQL()
+        self.mysql_object = MySQL()
 
-        mysql_object.create_database(database_name)
+        self.mysql_object.create_database(self.database_name)
 
-        column_list = "DocID VARCHAR(30) PRIMARY KEY, " \
+        self.column_list = "DocID VARCHAR(30) PRIMARY KEY, " \
                       "typeOfMaterial TEXT, " \
                       "news_desk TEXT, " \
                       "headline MEDIUMTEXT, " \
@@ -23,7 +23,7 @@ class jsonToDatabase(object):
                       "glocation MEDIUMTEXT," \
                       "section_name TEXT"
 
-        mysql_object.create_table(table_name, column_list)
+        self.mysql_object.create_table(self.table_name, self.column_list)
 
     def add_to_database(self, data):
         for j in range(len(data["response"]["docs"])):
@@ -122,16 +122,16 @@ class jsonToDatabase(object):
                 continue
         self.mysql_object.close_db()
 
+def transferall():
+    # change the following path accordingly!
+    path = os.getcwd() + "\\jsonFiles"
+    transfer_to_database = jsonToDatabase()
 
-# change the following path accordingly!
-path = "../jsonFiles/"
-transter_to_database = jsonToDatabase()
-
-for i in os.listdir(path):
-    if (i.endswith(".json")):
-        with open(path + "\\" + i) as data_file:
-            # if(os.stat(data_file).st_size == 0):
-            #    continue
-            print(data_file.name)
-            data = json.load(data_file)
-            transter_to_database.add_to_database(data)
+    for i in os.listdir(path):
+        if (i.endswith(".json")):
+            with open(path + "\\" + i) as data_file:
+                # if(os.stat(data_file).st_size == 0):
+                #    continue
+                print(data_file.name)
+                data = json.load(data_file)
+                transfer_to_database.add_to_database(data)
