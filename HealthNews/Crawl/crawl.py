@@ -121,7 +121,6 @@ class crawl:
                         data = json.load(jsonFile)
                         json_to_database.add_to_database(data)
                         index.send_file_to_Solr(data)
-
                 mysql_object.execute_query(
                     "UPDATE crawl_date set count = " + str(count_num) + " where news_desk = \"" + str(news_desk) + "\"")
                 mysql_object.execute_query(

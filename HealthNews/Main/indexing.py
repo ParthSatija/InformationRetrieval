@@ -46,10 +46,15 @@ class Indexing(object):
         # 'http://localhost:8983/solr/test/select?q=keywords:*\:*Obesity*+keywords:*\:*Heart*&wt=json&rows=15'
         conn = urlopen(query)
         rsp = simplejson.load(conn)
-        print "keywords:\n"
-        for result in rsp["response"]["docs"]:
-            print(result)
+        print len(rsp["response"]["docs"])
+        print rsp["response"]["docs"]
+        return rsp["response"]["docs"]
+        #print "keywords:\n"
+        #for result in rsp["response"]["docs"]:
+        #    print(result)
 
+obj = Indexing()
+print(obj.search("http://localhost:8983/solr/test/select?q=health&wt=json&rows=9999"))
 
 # conn = urlopen('http://localhost:8983/solr/test/select?q=keywords:*\:*Obesity*&wt=json&rows=15&fl=keywords')
 
