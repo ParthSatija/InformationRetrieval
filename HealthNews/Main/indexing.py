@@ -145,16 +145,6 @@ class Indexing(object):
         #Return the list of docIDs of relevant documents
         return self.resplst
 
-
-
-
-
-
-
-
-
-
-
 """
     lem_query = lemmatization()
         queryLst = lem_query.lemmatizeWord(lem_query.removeStopWords(query.lower().split(" ")))
@@ -175,48 +165,34 @@ class Indexing(object):
         # for result in rsp["response"]["docs"]:
         #    print(result)
 
-"""
-
-"""
 obj = Indexing()
 print(obj.search("http://localhost:8983/solr/test/select?q=health&wt=json&rows=9999"))
-"""
 
+conn = urlopen('http://localhost:8983/solr/test/select?q=keywords:*\:*Obesity*&wt=json&rows=15&fl=keywords')
+url:             http://localhost:8983/solr/test/select?q=keywords:*\:*obesity*+keywords:*\:*heart*&wt=json&rows=15
+# fields 'and'
+conn = urlopen(
+    'http://localhost:8983/solr/test/select?q=%2Bheadline:*\:*Research*+%2Bkeywords:*\:*Obesity*&wt=json&rows=15')
+rsp = simplejson.load(conn)
+print "headline :\n"
+for result in rsp["response"]["docs"]:
+    print(result)
 
+# phrase + multi field query
+conn = urlopen(
+    'http://localhost:8983/solr/test/select?q=headline:*\:\"fat+stigma\"&keywords:*\:*obesity*&wt=json&rows=15')
+rsp = simplejson.load(conn)
+print "obesity research :\n"
+for result in rsp["response"]["docs"]:
+    print(result)
 
-
-
-
-
-# conn = urlopen('http://localhost:8983/solr/test/select?q=keywords:*\:*Obesity*&wt=json&rows=15&fl=keywords')
-#url:             http://localhost:8983/solr/test/select?q=keywords:*\:*obesity*+keywords:*\:*heart*&wt=json&rows=15
-# # fields 'and'
-# conn = urlopen(
-#     'http://localhost:8983/solr/test/select?q=%2Bheadline:*\:*Research*+%2Bkeywords:*\:*Obesity*&wt=json&rows=15')
-# rsp = simplejson.load(conn)
-# print "headline :\n"
-# for result in rsp["response"]["docs"]:
-#     print(result)
-#
-# # phrase + multi field query
-# conn = urlopen(
-#     'http://localhost:8983/solr/test/select?q=headline:*\:\"fat+stigma\"&keywords:*\:*obesity*&wt=json&rows=15')
-# rsp = simplejson.load(conn)
-# print "obesity research :\n"
-# for result in rsp["response"]["docs"]:
-#     print(result)
-#
-# # Multiple phrases Query
-# conn = urlopen(
-#     'http://localhost:8983/solr/test/select?q=headline:*\:\"is+leaving\"&headline:*\:\"obesity+research\"&wt=json&rows=15')
-# rsp = simplejson.load(conn)
-# print "is leaving :\n"
-# for result in rsp["response"]["docs"]:
-#     print(result)
-
-"""
-
-# If sending JSON files directly into solr
+# Multiple phrases Query
+conn = urlopen(
+    'http://localhost:8983/solr/test/select?q=headline:*\:\"is+leaving\"&headline:*\:\"obesity+research\"&wt=json&rows=15')
+rsp = simplejson.load(conn)
+print "is leaving :\n"
+for result in rsp["response"]["docs"]:
+    print(result)
 
 path = "../jsonFiles/"
 count = 0
