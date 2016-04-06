@@ -26,7 +26,7 @@ def view_classification(request):
     else:
         form = ClassificationForm()
 
-    return render(request, 'classification.html', {'form': form})
+    return render(request, 'classification.html', {'form': form, 'stats': "1234"})
 
 
 
