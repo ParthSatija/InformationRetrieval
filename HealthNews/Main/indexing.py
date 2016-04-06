@@ -100,7 +100,6 @@ class Indexing(object):
 
 
         ##headline AND search #############################
-
         url="http://localhost:8983/solr/test/select?q="
         for word in queryLst:
             url+="%2Bheadline:*\:*" + word + "*+"

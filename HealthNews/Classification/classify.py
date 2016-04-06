@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import VotingClassifier
-
+from sklearn.externals import joblib
 from sklearn import feature_extraction
 
 import string
@@ -19,14 +19,7 @@ from HealthNews.Utility.MySQL import MySQL
 
 
 class classify(object):
-    def classify_on(self, headline, keyword, content):
-        headline = headline.lower()
-        keyword = keyword.lower()
-        content = content.lower()
-        print ("The headline: ", headline)
-        print ("The keyword: ", keyword)
-        print ("The content: ", content)
-
+    def train_data(self):
         lem = lemmatization()
         database_name = "cz4034"
         table_name = "CZ4034_Original"
@@ -80,14 +73,38 @@ class classify(object):
             weights=[1, 1, 1, 1, 1, 2, 2, 0])
 
         cv = feature_extraction.text.CountVectorizer(vocabulary=dict)
+        cv = feature_extraction.text.TfidfVectorizer(vocabulary=dict)
+
         model_list = [model1, model2, model3, model4, model5, model6, model7, model8, model9, model10]
+        model_used = ["SVM", "LOGISTIC REGRESSION", "GAUSSIAN NB",
+                      "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
+                      "Voting", "Voting With Weights"]
+
+        joblib.dump(dict, "DICTIONARY")
 
         for counter_model in range(0, len(model_list)):
             model = model_list[counter_model]
             X = cv.fit_transform(train_data).toarray()
             model.fit(X, categ)
-            model.score(X, categ)
-            Y = cv.fit_transform([content + headline + keyword]).toarray()
-            predicted = model.predict(Y)
-            print predicted
+            joblib.dump(model, model_used[counter_model] + ".pkl")  # Save as file
+
+    def classify_on(self, headline, keyword, content):
+        headline = headline.lower()
+        keyword = keyword.lower()
+        content = content.lower()
+        print ("The headline: ", headline)
+        print ("The keyword: ", keyword)
+        print ("The content: ", content)
+
+        model = joblib.load("LOGISTIC REGRESSION" + ".pkl")
+        dict = joblib.load("DICTIONARY")
+        cv = feature_extraction.text.CountVectorizer(vocabulary=dict)
+        Y = cv.fit_transform([content + headline + keyword]).toarray()
+        predicted = model.predict(Y)
+        print predicted
         return predicted
+
+
+c = classify()
+c.classify_on("green potato poisonous", "",
+              "fact sound like joke, perhaps urban legend grew dr. seuss's ''green egg ham.'' food scientist say one myth. reality green potato contain high level toxin, solanine, cause nausea, headache neurological problems")
