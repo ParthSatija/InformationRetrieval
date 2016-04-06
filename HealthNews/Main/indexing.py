@@ -74,6 +74,19 @@ class Indexing(object):
         #Lemmatized query list
         queryLst = self.lem.lemmatizeWord(self.lem.removeStopWords(query.lower().split(" ")))
 
+        ##keyword + headline AND #############################
+
+        url="http://localhost:8983/solr/test/select?q="
+
+        for word in queryLst:
+            url+="%2Bheadline:*\:*" + word + "*+" + "%2Bkeywords:*\:*" + word + "*+"
+            #url+="%2Bheadline:*\:*" + word[0].upper() + word[1:] + "*+" + "%2Bkeywords:*\:*" + word[0].upper() + word[1:] + "*+"
+
+        url = url[:-1]
+        url+="&wt=json&rows=15"
+        print "url: " + url
+        self.exec_query(url)
+
         #keyword AND search#############################
 
         url="http://localhost:8983/solr/test/select?q="
@@ -98,20 +111,32 @@ class Indexing(object):
         print "url: " + url
         self.exec_query(url)
 
-        ##keyword + headline OR #############################
+        ##leadParagragh AND search #############################
 
         url="http://localhost:8983/solr/test/select?q="
-
         for word in queryLst:
-            url+="headline:*\:*" + word + "*+" + "keywords:*\:*" + word + "*+"
-            #url+="headline:*\:*" + word[0].upper() + word[1:] + "*+" + "keywords:*\:*" + word[0].upper() + word[1:] + "*+"
+            url+="%2Blead_paragraph:*" + word + "*+"
+            #url+="%2Blead_paragraph:*\:*" + word[0].upper() + word[1:] + "*+"
 
         url = url[:-1]
         url+="&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
 
-        ##phrase search #############################
+        ##keyword + headline+ lead_paragraph+news_desk OR #############################
+
+        url="http://localhost:8983/solr/test/select?q="
+
+        for word in queryLst:
+            url+="headline:*\:*" + word + "*+" + "keywords:*\:*" + word + "*+" + "lead_paragraph:*" + word + "*+" + "news_desk:*" + word +"*+"
+            #url+="headline:*\:*" + word[0].upper() + word[1:] + "*+" + "keywords:*\:*" + word[0].upper() + word[1:] + "*+" + "lead_paragraph:*" + word[0].upper() + word[1:]  + "*+" + "news_desk:*" + word[0].upper() + word[1:]  +"*+"
+
+        url = url[:-1]
+        url+="&wt=json&rows=15"
+        print "url: " + url
+        self.exec_query(url)
+
+        ##phrase search in headline #############################
 
         url="http://localhost:8983/solr/test/select?q=headline:*\:\""
         for word in queryLst:
@@ -123,6 +148,17 @@ class Indexing(object):
         print "url: " + url
         self.exec_query(url)
 
+        ##phrase search in lead_paragraph #############################
+
+        url="http://localhost:8983/solr/test/select?q=lead_paragraph:\""
+        for word in queryLst:
+            url+= word + "+"
+            #url+=word[0].upper() + word[1:] + "+"
+
+        url = url[:-1]
+        url+="\"&wt=json&rows=15"
+        print "url: " + url
+        self.exec_query(url)
 
         ## SYNONYM headline OR search
 
