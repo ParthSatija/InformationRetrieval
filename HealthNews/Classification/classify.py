@@ -14,7 +14,7 @@ from sklearn.ensemble import VotingClassifier
 from sklearn.externals import joblib
 from sklearn import feature_extraction
 
-import string
+import string,os
 
 from HealthNews.Main.lemmatization import lemmatization
 from HealthNews.Utility.MySQL import MySQL
@@ -82,7 +82,7 @@ class classify(object):
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
         cv_used = ["COUNT VECTORIZER", "TFIDF VECTORIZER"]
-        joblib.dump(dict, "DICTIONARY")
+        joblib.dump(dict, os.getcwd()+"/model files/" + "DICTIONARY")
 
         for counter_model in range(0, len(model_list)):
             for counter_cv in range(0, len(cv_list)):
@@ -90,9 +90,10 @@ class classify(object):
                 cv = cv_list[counter_cv]
                 X = cv.fit_transform(train_data).toarray()
                 model.fit(X, categ)
-                joblib.dump(model, model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")  # Save as file
+                joblib.dump(model, os.getcwd()+"/model files/"+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")  # Save as file
 
     def classification_results(self):
+
         # TEST DATA
         lem = lemmatization()
         database_name = "cz4034"
@@ -122,13 +123,13 @@ class classify(object):
         model_used = ["SVM", "LOGISTIC REGRESSION", "GAUSSIAN NB",
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
-        dict = joblib.load("DICTIONARY")
+        dict = joblib.load(os.getcwd()+"/model files/"+"DICTIONARY")
         cv1 = feature_extraction.text.CountVectorizer(vocabulary=dict)
         cv2 = feature_extraction.text.TfidfVectorizer(vocabulary=dict)
         cv_list = [cv1, cv2]
         for counter_model in range(0, len(model_used)):
             for counter_cv in range(0, len(cv_used)):
-                model = joblib.load(model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
+                model = joblib.load(os.getcwd()+"/model files/"+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
                 cv = cv_list[counter_cv]
                 Y = cv.fit_transform(test_data).toarray()
                 predicted = model.predict(Y)
