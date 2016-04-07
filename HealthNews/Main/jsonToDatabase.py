@@ -12,16 +12,18 @@ class jsonToDatabase:
         self.mysql_object.create_database(self.database_name)
 
         self.column_list = "DocID VARCHAR(30) PRIMARY KEY, " \
-                      "typeOfMaterial TEXT, " \
-                      "news_desk TEXT, " \
-                      "headline MEDIUMTEXT, " \
-                      "lead_paragraph MEDIUMTEXT, " \
-                      "word_count TEXT," \
-                      "publication_date TEXT," \
-                      "person TEXT," \
-                      "keywords MEDIUMTEXT," \
-                      "glocation MEDIUMTEXT," \
-                      "section_name TEXT"
+                           "typeOfMaterial TEXT, " \
+                           "news_desk TEXT, " \
+                           "headline MEDIUMTEXT, " \
+                           "lead_paragraph MEDIUMTEXT, " \
+                           "word_count TEXT," \
+                           "publication_date TEXT," \
+                           "person TEXT," \
+                           "keywords MEDIUMTEXT," \
+                           "glocation MEDIUMTEXT," \
+                           "web_url MEDIUMTEST," \
+                           "image_url MEDIUMTEST" \
+                           "section_name TEXT"
 
         self.mysql_object.create_table(self.table_name, self.column_list)
 
@@ -37,6 +39,8 @@ class jsonToDatabase:
             people = " "
             keywords = " "
             glocations = " "
+            web_url = ""
+            image_url = ""
             current_response = data["response"]["docs"][j]
             DocId = current_response["_id"]
             x = []
@@ -44,6 +48,16 @@ class jsonToDatabase:
             # checking if type of material exists
             if ('type_of_material' in current_response and current_response["type_of_material"] is not None):
                 type_of_material = current_response["type_of_material"].replace("\"", "\\\"")
+
+            # checking if type of material exists
+            if ('web_url' in current_response and current_response["web_url"] is not None):
+                web_url = current_response["web_url"].replace("\"", "\\\"")
+
+            # checking if type of material exists
+            if ('multimedia' in current_response and current_response["multimedia"] is not None):
+                image_url = current_response["multimedia"][0]["url"].replace("\"", "\\\"")
+            else:
+                image_url = "null"
 
             # checking if news desk exists
             if ('news_desk' in current_response and current_response["news_desk"] is not None):
@@ -111,6 +125,8 @@ class jsonToDatabase:
                   "\"" + people + "\", " \
                   "\"" + keywords + "\", " \
                   "\"" + glocations + "\", " \
+                  "\"" + web_url + "\", "\
+                  "\"" + image_url + "\", " \
                   "\"" + section_name + "\");"
             try:
                 sql = sql.encode('utf-8')
@@ -121,6 +137,7 @@ class jsonToDatabase:
                 print(e.message)
                 continue
         self.mysql_object.close_db()
+
 
 def transferall():
     # change the following path accordingly!

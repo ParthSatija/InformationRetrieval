@@ -1,0 +1,1027 @@
+{
+  "status": "OK",
+  "response": {
+    "docs": [
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "New Dietary Guidelines Urge Less Sugar for All and Less Protein for Boys and Men",
+          "kicker": "Well",
+          "print_headline": "New Dietary Guidelines Urge Sharp Cuts in Sugar "
+        },
+        "abstract": "New federal dietary guidelines announced on Thursday urge Americans to drastically cut back on sugar, and for the first time have singled out teenage boys and men for eating too much meat.",
+        "print_page": null,
+        "word_count": "1150",
+        "_id": "568e53c57988104ebd4960c3",
+        "snippet": "New federal dietary guidelines announced on Thursday urge Americans to drastically cut back on sugar, and for the first time have singled out teenage boys and men for eating too much meat.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2016/01/07/new-diet-guidelines-urge-less-sugar-for-all-and-less-meat-for-boys-and-men/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2016/01/06/health/well_food/well_food-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2016/01/06/health/well_food/well_food-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2016/01/06/health/well_food/well_food-articleLarge.jpg",
+            "height": 397,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2016/01/06/health/well_food/well_food-articleLarge.jpg",
+              "xlargeheight": "397"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2016/01/06/health/well_food/well_food-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2016/01/06/health/well_food/well_food-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Jacobson, Michael F",
+            "name": "persons",
+            "rank": "1"
+          },
+          {
+            "value": "Nestle, Marion",
+            "name": "persons",
+            "rank": "2"
+          },
+          {
+            "value": "United States",
+            "name": "glocations",
+            "rank": "1"
+          },
+          {
+            "value": "Diet and Nutrition",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "Eggs",
+            "name": "subject",
+            "rank": "2"
+          },
+          {
+            "value": "Food",
+            "name": "subject",
+            "rank": "3"
+          },
+          {
+            "value": "Lunch and Breakfast Programs",
+            "name": "subject",
+            "rank": "4"
+          },
+          {
+            "value": "Meat",
+            "name": "subject",
+            "rank": "5"
+          },
+          {
+            "value": "Men and Boys",
+            "name": "subject",
+            "rank": "6"
+          },
+          {
+            "value": "Sugar",
+            "name": "subject",
+            "rank": "7"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Anahad",
+              "lastname": "O'CONNOR"
+            }
+          ],
+          "original": "By ANAHAD O'CONNOR"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2016-01-07T07:00:09Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Mexican Soda Tax Followed by Drop in Sugary Drink Sales",
+          "kicker": "Well"
+        },
+        "abstract": "A tax on sugary drinks in Mexico appears to have had a significant impact: After one year, a new study found, sales of sugary beverages in Mexico fell while bottled water purchases rose.",
+        "print_page": null,
+        "word_count": "914",
+        "_id": "568da4167988104ebd495f23",
+        "snippet": "A tax on sugary drinks in Mexico appears to have had a significant impact: After one year, a new study found, sales of sugary beverages in Mexico fell while bottled water purchases rose.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2016/01/06/mexican-soda-tax-followed-by-drop-in-sugary-drink-sales/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2016/01/07/science/wellmexico/wellmexico-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2016/01/07/science/wellmexico/wellmexico-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2016/01/07/science/wellmexico/wellmexico-articleLarge.jpg",
+            "height": 400,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2016/01/07/science/wellmexico/wellmexico-articleLarge.jpg",
+              "xlargeheight": "400"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2016/01/07/science/wellmexico/wellmexico-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2016/01/07/science/wellmexico/wellmexico-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Obesity",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "Sales and Excise Taxes",
+            "name": "subject",
+            "rank": "2"
+          },
+          {
+            "value": "Soft Drinks",
+            "name": "subject",
+            "rank": "3"
+          },
+          {
+            "value": "Sugar",
+            "name": "subject",
+            "rank": "4"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Anahad",
+              "lastname": "O'CONNOR"
+            }
+          ],
+          "original": "By ANAHAD O'CONNOR"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2016-01-06T18:30:27Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Ask Well: Eating With Diabetes",
+          "kicker": "Well"
+        },
+        "abstract": "People can work with a diabetes educator to develop an eating plan that includes their favorite foods, albeit in limited amounts.",
+        "print_page": null,
+        "word_count": "347",
+        "_id": "568cf41279881016d3291f04",
+        "snippet": "People can work with a diabetes educator to develop an eating plan that includes their favorite foods, albeit in limited amounts.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2016/01/06/ask-well-eating-with-diabetes/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/12/24/science/wellsoda/wellsoda-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/12/24/science/wellsoda/wellsoda-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/12/24/science/wellsoda/wellsoda-articleLarge.jpg",
+            "height": 399,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/12/24/science/wellsoda/wellsoda-articleLarge.jpg",
+              "xlargeheight": "399"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/12/24/science/wellsoda/wellsoda-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/12/24/science/wellsoda/wellsoda-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Carbohydrates",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "Diabetes",
+            "name": "subject",
+            "rank": "2"
+          },
+          {
+            "value": "Diet and Nutrition",
+            "name": "subject",
+            "rank": "3"
+          },
+          {
+            "value": "Sugar",
+            "name": "subject",
+            "rank": "4"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "firstname": "Roni",
+              "middlename": "Caryn",
+              "lastname": "RABIN",
+              "rank": 1,
+              "role": "reported",
+              "organization": ""
+            }
+          ],
+          "original": "By RONI CARYN RABIN"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2016-01-06T06:00:56Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "How Training Without Helmets Could Reduce Head Injuries",
+          "kicker": "Well",
+          "print_headline": "Helmetless for the Head\u2019s Sake"
+        },
+        "abstract": "To protect the heads of football players, it might be advisable to have them occasionally practice without head protection, according to a counterintuitive new study of a successful Division I football program.",
+        "print_page": null,
+        "word_count": "922",
+        "_id": "568ceda279881016d3291ef5",
+        "snippet": "To protect the heads of football players, it might be advisable to have them occasionally practice without head protection, according to a counterintuitive new study of a successful Division I football program.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2016/01/06/how-training-without-helmets-could-reduce-head-injuries/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2016/01/05/health/well_physed/well_physed-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2016/01/05/health/well_physed/well_physed-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2016/01/05/health/well_physed/well_physed-articleLarge.jpg",
+            "height": 424,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2016/01/05/health/well_physed/well_physed-articleLarge.jpg",
+              "xlargeheight": "424"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2016/01/05/health/well_physed/well_physed-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2016/01/05/health/well_physed/well_physed-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Chronic Traumatic Encephalopathy",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "College Athletics",
+            "name": "subject",
+            "rank": "2"
+          },
+          {
+            "value": "Concussions",
+            "name": "subject",
+            "rank": "3"
+          },
+          {
+            "value": "Football",
+            "name": "subject",
+            "rank": "4"
+          },
+          {
+            "value": "Football (College)",
+            "name": "subject",
+            "rank": "5"
+          },
+          {
+            "value": "Helmets",
+            "name": "subject",
+            "rank": "6"
+          },
+          {
+            "value": "Protective Clothing and Gear",
+            "name": "subject",
+            "rank": "7"
+          },
+          {
+            "value": "Sports Injuries",
+            "name": "subject",
+            "rank": "8"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Gretchen",
+              "lastname": "REYNOLDS"
+            }
+          ],
+          "original": "By GRETCHEN REYNOLDS"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2016-01-06T05:30:56Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": "With only two field paleontologists, the Forest Service has turned for help to a small group of amateur fossil-hunters, many in their 70s and 80s.",
+        "headline": {
+          "main": "Amateur Sleuths on the Dinosaur Trail",
+          "print_headline": "Please Pass the Pickax"
+        },
+        "abstract": "Dr Bruce Schumacher, one of two paleontologists with United States Forest Service, has developed plan allowing volunteer archaeologists to help uncover dinosaur bones at Picketwire Canyon in Colorado in effort to get bones to museums and scientists; strategy aims to make up for staffing and funding shortcomings.",
+        "print_page": "1",
+        "word_count": "1831",
+        "_id": "568ad9c37988106211704ef9",
+        "snippet": "With only two field paleontologists, the Forest Service has turned for help to a small group of amateur fossil-hunters, many in their 70s and 80s.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://www.nytimes.com/2016/01/05/science/dinosaurs-amateur-paleontology-picketwire-canyon-colorado.html",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2016/01/05/science/05PALE/05PALE-thumbWide-v2.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2016/01/05/science/05PALE/05PALE-thumbWide-v2.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2016/01/05/science/05PALE/05PALE-articleLarge-v2.jpg",
+            "height": 338,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2016/01/05/science/05PALE/05PALE-articleLarge-v2.jpg",
+              "xlargeheight": "338"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2016/01/05/science/05PALE/0105-SCI-PALE-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2016/01/05/science/05PALE/0105-SCI-PALE-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Paleontology",
+            "is_major": "Y",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Dinosaurs",
+            "is_major": "Y",
+            "rank": "2",
+            "name": "subject"
+          },
+          {
+            "value": "Schumacher, Bruce A (1967- )",
+            "is_major": "Y",
+            "rank": "3",
+            "name": "persons"
+          },
+          {
+            "value": "Forest Service",
+            "is_major": "Y",
+            "rank": "4",
+            "name": "organizations"
+          },
+          {
+            "value": "Volunteers and Community Service",
+            "is_major": "Y",
+            "rank": "5",
+            "name": "subject"
+          },
+          {
+            "value": "Colorado",
+            "is_major": "Y",
+            "rank": "6",
+            "name": "glocations"
+          },
+          {
+            "value": "Fossils",
+            "is_major": "N",
+            "rank": "7",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "firstname": "David",
+              "middlename": "Mark",
+              "lastname": "SIMPSON",
+              "rank": 1,
+              "role": "reported",
+              "organization": ""
+            }
+          ],
+          "original": "By DAVID MARK SIMPSON"
+        },
+        "document_type": "article",
+        "pub_date": "2016-01-05T00:00:00Z",
+        "section_name": "Science"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": "A changing climate and human factors are sending viruses like Zika toward the United States.",
+        "headline": {
+          "main": "U.S. Becomes More Vulnerable to Tropical Diseases Like Zika",
+          "kicker": "Global Health",
+          "print_headline": "Newly Opening Door to Tropical Diseases",
+          "content_kicker": "Global Health"
+        },
+        "abstract": "Tropical diseases are spreading northward, to United States and elsewhere, driven by climate change; scientists say range of factors determine whether sporadic episodes of mosquito- and tick-borne illnesses will develop into epidemics.",
+        "print_page": "3",
+        "word_count": "1162",
+        "_id": "568abd747988106211704ea6",
+        "snippet": "A changing climate and human factors are sending viruses like Zika toward the United States.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://www.nytimes.com/2016/01/05/health/us-becomes-more-vulnerable-to-tropical-diseases-like-zika.html",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Zika Virus",
+            "is_major": "N",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Viruses",
+            "is_major": "N",
+            "rank": "11",
+            "name": "subject"
+          },
+          {
+            "value": "Birth Defects",
+            "is_major": "N",
+            "rank": "12",
+            "name": "subject"
+          },
+          {
+            "value": "Centers for Disease Control and Prevention",
+            "is_major": "N",
+            "rank": "13",
+            "name": "organizations"
+          },
+          {
+            "value": "Brazil",
+            "is_major": "N",
+            "rank": "14",
+            "name": "glocations"
+          },
+          {
+            "value": "Florida",
+            "is_major": "N",
+            "rank": "15",
+            "name": "glocations"
+          },
+          {
+            "value": "United States",
+            "is_major": "N",
+            "rank": "16",
+            "name": "glocations"
+          },
+          {
+            "value": "Global Warming",
+            "is_major": "Y",
+            "rank": "2",
+            "name": "subject"
+          },
+          {
+            "value": "Epidemics",
+            "is_major": "Y",
+            "rank": "3",
+            "name": "subject"
+          },
+          {
+            "value": "Mosquitoes",
+            "is_major": "Y",
+            "rank": "4",
+            "name": "subject"
+          },
+          {
+            "value": "Ticks (Insects)",
+            "is_major": "Y",
+            "rank": "5",
+            "name": "subject"
+          },
+          {
+            "value": "Dengue Fever",
+            "is_major": "N",
+            "rank": "6",
+            "name": "subject"
+          },
+          {
+            "value": "Lyme Disease",
+            "is_major": "N",
+            "rank": "7",
+            "name": "subject"
+          },
+          {
+            "value": "Chikungunya Virus",
+            "is_major": "N",
+            "rank": "8",
+            "name": "subject"
+          },
+          {
+            "value": "West Nile Virus",
+            "is_major": "N",
+            "rank": "9",
+            "name": "subject"
+          },
+          {
+            "value": "Rocky Mountain Spotted Fever",
+            "is_major": "N",
+            "rank": "10",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "qualifier": "Jr",
+              "firstname": "Donald",
+              "middlename": "G.",
+              "lastname": "McNEIL",
+              "rank": 1,
+              "role": "reported",
+              "organization": ""
+            }
+          ],
+          "original": "By DONALD G. McNEIL Jr"
+        },
+        "document_type": "article",
+        "pub_date": "2016-01-05T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": "Readers react to articles in Science Times.",
+        "headline": {
+          "main": "Letters to the Editor",
+          "kicker": "Reactions",
+          "content_kicker": "Reactions"
+        },
+        "abstract": null,
+        "print_page": "3",
+        "word_count": "602",
+        "_id": "568a9cb87988103a8dd33927",
+        "snippet": "Readers react to articles in Science Times.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://www.nytimes.com/2016/01/05/science/life-with-schizophrenia.html",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Schizophrenia",
+            "is_major": "N",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Mental Health and Disorders",
+            "is_major": "N",
+            "rank": "2",
+            "name": "subject"
+          }
+        ],
+        "byline": [],
+        "document_type": "article",
+        "pub_date": "2016-01-05T00:00:00Z",
+        "section_name": "Science"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Healthful School Lunches Mean Healthier Students",
+          "kicker": "Well",
+          "print_headline": "Healthier Lunches and Students"
+        },
+        "abstract": "The Healthy Hunger-Free Kids Act, which mandated increased availability of whole grains, vegetables and fruits at schools, means children are eating healthier, a study shows.",
+        "print_page": null,
+        "word_count": "224",
+        "_id": "568addb07988106211704f06",
+        "snippet": "The Healthy Hunger-Free Kids Act, which mandated increased availability of whole grains, vegetables and fruits at schools, means children are eating healthier, a study shows.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2016/01/04/healthful-school-lunches-mean-healthier-students/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2012/06/25/health/well_childhood/well_childhood-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2012/06/25/health/well_childhood/well_childhood-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2012/06/25/health/well_childhood/well_childhood-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2012/06/25/health/well_childhood/well_childhood-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Diet and Nutrition",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "Education (K-12)",
+            "name": "subject",
+            "rank": "2"
+          },
+          {
+            "value": "Lunch and Breakfast Programs",
+            "name": "subject",
+            "rank": "3"
+          },
+          {
+            "value": "Vegetables",
+            "name": "subject",
+            "rank": "4"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Nicholas",
+              "lastname": "BAKALAR"
+            }
+          ],
+          "original": "By NICHOLAS BAKALAR"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2016-01-04T16:00:16Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Ask Well: Is Day-Old Kale Salad Less Nutritious Than Fresher Kale?",
+          "kicker": "Well"
+        },
+        "abstract": "A reader asks: Does day-old, leftover kale salad have less nutritional value than kale that is fresher?",
+        "print_page": null,
+        "word_count": "524",
+        "_id": "568ab0eb7988106211704e83",
+        "snippet": "A reader asks: Does day-old, leftover kale salad have less nutritional value than kale that is fresher?",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2016/01/04/ask-well-is-day-old-kale-salad-less-nutritious-than-fresher-kale/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/12/24/science/wellkale/wellkale-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/12/24/science/wellkale/wellkale-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/12/24/science/wellkale/wellkale-articleLarge.jpg",
+            "height": 393,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/12/24/science/wellkale/wellkale-articleLarge.jpg",
+              "xlargeheight": "393"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/12/24/science/wellkale/wellkale-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/12/24/science/wellkale/wellkale-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Cooking and Cookbooks",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "Diet and Nutrition",
+            "name": "subject",
+            "rank": "2"
+          },
+          {
+            "value": "Kale (Vegetable)",
+            "name": "subject",
+            "rank": "3"
+          },
+          {
+            "value": "Salad Dressings",
+            "name": "subject",
+            "rank": "4"
+          },
+          {
+            "value": "Salads",
+            "name": "subject",
+            "rank": "5"
+          },
+          {
+            "value": "Vegetables",
+            "name": "subject",
+            "rank": "6"
+          },
+          {
+            "value": "Vitamins",
+            "name": "subject",
+            "rank": "7"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Sophie",
+              "lastname": "EGAN"
+            }
+          ],
+          "original": "By SOPHIE EGAN"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2016-01-04T12:49:50Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Bringing Out the Chef in Children",
+          "kicker": "Well",
+          "print_headline": "Bringing Out the Chef in Children"
+        },
+        "abstract": "FamilyCook teaches schoolchildren and their families the delights that can ensue from preparing affordable fresh, tasty and healthful foods.",
+        "print_page": null,
+        "word_count": "1037",
+        "_id": "568a4d9d7988103a8dd33878",
+        "snippet": "FamilyCook teaches schoolchildren and their families the delights that can ensue from preparing affordable fresh, tasty and healthful foods.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2016/01/04/bringing-out-the-chef-in-children/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2016/01/05/science/05BROD/0105-SCI-BROD-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2016/01/05/science/05BROD/0105-SCI-BROD-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2016/01/05/science/05BROD/0105-SCI-BROD-articleLarge.jpg",
+            "height": 398,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2016/01/05/science/05BROD/0105-SCI-BROD-articleLarge.jpg",
+              "xlargeheight": "398"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2016/01/05/science/05BROD/0105-SCI-BROD-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2016/01/05/science/05BROD/0105-SCI-BROD-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Diet and Nutrition",
+            "is_major": "Y",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Families and Family Life",
+            "is_major": "Y",
+            "rank": "2",
+            "name": "subject"
+          },
+          {
+            "value": "Children and Childhood",
+            "is_major": "N",
+            "rank": "3",
+            "name": "subject"
+          },
+          {
+            "value": "Cooking and Cookbooks",
+            "is_major": "Y",
+            "rank": "4",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "firstname": "Jane",
+              "middlename": "E.",
+              "lastname": "BRODY",
+              "rank": 1,
+              "role": "reported",
+              "organization": ""
+            }
+          ],
+          "original": "By JANE E. BRODY"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2016-01-04T05:45:08Z",
+        "section_name": "Health"
+      }
+    ],
+    "meta": {
+      "hits": 11,
+      "offset": 0,
+      "time": 43
+    }
+  },
+  "copyright": "Copyright (c) 2013 The New York Times Company.  All Rights Reserved."
+}
