@@ -14,7 +14,7 @@ from sklearn.ensemble import VotingClassifier
 from sklearn.externals import joblib
 from sklearn import feature_extraction
 
-import string,os
+import string, os
 
 from HealthNews.Main.lemmatization import lemmatization
 from HealthNews.Utility.MySQL import MySQL
@@ -27,6 +27,7 @@ class classify(object):
         table_name = "CZ4034_Original"
         mysql_object = MySQL()
         mysql_object.use_database(database_name)
+        path = os.getcwd() + "/HealthNews/Classification/model files/"
 
         sql = "(SELECT lead_paragraph, news_desk, docID FROM " + table_name + " WHERE news_desk LIKE \"travel\" order by DocID asc  LIMIT 50) " \
                                                                               "UNION " \
@@ -82,7 +83,7 @@ class classify(object):
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
         cv_used = ["COUNT VECTORIZER", "TFIDF VECTORIZER"]
-        joblib.dump(dict, os.getcwd()+"/model files/" + "DICTIONARY")
+        joblib.dump(dict, path + "DICTIONARY")
 
         for counter_model in range(0, len(model_list)):
             for counter_cv in range(0, len(cv_list)):
@@ -90,7 +91,8 @@ class classify(object):
                 cv = cv_list[counter_cv]
                 X = cv.fit_transform(train_data).toarray()
                 model.fit(X, categ)
-                joblib.dump(model, os.getcwd()+"/model files/"+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")  # Save as file
+                joblib.dump(path + model_used[counter_model] + "_" + cv_used[
+                    counter_cv] + ".pkl")  # Save as file
 
     def classification_results(self):
 
@@ -100,7 +102,7 @@ class classify(object):
         table_name = "CZ4034_Original"
         mysql_object = MySQL()
         mysql_object.use_database(database_name)
-        path = os.getcwd()+"/HealthNews/Classification/model files/"
+        path = os.getcwd() + "/HealthNews/Classification/model files/"
         sql = "(SELECT lead_paragraph, news_desk FROM " + table_name + " WHERE news_desk LIKE \"Travel\" order by DocID desc  LIMIT 25) " \
                                                                        "UNION " \
                                                                        "(SELECT lead_paragraph, news_desk FROM " + table_name + " WHERE news_desk LIKE \"dining\" order by DocID desc LIMIT 25) " \
@@ -123,14 +125,14 @@ class classify(object):
         model_used = ["SVM", "LOGISTIC REGRESSION", "GAUSSIAN NB",
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
-        dict = joblib.load(path+"DICTIONARY")
+        dict = joblib.load(path + "DICTIONARY")
         cv1 = feature_extraction.text.CountVectorizer(vocabulary=dict)
         cv2 = feature_extraction.text.TfidfVectorizer(vocabulary=dict)
         cv_list = [cv1, cv2]
         result = []
         for counter_model in range(0, len(model_used)):
             for counter_cv in range(0, len(cv_used)):
-                model = joblib.load(path+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
+                model = joblib.load(path + model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
                 cv = cv_list[counter_cv]
                 Y = cv.fit_transform(test_data).toarray()
                 predicted = model.predict(Y)
@@ -181,10 +183,12 @@ class classify(object):
                 # print("F(1) Score :  %.5f" % ((score[1] * score[0] / (score[1] + score[0])) * 2))
                 # print("F(W) Score :  %.5f" % (score[2]))
                 # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
-                result.append([model_used[counter_model], cv_used[counter_cv], travel, dining, politics, score[0], score[1], ((score[1] * score[0] / (score[1] + score[0])) * 2),score[2], accuracy_score(y_true, y_pred)])
-                joblib.dump(result, path+"classification_stats.txt")
-                print result
-                return result
+                result.append(
+                    [model_used[counter_model].title(), cv_used[counter_cv].upper(), travel, dining, politics, round(score[0], 5), round(score[1], 5), round(accuracy_score(y_true, y_pred), 5),
+                     round(((score[1] * score[0] / (score[1] + score[0])) * 2), 5), round(score[2], 5)])
+        joblib.dump(result, path + "classification_stats.txt")
+        print result
+        return result
 
     def classify_on(self, headline, keyword, content):
         headline = headline.lower()
@@ -204,16 +208,19 @@ class classify(object):
 
     def get_classification_stats(self):
         try:
-            path = os.getcwd()+"/HealthNews/Classification/model files/"
-            stats = joblib.load(path+"classification_stats.txt")
+            path = os.getcwd() + "/HealthNews/Classification/model files/"
+            stats = joblib.load(path + "classification_stats.txt")
             return stats
-        except IOError as ioerr:
+        except EOFError as eoferror:
+            print ("Classification statistics do not exist. Creating one...")
+            return self.classification_results()
+        except IOError as ioerror:
             print ("Classification statistics do not exist. Creating one...")
             return self.classification_results()
 
 # c = classify()
-#c.train_data()
+# c.train_data()
 # c.classification_results()
 
-#c.classify_on("green potato poisonous", "",
+# c.classify_on("green potato poisonous", "",
 #              "fact sound like joke, perhaps urban legend grew dr. seuss's ''green egg ham.'' food scientist say one myth. reality green potato contain high level toxin, solanine, cause nausea, headache neurological problems")

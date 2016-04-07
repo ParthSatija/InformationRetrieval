@@ -23,9 +23,7 @@ def view_classification(request):
             headline = form.cleaned_data['headline']
             keywords = form.cleaned_data['keywords']
             content = form.cleaned_data['content']
-            classify_obj = classify()
-            classify_obj.classify_on(headline, keywords, content)
-            classified = classify.classify_on(headline, keywords, content)
+            classified = classification_obj.classify_on(headline, keywords, content)
             return render(request, 'classification.html', {'form': form, 'stats': stats, 'classified': classified})
 
     else:
