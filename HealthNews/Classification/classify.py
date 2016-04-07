@@ -182,9 +182,8 @@ class classify(object):
                 # print("F(W) Score :  %.5f" % (score[2]))
                 # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
                 result.append([model_used[counter_model], cv_used[counter_cv], travel, dining, politics, score[0], score[1], ((score[1] * score[0] / (score[1] + score[0])) * 2),score[2], accuracy_score(y_true, y_pred)])
-        f = open(path + "classification_stats.txt", 'w')
-        f.write(result)
-        return result
+                joblib.dump(result, path+"classification_stats.txt")
+                return result
 
     def classify_on(self, headline, keyword, content):
         headline = headline.lower()
