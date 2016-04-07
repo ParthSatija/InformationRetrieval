@@ -48,11 +48,13 @@
 
             <div class="col-xs-12" style="height:20px;"></div>
             <div class="text-center">
-                {% for choice in form.selection %}
-                    <div class="radio-inline">
-                        {{ choice }}
+                    <div class="radio-inline" checked=true>
+                        {{ form.selection.0 }}
                     </div>
-                {% endfor %}
+                    <div class="radio-inline">
+                        {{ form.selection.1 }}
+                    </div>
+
             </div>
 
             <div class="col-xs-12" style="height:40px;"></div>

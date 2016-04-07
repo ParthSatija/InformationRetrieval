@@ -5,7 +5,7 @@ class MySQL(object):
     def __init__(self):
         self.host = "localhost"
         self.username = "root"
-        self.password = ""
+        self.password = "12345"
         self.db = MySQLdb.connect(self.host, self.username, self.password, "information_schema")
         # self.db = MySQLdb.connect(self.host, self.username, self.password, db_name)
         self.cursor = self.db.cursor()

@@ -72,7 +72,7 @@ def view_crawl(request):
             selection_list = form.cleaned_data['crawlSelection']
             print selection_list
             crawl_obj = crawl()
-            crawl_obj.dynamic_crawl(selection_list)
+            print crawl_obj.dynamic_crawl(selection_list)
             return HttpResponseRedirect('/results/')
     else:
         form = CrawlForm()
