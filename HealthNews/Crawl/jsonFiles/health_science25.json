@@ -1,0 +1,977 @@
+{
+  "status": "OK",
+  "response": {
+    "docs": [
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Premature Babies With Asthma Outgrow It",
+          "kicker": "Well",
+          "print_headline": "Childbirth: Preemies Outgrow Asthma"
+        },
+        "abstract": "By the time they reach adulthood, their risk of asthma is no greater than that of full-term babies, a Danish study has found.",
+        "print_page": null,
+        "word_count": "221",
+        "_id": "54d4f5f77988103a3d0e4447",
+        "snippet": "By the time they reach adulthood, their risk of asthma is no greater than that of full-term babies, a Danish study has found.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2015/02/06/premature-babies-with-asthma-outgrow-it/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2012/05/29/health/well_childbirth/well_childbirth-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2012/05/29/health/well_childbirth/well_childbirth-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2012/05/29/health/well_childbirth/well_childbirth-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2012/05/29/health/well_childbirth/well_childbirth-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Damgaard, Anne Louise",
+            "is_major": "N",
+            "rank": "1",
+            "name": "persons"
+          },
+          {
+            "value": "University of Copenhagen",
+            "is_major": "N",
+            "rank": "2",
+            "name": "organizations"
+          },
+          {
+            "value": "Denmark",
+            "is_major": "N",
+            "rank": "3",
+            "name": "glocations"
+          },
+          {
+            "value": "Premature Babies",
+            "is_major": "N",
+            "rank": "4",
+            "name": "subject"
+          },
+          {
+            "value": "Asthma",
+            "is_major": "N",
+            "rank": "5",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Nicholas",
+              "lastname": "BAKALAR"
+            }
+          ],
+          "original": "By NICHOLAS BAKALAR"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2015-02-06T12:10:42Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Cauliflower: Marinated, Mashed and Smashed",
+          "kicker": "Well"
+        },
+        "abstract": "Cauliflower is a versatile vegetable that can be marianted, mashed like a potato or smashed into a delicious vegetarian patty, writes Martha Rose Shulman.",
+        "print_page": null,
+        "word_count": "381",
+        "_id": "54d49b7d79881040526729a4",
+        "snippet": "Cauliflower is a versatile vegetable that can be marianted, mashed like a potato or smashed into a delicious vegetarian patty, writes Martha Rose Shulman.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2015/02/06/cauliflower-marinated-mashed-and-smashed/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/01/31/science/recipehealthwellpromo/recipehealthwellpromo-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/01/31/science/recipehealthwellpromo/recipehealthwellpromo-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/01/31/science/recipehealthwellpromo/recipehealthwellpromo-articleLarge.jpg",
+            "height": 400,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/01/31/science/recipehealthwellpromo/recipehealthwellpromo-articleLarge.jpg",
+              "xlargeheight": "400"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/01/31/science/recipehealthwellpromo/recipehealthwellpromo-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/01/31/science/recipehealthwellpromo/recipehealthwellpromo-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Cauliflower",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "Recipes",
+            "name": "subject",
+            "rank": "2"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "firstname": "Martha",
+              "middlename": "Rose",
+              "lastname": "SHULMAN",
+              "rank": 1,
+              "role": "reported",
+              "organization": ""
+            }
+          ],
+          "original": "By MARTHA ROSE SHULMAN"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2015-02-06T05:45:25Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Doctor, Have You Had Your DNA Tested?",
+          "kicker": "Well"
+        },
+        "abstract": "As a doctor who studies how patients make decisions about genetic testing, I often get asked whether I\u2019ve had my own DNA tested.",
+        "print_page": null,
+        "word_count": "1241",
+        "_id": "54d3d2127988104052672723",
+        "snippet": "As a doctor who studies how patients make decisions about genetic testing, I often get asked whether I\u2019ve had my own DNA tested.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2015/02/05/doctor-have-you-had-your-dna-tested/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/02/05/health/05well_dna/05well_dna-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/02/05/health/05well_dna/05well_dna-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/02/05/health/05well_dna/05well_dna-articleLarge.jpg",
+            "height": 800,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/02/05/health/05well_dna/05well_dna-articleLarge.jpg",
+              "xlargeheight": "800"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/02/05/health/05well_dna/05well_dna-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/02/05/health/05well_dna/05well_dna-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Discrimination",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "DNA (Deoxyribonucleic Acid)",
+            "name": "subject",
+            "rank": "2"
+          },
+          {
+            "value": "Genetics and Heredity",
+            "name": "subject",
+            "rank": "3"
+          },
+          {
+            "value": "Health Insurance and Managed Care",
+            "name": "subject",
+            "rank": "4"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "qualifier": "M.D",
+              "firstname": "Robert",
+              "lastname": "KLITZMAN",
+              "rank": 1,
+              "role": "reported",
+              "organization": ""
+            }
+          ],
+          "original": "By ROBERT KLITZMAN, M.D"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2015-02-05T15:22:21Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Well Book Club:  Raising an Unspoiled Child",
+          "kicker": "Well",
+          "print_headline": "Raising an Unspoiled Child"
+        },
+        "abstract": "For our first Well Book Club, we decided to feature \u201c<a href=\"http://ronlieber.com/books/the-opposite-of-spoiled/\">The Opposite of Spoiled: Raising Kids Who Are Grounded, Generous and Smart About Money,</a>\u201d by Ron Lieber.",
+        "print_page": null,
+        "word_count": "1210",
+        "_id": "54d394b07988105ae2aa9021",
+        "snippet": "For our first Well Book Club, we decided to feature \u201cThe Opposite of Spoiled: Raising Kids Who Are Grounded, Generous and Smart About Money,\u201d by Ron Lieber.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2015/02/05/well-book-club-raising-an-unspoiled-child/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/01/28/science/wellspoiled/wellspoiled-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/01/28/science/wellspoiled/wellspoiled-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/01/28/science/wellspoiled/wellspoiled-articleLarge.jpg",
+            "height": 758,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/01/28/science/wellspoiled/wellspoiled-articleLarge.jpg",
+              "xlargeheight": "758"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/01/28/science/wellspoiled/wellspoiled-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/01/28/science/wellspoiled/wellspoiled-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Personal Finances",
+            "is_major": "Y",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Lieber, Ron",
+            "is_major": "Y",
+            "rank": "2",
+            "name": "persons"
+          },
+          {
+            "value": "Children and Childhood",
+            "is_major": "Y",
+            "rank": "3",
+            "name": "subject"
+          },
+          {
+            "value": "Books and Literature",
+            "is_major": "Y",
+            "rank": "5",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Tara",
+              "lastname": "PARKER-POPE"
+            }
+          ],
+          "original": "By TARA PARKER-POPE"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2015-02-05T11:00:57Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": "Even a slight change in the precariously controlled violence of the sun, an enormous thermonuclear furnace, can have drastic consequences on Earth.",
+        "headline": {
+          "main": "Living With a Star",
+          "kicker": "Out There",
+          "content_kicker": "Out There"
+        },
+        "abstract": null,
+        "print_page": "",
+        "word_count": "577",
+        "_id": "54d24a7c7988101ab1b3e3b4",
+        "snippet": "Even a slight change in the precariously controlled violence of the sun, an enormous thermonuclear furnace, can have drastic consequences on Earth.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://www.nytimes.com/2015/02/05/science/living-with-a-star.html",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Space and Astronomy",
+            "is_major": "N",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Sun",
+            "is_major": "N",
+            "rank": "2",
+            "name": "subject"
+          },
+          {
+            "value": "Earth",
+            "is_major": "N",
+            "rank": "3",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Dennis",
+              "lastname": "OVERBYE"
+            }
+          ],
+          "original": "By DENNIS OVERBYE"
+        },
+        "document_type": "article",
+        "pub_date": "2015-02-05T00:00:00Z",
+        "section_name": "Science"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "Slow Runners Come Out Ahead",
+          "kicker": "Well"
+        },
+        "abstract": "Joggers consistently tended to live longer than people who did not exercise, a new study found. And the slowest runners lived longest of all.",
+        "print_page": null,
+        "word_count": "767",
+        "_id": "54d1f8a07988101ab1b3e080",
+        "snippet": "Joggers consistently tended to live longer than people who did not exercise, a new study found. And the slowest runners lived longest of all.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2015/02/04/slow-runners-come-out-ahead/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/02/03/health/03well_physed/03well_physed-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/02/03/health/03well_physed/03well_physed-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/02/03/health/03well_physed/03well_physed-articleLarge.jpg",
+            "height": 398,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/02/03/health/03well_physed/03well_physed-articleLarge.jpg",
+              "xlargeheight": "398"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/02/03/health/03well_physed/03well_physed-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/02/03/health/03well_physed/03well_physed-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Exercise",
+            "is_major": "N",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Marott, Jacob Louis",
+            "is_major": "N",
+            "rank": "11",
+            "name": "persons"
+          },
+          {
+            "value": "Research",
+            "is_major": "N",
+            "rank": "3",
+            "name": "subject"
+          },
+          {
+            "value": "Denmark",
+            "is_major": "N",
+            "rank": "4",
+            "name": "glocations"
+          },
+          {
+            "value": "University of Copenhagen",
+            "is_major": "N",
+            "rank": "5",
+            "name": "organizations"
+          },
+          {
+            "value": "Journal of the American College of Cardiology",
+            "is_major": "N",
+            "rank": "6",
+            "name": "organizations"
+          },
+          {
+            "value": "Bicycles and Bicycling",
+            "is_major": "N",
+            "rank": "7",
+            "name": "subject"
+          },
+          {
+            "value": "Running",
+            "is_major": "N",
+            "rank": "8",
+            "name": "subject"
+          },
+          {
+            "value": "Copenhagen (Denmark)",
+            "is_major": "N",
+            "rank": "10",
+            "name": "glocations"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Gretchen",
+              "lastname": "REYNOLDS"
+            }
+          ],
+          "original": "By GRETCHEN REYNOLDS"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2015-02-04T05:45:27Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "Blog",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": null,
+        "headline": {
+          "main": "New York Attorney General Targets Supplements at Major Retailers",
+          "kicker": "Well"
+        },
+        "abstract": "GNC, Target, Walgreens and Walmart were accused of selling fraudulent and potentially dangerous herbal supplements and told by New York State officials to stop selling them.",
+        "print_page": null,
+        "word_count": "1242",
+        "_id": "54d056ab79881045b4541361",
+        "snippet": "GNC, Target, Walgreens and Walmart were accused of selling fraudulent and potentially dangerous herbal supplements and told by New York State officials to stop selling them.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://well.blogs.nytimes.com/2015/02/03/new-york-attorney-general-targets-supplements-at-major-retailers/",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/02/03/science/03wellsupplements/03wellsupplements-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/02/03/science/03wellsupplements/03wellsupplements-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/02/03/science/03wellsupplements/03wellsupplements-articleLarge.jpg",
+            "height": 392,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/02/03/science/03wellsupplements/03wellsupplements-articleLarge.jpg",
+              "xlargeheight": "392"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/02/03/science/03wellsupplements/03wellsupplements-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/02/03/science/03wellsupplements/03wellsupplements-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Schneiderman, Eric T",
+            "name": "persons",
+            "rank": "1"
+          },
+          {
+            "value": "GNC Holdings Inc",
+            "name": "organizations",
+            "rank": "1"
+          },
+          {
+            "value": "Target Corporation",
+            "name": "organizations",
+            "rank": "2"
+          },
+          {
+            "value": "Walgreen Co.",
+            "name": "organizations",
+            "rank": "3"
+          },
+          {
+            "value": "Walmart Stores Inc",
+            "name": "organizations",
+            "rank": "4"
+          },
+          {
+            "value": "Dietary Supplements and Herbal Remedies",
+            "name": "subject",
+            "rank": "1"
+          },
+          {
+            "value": "Labeling and Labels",
+            "name": "subject",
+            "rank": "2"
+          },
+          {
+            "value": "Regulation and Deregulation of Industry",
+            "name": "subject",
+            "rank": "3"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Anahad",
+              "lastname": "O'CONNOR"
+            }
+          ],
+          "original": "By ANAHAD O'CONNOR"
+        },
+        "document_type": "blogpost",
+        "pub_date": "2015-02-03T00:00:01Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": "The budget President Obama sent to Congress would establish a coordinated way for researchers to get genetic and clinical data on a million people.",
+        "headline": {
+          "main": "A Path for Precision Medicine",
+          "kicker": "News Analysis",
+          "print_headline": "A Path for Precision Medicine",
+          "content_kicker": "News Analysis"
+        },
+        "abstract": "News Analysis; scientists studying diseases like Alzheimer's, diabetes and cancer are hoping that federal precision medicine plan proposed by Pres Obama will help efforts to understand genetic variation between diseases and develop individual treatments; plan will create coordinated way for researchers to access genetic and clinical data on a million subjects.",
+        "print_page": "4",
+        "word_count": "915",
+        "_id": "54cff9b379881045b4541297",
+        "snippet": "The budget President Obama sent to Congress would establish a coordinated way for researchers to get genetic and clinical data on a million people.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://www.nytimes.com/2015/02/03/health/a-path-for-precision-medicine.html",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/02/03/science/03GENE/03GENE-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/02/03/science/03GENE/03GENE-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/02/03/science/03GENE/03GENE-articleLarge.jpg",
+            "height": 400,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/02/03/science/03GENE/03GENE-articleLarge.jpg",
+              "xlargeheight": "400"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/02/03/science/03GENE/03GENE-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/02/03/science/03GENE/03GENE-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Genetics and Heredity",
+            "is_major": "Y",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Medicine and Health",
+            "is_major": "Y",
+            "rank": "2",
+            "name": "subject"
+          },
+          {
+            "value": "Obama, Barack",
+            "is_major": "Y",
+            "rank": "3",
+            "name": "persons"
+          },
+          {
+            "value": "Alzheimer's Disease",
+            "is_major": "N",
+            "rank": "4",
+            "name": "subject"
+          },
+          {
+            "value": "Cancer",
+            "is_major": "N",
+            "rank": "5",
+            "name": "subject"
+          },
+          {
+            "value": "Diabetes",
+            "is_major": "N",
+            "rank": "6",
+            "name": "subject"
+          },
+          {
+            "value": "DNA (Deoxyribonucleic Acid)",
+            "is_major": "N",
+            "rank": "7",
+            "name": "subject"
+          },
+          {
+            "value": "Research",
+            "is_major": "N",
+            "rank": "8",
+            "name": "subject"
+          },
+          {
+            "value": "Federal Budget (US)",
+            "is_major": "N",
+            "rank": "9",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "Gina",
+              "lastname": "KOLATA"
+            }
+          ],
+          "original": "By GINA KOLATA"
+        },
+        "document_type": "article",
+        "pub_date": "2015-02-03T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": "Private Indian medical schools secretly charged admission fees of as much as $150,000 in addition to tuition, even though India&#8217;s Supreme Court banned such fees in 1992, according to two articles published in The BMJ.",
+        "headline": {
+          "main": "Journal Eyes Corruption in India\u2019s Medical Schools",
+          "kicker": "Global Health",
+          "print_headline": "Journal Eyes Corruption in India\u2019s Medical Schools",
+          "content_kicker": "Global Health"
+        },
+        "abstract": "Two articles in journal BMJ describe culture of corruption in Indian medical schools; claim that schools charge illegal admission fees of up to $150,000, turn out underprepared graduates and are subject to political influence.",
+        "print_page": "5",
+        "word_count": "261",
+        "_id": "54cff7f979881045b454128e",
+        "snippet": "Private Indian medical schools secretly charged admission fees of as much as $150,000 in addition to tuition, even though India&#8217;s Supreme Court banned such fees in 1992, according to two articles published in The BMJ.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://www.nytimes.com/2015/02/03/health/journal-eyes-corruption-in-indias-medical-schools.html",
+        "multimedia": [],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Medical Schools",
+            "is_major": "Y",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "India",
+            "is_major": "Y",
+            "rank": "2",
+            "name": "glocations"
+          },
+          {
+            "value": "BMJ (Journal)",
+            "is_major": "Y",
+            "rank": "3",
+            "name": "organizations"
+          },
+          {
+            "value": "Corruption (Institutional)",
+            "is_major": "N",
+            "rank": "4",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "person": [
+            {
+              "qualifier": "Jr",
+              "firstname": "Donald",
+              "middlename": "G.",
+              "lastname": "McNEIL",
+              "rank": 1,
+              "role": "reported",
+              "organization": ""
+            }
+          ],
+          "original": "By DONALD G. McNEIL Jr"
+        },
+        "document_type": "article",
+        "pub_date": "2015-02-03T00:00:00Z",
+        "section_name": "Health"
+      },
+      {
+        "type_of_material": "News",
+        "blog": [],
+        "news_desk": "Science",
+        "lead_paragraph": "Capturing and collaring the animals looks a bit like a rodeo, but it\u2019s all in the name of preservation.",
+        "headline": {
+          "main": "For Mule Deer, an Incredible 150-Mile Migration",
+          "print_headline": "An Incredible Journey"
+        },
+        "abstract": "Researchers are tracking 150-mile migration of mule deer across Red Desert of Wyoming and testing their health along the way in hopes of better understanding one of longest-known migration routes in lower 48 states; effort, carried out in conjunction with conservationists, may help protect route from encroachment and shape future conservation policy.",
+        "print_page": "1",
+        "word_count": "1735",
+        "_id": "54cfed2779881045b454125b",
+        "snippet": "Capturing and collaring the animals looks a bit like a rodeo, but it\u2019s all in the name of preservation.",
+        "source": "The New York Times",
+        "slideshow_credits": null,
+        "web_url": "http://www.nytimes.com/2015/02/03/science/deer-on-the-move.html",
+        "multimedia": [
+          {
+            "subtype": "wide",
+            "url": "images/2015/02/03/science/03MIGRATION1/03MIGRATION1-thumbWide.jpg",
+            "height": 126,
+            "width": 190,
+            "legacy": {
+              "wide": "images/2015/02/03/science/03MIGRATION1/03MIGRATION1-thumbWide.jpg",
+              "wideheight": "126",
+              "widewidth": "190"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "xlarge",
+            "url": "images/2015/02/03/science/03MIGRATION1/03MIGRATION1-articleLarge.jpg",
+            "height": 400,
+            "width": 600,
+            "legacy": {
+              "xlargewidth": "600",
+              "xlarge": "images/2015/02/03/science/03MIGRATION1/03MIGRATION1-articleLarge.jpg",
+              "xlargeheight": "400"
+            },
+            "type": "image"
+          },
+          {
+            "subtype": "thumbnail",
+            "url": "images/2015/02/03/science/03MIGRATION1/03MIGRATION1-thumbStandard.jpg",
+            "height": 75,
+            "width": 75,
+            "legacy": {
+              "thumbnailheight": "75",
+              "thumbnail": "images/2015/02/03/science/03MIGRATION1/03MIGRATION1-thumbStandard.jpg",
+              "thumbnailwidth": "75"
+            },
+            "type": "image"
+          }
+        ],
+        "subsection_name": null,
+        "keywords": [
+          {
+            "value": "Deer",
+            "is_major": "Y",
+            "rank": "1",
+            "name": "subject"
+          },
+          {
+            "value": "Animal Migration",
+            "is_major": "Y",
+            "rank": "2",
+            "name": "subject"
+          },
+          {
+            "value": "Wyoming",
+            "is_major": "Y",
+            "rank": "3",
+            "name": "glocations"
+          },
+          {
+            "value": "Land Use Policies",
+            "is_major": "N",
+            "rank": "4",
+            "name": "subject"
+          }
+        ],
+        "byline": {
+          "contributor": "",
+          "person": [
+            {
+              "organization": "",
+              "role": "reported",
+              "rank": 1,
+              "firstname": "James",
+              "lastname": "GORMAN"
+            }
+          ],
+          "original": "By JAMES GORMAN"
+        },
+        "document_type": "article",
+        "pub_date": "2015-02-03T00:00:00Z",
+        "section_name": "Science"
+      }
+    ],
+    "meta": {
+      "hits": 17,
+      "offset": 0,
+      "time": 44
+    }
+  },
+  "copyright": "Copyright (c) 2013 The New York Times Company.  All Rights Reserved."
+}
