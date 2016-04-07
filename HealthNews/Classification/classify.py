@@ -14,14 +14,16 @@ from sklearn.ensemble import VotingClassifier
 from sklearn.externals import joblib
 from sklearn import feature_extraction
 
-import string,os
+import string, os
 
 from HealthNews.Main.lemmatization import lemmatization
 from HealthNews.Utility.MySQL import MySQL
 
 
 class classify(object):
-    def train_data(self):
+
+    @staticmethod
+    def train_data():
         lem = lemmatization()
         database_name = "cz4034"
         table_name = "CZ4034_Original"
@@ -82,7 +84,7 @@ class classify(object):
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
         cv_used = ["COUNT VECTORIZER", "TFIDF VECTORIZER"]
-        joblib.dump(dict, os.getcwd()+"/model files/" + "DICTIONARY")
+        joblib.dump(dict, os.getcwd() + "/model files/" + "DICTIONARY")
 
         for counter_model in range(0, len(model_list)):
             for counter_cv in range(0, len(cv_list)):
@@ -90,9 +92,11 @@ class classify(object):
                 cv = cv_list[counter_cv]
                 X = cv.fit_transform(train_data).toarray()
                 model.fit(X, categ)
-                joblib.dump(model, os.getcwd()+"/model files/"+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")  # Save as file
+                joblib.dump(model, os.getcwd() + "/model files/" + model_used[counter_model] + "_" + cv_used[
+                    counter_cv] + ".pkl")  # Save as file
 
-    def classification_results(self):
+    @staticmethod
+    def classification_results():
 
         # TEST DATA
         lem = lemmatization()
@@ -123,14 +127,16 @@ class classify(object):
         model_used = ["SVM", "LOGISTIC REGRESSION", "GAUSSIAN NB",
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
-        dict = joblib.load(os.getcwd()+"/model files/"+"DICTIONARY")
+        current_path = os.getcwd() + "/HealthNews/Classification"
+        dict = joblib.load(current_path + "/model files/" + "DICTIONARY")
         cv1 = feature_extraction.text.CountVectorizer(vocabulary=dict)
         cv2 = feature_extraction.text.TfidfVectorizer(vocabulary=dict)
         cv_list = [cv1, cv2]
         result = []
         for counter_model in range(0, len(model_used)):
             for counter_cv in range(0, len(cv_used)):
-                model = joblib.load(os.getcwd()+"/model files/"+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
+                model = joblib.load(
+                    current_path + "/model files/" + model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
                 cv = cv_list[counter_cv]
                 Y = cv.fit_transform(test_data).toarray()
                 predicted = model.predict(Y)
@@ -181,9 +187,28 @@ class classify(object):
                 # print("F(1) Score :  %.5f" % ((score[1] * score[0] / (score[1] + score[0])) * 2))
                 # print("F(W) Score :  %.5f" % (score[2]))
                 # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
-                result.append([model_used[counter_model], cv_used[counter_cv], travel, dining, politics, score[0], score[1], ((score[1] * score[0] / (score[1] + score[0])) * 2),score[2], accuracy_score(y_true, y_pred)])
+                result.append(
+                    [model_used[counter_model], cv_used[counter_cv], travel, dining, politics, score[0], score[1], accuracy_score(y_true, y_pred),
+                     ((score[1] * score[0] / (score[1] + score[0])) * 2), score[2]])
+        joblib.dump(result, current_path + "/model files/" + "classification_stats.txt")
         return result
-    def classify_on(self, headline, keyword, content):
+
+    @staticmethod
+    def get_classification_stats():
+        try:
+            current_path = os.getcwd() + "/HealthNews/Classification"
+            stats = joblib.load(current_path + "/model files/" + "classification_stats.txt")
+            if (stats == ""):
+                stats = classify.classification_results()
+            return stats
+        except IOError as exp:
+            print exp
+            return classify.classification_results()
+
+
+
+    @staticmethod
+    def classify_on(headline, keyword, content):
         headline = headline.lower()
         keyword = keyword.lower()
         content = content.lower()
@@ -191,18 +216,18 @@ class classify(object):
         print ("The keyword: ", keyword)
         print ("The content: ", content)
 
-        model = joblib.load("LOGISTIC REGRESSION" + ".pkl")
-        dict = joblib.load("DICTIONARY")
+        current_path = os.getcwd() + "/HealthNews/Classification"
+        model = joblib.load(current_path + "/model files/" + "LOGISTIC REGRESSION" + ".pkl")
+        dict = joblib.load(current_path + "/model files/" + "DICTIONARY")
         cv = feature_extraction.text.CountVectorizer(vocabulary=dict)
         Y = cv.fit_transform([content + headline + keyword]).toarray()
         predicted = model.predict(Y)
         print predicted
         return predicted
 
-
 # c = classify()
-#c.train_data()
+# c.train_data()
 # c.classification_results()
 
-#c.classify_on("green potato poisonous", "",
+# c.classify_on("green potato poisonous", "",
 #              "fact sound like joke, perhaps urban legend grew dr. seuss's ''green egg ham.'' food scientist say one myth. reality green potato contain high level toxin, solanine, cause nausea, headache neurological problems")
