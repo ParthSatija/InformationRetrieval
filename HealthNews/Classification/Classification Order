@@ -1,0 +1,10 @@
+MODEL      
+VECTORIZER 
+Travel     
+Dining     
+Politics   
+Precision  
+Recall     
+F(1) Score 
+F(W) Score 
+Accuracy

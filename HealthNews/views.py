@@ -1,14 +1,16 @@
 from django.shortcuts import render
-from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from .forms import CrawlForm
 from .forms import SearchForm
 from .forms import ClassificationForm
 from HealthNews.Crawl.crawl import crawl
 from HealthNews.Classification.classify import classify
+from .Main.indexing import Indexing
+
 
 def view_result(request):
-    return render(request, 'results.html')
+    return render(request, 'results_query.html')
+
 
 def view_classification(request):
     print "Classification waala page"
@@ -20,14 +22,13 @@ def view_classification(request):
             keywords = form.cleaned_data['keywords']
             content = form.cleaned_data['content']
             classify_obj = classify()
-            classify_obj.classify_on(headline,keywords,content)
+            classify_obj.classify_on(headline, keywords, content)
             return HttpResponseRedirect('/results/')
 
     else:
         form = ClassificationForm()
 
     return render(request, 'classification.html', {'form': form, 'stats': "1234"})
-
 
 
 def view_index(request):
@@ -38,26 +39,26 @@ def view_index(request):
         # check whether it's valid:
         if form.is_valid():
             print "Valid Form"
-            query_result = form.cleaned_data['query']
-            print query_result
+            query = form.cleaned_data['query']
+            print query
             if form.cleaned_data['selection'] == 1:
                 print "DO ARTICLE SEARCH"
+                indexing_obj = Indexing()
+                json_results = indexing_obj.search(query)
+                return render(request, 'results_query.html', {'results': json_results})
             else:
                 print "DO IMAGE SEARCH"
-            return HttpResponseRedirect('/results/')
-
-    # if a GET (or any other method) we'll create a blank form
+                return HttpResponseRedirect('/results/')
     else:
         form = SearchForm()
 
     return render(request, 'index.html', {'form': form})
 
+
 def view_crawl(request):
     print "Crawl waala page"
     if request.method == 'GET':
-        # create a form instance and populate it with data from the request:
         form = CrawlForm(request.GET)
-        # check whether it's valid:
         if form.is_valid():
             print "Valid Form"
             selection_list = form.cleaned_data['crawlSelection']
@@ -65,8 +66,6 @@ def view_crawl(request):
             crawl_obj = crawl()
             crawl_obj.dynamic_crawl(selection_list)
             return HttpResponseRedirect('/results/')
-
-    # if a GET (or any other method) we'll create a blank form
     else:
         form = CrawlForm()
 
