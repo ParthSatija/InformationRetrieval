@@ -1,3 +1,4 @@
+# coding=utf-8
 from urllib2 import urlopen
 
 from HealthNews.Utility.MySQL import MySQL
@@ -224,21 +225,23 @@ class Indexing(object):
             return json.load(jsonFile)
 
 
-# path = "../Crawl/jsonFiles/"
-# count = 0
-# x = []
-# index = Indexing()
-# # print(os.listdir(path))
-# for i in os.listdir(path):
-#     if (i.endswith(".json")):
-#         with open(path + i) as data_file:
-#             # if(os.stat(data_file).st_size == 0):
-#             #    continue
-#             print(data_file.name)
-#             data = json.load(data_file)
-#             index.send_file_to_Solr(data)
+path = "../Crawl/jsonFiles/"
+count = 0
+x = []
+index = Indexing()
+index.delete_index()
+# print(os.listdir(path))
+for i in os.listdir(path):
+    if (i.endswith(".json")):
+        with open(path + i) as data_file:
+            # if(os.stat(data_file).st_size == 0):
+            #    continue
+            print(data_file.name)
+            data = json.load(data_file)
+            index.send_file_to_Solr(data)
 
 #i = Indexing()
+
 #i.search("health")
 """
     lem_query = lemmatization()
