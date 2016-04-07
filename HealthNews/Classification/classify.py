@@ -183,6 +183,7 @@ class classify(object):
                 # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
                 result.append([model_used[counter_model], cv_used[counter_cv], travel, dining, politics, score[0], score[1], ((score[1] * score[0] / (score[1] + score[0])) * 2),score[2], accuracy_score(y_true, y_pred)])
                 joblib.dump(result, path+"classification_stats.txt")
+                print result
                 return result
 
     def classify_on(self, headline, keyword, content):
@@ -204,8 +205,8 @@ class classify(object):
     def get_classification_stats(self):
         try:
             path = os.getcwd()+"/HealthNews/Classification/model files/"
-            f = open(path + "classification_stats.txt", 'r')
-            return f.read()
+            stats = joblib.load(path+"classification_stats.txt")
+            return stats
         except IOError as ioerr:
             print ("Classification statistics do not exist. Creating one...")
             return self.classification_results()
