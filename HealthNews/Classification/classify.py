@@ -127,6 +127,7 @@ class classify(object):
         cv1 = feature_extraction.text.CountVectorizer(vocabulary=dict)
         cv2 = feature_extraction.text.TfidfVectorizer(vocabulary=dict)
         cv_list = [cv1, cv2]
+        result = []
         for counter_model in range(0, len(model_used)):
             for counter_cv in range(0, len(cv_used)):
                 model = joblib.load(os.getcwd()+"/model files/"+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
@@ -169,18 +170,19 @@ class classify(object):
                         y_true.append(2)
                     j += 1
                 score = precision_recall_fscore_support(y_true, y_pred, average='weighted')
-                print("_______________________")
-                print("MODEL      :  " + model_used[counter_model])
-                print("VECTORIZER :  " + cv_used[counter_cv])
-                print("Travel     :  %d/25" % (travel))
-                print("Dining     :  %d/25" % (dining))
-                print("Politics   :  %d/23" % (politics))
-                print("Precision  :  %.5f" % (score[0]))
-                print("Recall     :  %.5f" % (score[1]))
-                print("F(1) Score :  %.5f" % ((score[1] * score[0] / (score[1] + score[0])) * 2))
-                print("F(W) Score :  %.5f" % (score[2]))
-                print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
-
+                # print("_______________________")
+                # print("MODEL      :  " + model_used[counter_model])
+                # print("VECTORIZER :  " + cv_used[counter_cv])
+                # print("Travel     :  %d/25" % (travel))
+                # print("Dining     :  %d/25" % (dining))
+                # print("Politics   :  %d/23" % (politics))
+                # print("Precision  :  %.5f" % (score[0]))
+                # print("Recall     :  %.5f" % (score[1]))
+                # print("F(1) Score :  %.5f" % ((score[1] * score[0] / (score[1] + score[0])) * 2))
+                # print("F(W) Score :  %.5f" % (score[2]))
+                # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
+                result.append([model_used[counter_model], cv_used[counter_cv], travel, dining, politics, score[0], score[1], ((score[1] * score[0] / (score[1] + score[0])) * 2),score[2], accuracy_score(y_true, y_pred)])
+        return result
     def classify_on(self, headline, keyword, content):
         headline = headline.lower()
         keyword = keyword.lower()
@@ -198,9 +200,9 @@ class classify(object):
         return predicted
 
 
-#c = classify()
+c = classify()
 #c.train_data()
-#c.classification_results()
+c.classification_results()
 
 #c.classify_on("green potato poisonous", "",
 #              "fact sound like joke, perhaps urban legend grew dr. seuss's ''green egg ham.'' food scientist say one myth. reality green potato contain high level toxin, solanine, cause nausea, headache neurological problems")
