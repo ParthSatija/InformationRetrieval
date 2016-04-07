@@ -153,5 +153,5 @@ class jsonToDatabase(object):
                     data = json.load(data_file)
                     transfer_to_database.add_to_database(data)
 
-j = jsonToDatabase()
-j.transferall()
+#j = jsonToDatabase()
+#j.transferall()

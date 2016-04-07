@@ -100,7 +100,7 @@ class classify(object):
         table_name = "CZ4034_Original"
         mysql_object = MySQL()
         mysql_object.use_database(database_name)
-
+        path = os.getcwd()+"/HealthNews/Classification/model files/"
         sql = "(SELECT lead_paragraph, news_desk FROM " + table_name + " WHERE news_desk LIKE \"Travel\" order by DocID desc  LIMIT 25) " \
                                                                        "UNION " \
                                                                        "(SELECT lead_paragraph, news_desk FROM " + table_name + " WHERE news_desk LIKE \"dining\" order by DocID desc LIMIT 25) " \
@@ -123,14 +123,14 @@ class classify(object):
         model_used = ["SVM", "LOGISTIC REGRESSION", "GAUSSIAN NB",
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
-        dict = joblib.load(os.getcwd()+"/model files/"+"DICTIONARY")
+        dict = joblib.load(path+"DICTIONARY")
         cv1 = feature_extraction.text.CountVectorizer(vocabulary=dict)
         cv2 = feature_extraction.text.TfidfVectorizer(vocabulary=dict)
         cv_list = [cv1, cv2]
         result = []
         for counter_model in range(0, len(model_used)):
             for counter_cv in range(0, len(cv_used)):
-                model = joblib.load(os.getcwd()+"/model files/"+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
+                model = joblib.load(path+model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
                 cv = cv_list[counter_cv]
                 Y = cv.fit_transform(test_data).toarray()
                 predicted = model.predict(Y)
@@ -182,7 +182,10 @@ class classify(object):
                 # print("F(W) Score :  %.5f" % (score[2]))
                 # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
                 result.append([model_used[counter_model], cv_used[counter_cv], travel, dining, politics, score[0], score[1], ((score[1] * score[0] / (score[1] + score[0])) * 2),score[2], accuracy_score(y_true, y_pred)])
+        f = open(path + "classification_stats.txt", 'w')
+        f.write(result)
         return result
+
     def classify_on(self, headline, keyword, content):
         headline = headline.lower()
         keyword = keyword.lower()
@@ -199,6 +202,14 @@ class classify(object):
         print predicted
         return predicted
 
+    def get_classification_stats(self):
+        try:
+            path = os.getcwd()+"/HealthNews/Classification/model files/"
+            f = open(path + "classification_stats.txt", 'r')
+            return f.read()
+        except IOError as ioerr:
+            print ("Classification statistics do not exist. Creating one...")
+            return self.classification_results()
 
 # c = classify()
 #c.train_data()

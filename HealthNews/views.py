@@ -14,7 +14,8 @@ def view_result(request):
 
 def view_classification(request):
     print "Classification waala page"
-    stats = classify.get_classification_stats()
+    classification_obj = classify()
+    stats = classification_obj.get_classification_stats()
     if request.method == 'GET':
         form = ClassificationForm(request.GET)
         if form.is_valid():

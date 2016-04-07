@@ -224,7 +224,7 @@ class Indexing(object):
         with open(os.getcwd() + "/query.json", 'r') as jsonFile:
             return json.load(jsonFile)
 
-
+'''
 path = "../Crawl/jsonFiles/"
 count = 0
 x = []
@@ -239,7 +239,7 @@ for i in os.listdir(path):
             print(data_file.name)
             data = json.load(data_file)
             index.send_file_to_Solr(data)
-
+'''
 #i = Indexing()
 
 #i.search("health")
