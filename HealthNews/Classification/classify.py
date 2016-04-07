@@ -194,12 +194,13 @@ class classify(object):
         headline = headline.lower()
         keyword = keyword.lower()
         content = content.lower()
+        path = os.getcwd() + "/HealthNews/Classification/model files/"
         print ("The headline: ", headline)
         print ("The keyword: ", keyword)
         print ("The content: ", content)
 
-        model = joblib.load("LOGISTIC REGRESSION" + ".pkl")
-        dict = joblib.load("DICTIONARY")
+        model = joblib.load(path + "LOGISTIC REGRESSION_COUNT VECTORIZER" + ".pkl")
+        dict = joblib.load(path + "DICTIONARY")
         cv = feature_extraction.text.CountVectorizer(vocabulary=dict)
         Y = cv.fit_transform([content + headline + keyword]).toarray()
         predicted = model.predict(Y)
