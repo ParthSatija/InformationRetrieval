@@ -2,7 +2,7 @@ import os, json
 from HealthNews.Utility.MySQL import MySQL
 
 
-class jsonToDatabase:
+class jsonToDatabase(object):
     def __init__(self):
         self.database_name = "CZ4034"
         self.table_name = "CZ4034_original"
@@ -11,7 +11,7 @@ class jsonToDatabase:
 
         self.mysql_object.create_database(self.database_name)
 
-        self.column_list = "DocID VARCHAR(30) PRIMARY KEY, " \
+        self.column_list = "DocID VARCHAR(30), " \
                            "typeOfMaterial TEXT, " \
                            "news_desk TEXT, " \
                            "headline MEDIUMTEXT, " \
@@ -21,8 +21,8 @@ class jsonToDatabase:
                            "person TEXT," \
                            "keywords MEDIUMTEXT," \
                            "glocation MEDIUMTEXT," \
-                           "web_url MEDIUMTEST," \
-                           "image_url MEDIUMTEST" \
+                           "web_url MEDIUMTEXT," \
+                           "image_url MEDIUMTEXT," \
                            "section_name TEXT"
 
         self.mysql_object.create_table(self.table_name, self.column_list)
@@ -54,7 +54,7 @@ class jsonToDatabase:
                 web_url = current_response["web_url"].replace("\"", "\\\"")
 
             # checking if type of material exists
-            if ('multimedia' in current_response and current_response["multimedia"] is not None):
+            if ('multimedia' in current_response and current_response["multimedia"] is not None and len(current_response["multimedia"])!=0):
                 image_url = current_response["multimedia"][0]["url"].replace("\"", "\\\"")
             else:
                 image_url = "null"
@@ -127,7 +127,7 @@ class jsonToDatabase:
                   "\"" + glocations + "\", " \
                   "\"" + web_url + "\", "\
                   "\"" + image_url + "\", " \
-                  "\"" + section_name + "\");"
+                                     "\"" + section_name + "\");"
             try:
                 sql = sql.encode('utf-8')
                 print(sql)
@@ -139,16 +139,19 @@ class jsonToDatabase:
         self.mysql_object.close_db()
 
 
-def transferall():
-    # change the following path accordingly!
-    path = os.getcwd() + "\\jsonFiles"
-    transfer_to_database = jsonToDatabase()
+    def transferall(self):
+        # change the following path accordingly!
+        path = "../Crawl/jsonFiles/"
+        transfer_to_database = jsonToDatabase()
 
-    for i in os.listdir(path):
-        if (i.endswith(".json")):
-            with open(path + "\\" + i) as data_file:
-                # if(os.stat(data_file).st_size == 0):
-                #    continue
-                print(data_file.name)
-                data = json.load(data_file)
-                transfer_to_database.add_to_database(data)
+        for i in os.listdir(path):
+            if (i.endswith(".json")):
+                with open(path + "\\" + i) as data_file:
+                    # if(os.stat(data_file).st_size == 0):
+                    #    continue
+                    print(data_file.name)
+                    data = json.load(data_file)
+                    transfer_to_database.add_to_database(data)
+
+j = jsonToDatabase()
+j.transferall()

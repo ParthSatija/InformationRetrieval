@@ -192,8 +192,8 @@ class Indexing(object):
         for item in resplst:
             doc_ids = doc_ids + "'" + item + "',"
         doc_ids = doc_ids[:-1]
-        # sql = "select type_of_material, word_count, pub_date, headline, lead_paragraph, web_url, image_url from cz4034_original where docID in ('" + doc_ids + ");"
-        sql = "select typeOfMaterial, word_count, publication_date, headline, lead_paragraph from cz4034_original where docID in (" + doc_ids + ");"
+        sql = "select typeOfMaterial, word_count, publication_date, headline, lead_paragraph, web_url, image_url from cz4034_original where docID in (" + doc_ids + ");"
+        #sql = "select typeOfMaterial, word_count, publication_date, headline, lead_paragraph from cz4034_original where docID in (" + doc_ids + ");"
         print sql
         data = self.mysql_object.execute_query(sql)
         dict = {}
@@ -221,25 +221,25 @@ class Indexing(object):
         with open(os.getcwd() + "/query.json", 'w') as jsonFile:
             json_data = json.dump(d, jsonFile)
         with open(os.getcwd() + "/query.json", 'r') as jsonFile:
-            print json.load(jsonFile)
+            return json.load(jsonFile)
 
 
-path = "../Crawl/jsonFiles/"
-count = 0
-x = []
-index = Indexing()
-# print(os.listdir(path))
-for i in os.listdir(path):
-    if (i.endswith(".json")):
-        with open(path + i) as data_file:
-            # if(os.stat(data_file).st_size == 0):
-            #    continue
-            print(data_file.name)
-            data = json.load(data_file)
-            index.send_file_to_Solr(data)
+# path = "../Crawl/jsonFiles/"
+# count = 0
+# x = []
+# index = Indexing()
+# # print(os.listdir(path))
+# for i in os.listdir(path):
+#     if (i.endswith(".json")):
+#         with open(path + i) as data_file:
+#             # if(os.stat(data_file).st_size == 0):
+#             #    continue
+#             print(data_file.name)
+#             data = json.load(data_file)
+#             index.send_file_to_Solr(data)
 
-# i = Indexing()
-# i.search("health")
+#i = Indexing()
+#i.search("health")
 """
     lem_query = lemmatization()
         queryLst = lem_query.lemmatizeWord(lem_query.removeStopWords(query.lower().split(" ")))
