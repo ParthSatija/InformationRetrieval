@@ -7,8 +7,10 @@ from .forms import ClassificationForm
 from HealthNews.Crawl.crawl import crawl
 from HealthNews.Classification.classify import classify
 
+
 def view_result(request):
     return render(request, 'results.html')
+
 
 def view_classification(request):
     print "Classification waala page"
@@ -20,14 +22,13 @@ def view_classification(request):
             keywords = form.cleaned_data['keywords']
             content = form.cleaned_data['content']
             classify_obj = classify()
-            classify_obj.classify_on(headline,keywords,content)
+            classify_obj.classify_on(headline, keywords, content)
             return HttpResponseRedirect('/results/')
 
     else:
         form = ClassificationForm()
 
     return render(request, 'classification.html', {'form': form, 'stats': "1234"})
-
 
 
 def view_index(request):
@@ -51,6 +52,7 @@ def view_index(request):
         form = SearchForm()
 
     return render(request, 'index.html', {'form': form})
+
 
 def view_crawl(request):
     print "Crawl waala page"
