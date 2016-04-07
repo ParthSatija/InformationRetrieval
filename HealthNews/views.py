@@ -11,11 +11,15 @@ from .Main.indexing import Indexing
 def view_result(request):
     return render(request, 'results_query.html')
 
+def view_image_result(request):
+    return render(request, 'image_results_query.html')
+
 
 def view_classification(request):
     print "Classification waala page"
     classification_obj = classify()
     stats = classification_obj.get_classification_stats()
+    classified = ""
     if request.method == 'GET':
         form = ClassificationForm(request.GET)
         if form.is_valid():
@@ -24,12 +28,14 @@ def view_classification(request):
             keywords = form.cleaned_data['keywords']
             content = form.cleaned_data['content']
             classified = classification_obj.classify_on(headline, keywords, content)
-            return render(request, 'classification.html', {'form': form, 'stats': stats, 'classified': classified})
+            return render(request, 'classification.html',
+                          {'form': form, 'stats': stats, 'classified': classified, 'headline': headline,
+                           'keywords': keywords, 'content': content})
 
     else:
         form = ClassificationForm()
 
-    return render(request, 'classification.html', {'form': form, 'stats': stats})
+    return render(request, 'classification.html', {'form': form, 'stats': stats, 'classified': classified})
 
 
 def view_index(request):
