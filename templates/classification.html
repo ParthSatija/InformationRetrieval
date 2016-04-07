@@ -100,7 +100,54 @@
                     <h4><span class="glyphicon glyphicon-stats"></span> Statistics</h4>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                    <!-- required data -->
+                    <table class="table">
+                        {% for stat in stats %}
+                        <tr>
+                            <td width="40%" style="border: none;">Model</td>
+                            <td style="border: none;"><b>{{ stat.0 }}</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">Vecotrizer</td>
+                            <td style="border: none;"><b>{{ stat.1 }}</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">Travel Score</td>
+                            <td style="border: none;"><b>{{ stat.2 }}/25</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">Dining Score</td>
+                            <td style="border: none;"><b>{{ stat.3 }}/25</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">Politics Score</td>
+                            <td style="border: none;"><b>{{ stat.4 }}/25</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">Precision</td>
+                            <td style="border: none;"><b>{{ stat.5 }}</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">Recall</td>
+                            <td style="border: none;"><b>{{ stat.6 }}</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">Accuracy</td>
+                            <td style="border: none;"><b>{{ stat.7 }}</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">F(1) Score</td>
+                            <td style="border: none;"><b>{{ stat.8 }}</b></td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;">F(W) Score</td>
+                            <td style="border: none;"><b>{{ stat.9 }}</b></td>
+                        </tr>
+                        <tr>
+                            <td><br></td>
+                            <td><br></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span

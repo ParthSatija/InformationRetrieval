@@ -14,6 +14,7 @@ def view_result(request):
 
 def view_classification(request):
     print "Classification waala page"
+    stats = classify.get_classification_stats()
     if request.method == 'GET':
         form = ClassificationForm(request.GET)
         if form.is_valid():
@@ -23,12 +24,13 @@ def view_classification(request):
             content = form.cleaned_data['content']
             classify_obj = classify()
             classify_obj.classify_on(headline, keywords, content)
-            return HttpResponseRedirect('/results/')
+            classified = classify.classify_on(headline, keywords, content)
+            return render(request, 'classification.html', {'form': form, 'stats': stats, 'classified': classified})
 
     else:
         form = ClassificationForm()
 
-    return render(request, 'classification.html', {'form': form, 'stats': "1234"})
+    return render(request, 'classification.html', {'form': form, 'stats': stats})
 
 
 def view_index(request):
