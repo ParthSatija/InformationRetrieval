@@ -200,9 +200,9 @@ class classify(object):
         return predicted
 
 
-c = classify()
+# c = classify()
 #c.train_data()
-c.classification_results()
+# c.classification_results()
 
 #c.classify_on("green potato poisonous", "",
 #              "fact sound like joke, perhaps urban legend grew dr. seuss's ''green egg ham.'' food scientist say one myth. reality green potato contain high level toxin, solanine, cause nausea, headache neurological problems")
