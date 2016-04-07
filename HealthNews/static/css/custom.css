@@ -7,11 +7,10 @@
     border-top-right-radius: 10px;
 }
 
-.modal-content  {
+.modal-content {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-
 
 .modal-footer {
     background-color: #f9f9f9;
@@ -20,25 +19,4 @@
 .modal-body {
     max-height: calc(70vh - 50px);
     overflow-y: auto;
-}
-
-
-.img-zoom {
-    width: auto;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-
-}
-
-.transition {
-    position: relative;
-    -webkit-transform: scale(1.5);
-    -moz-transform: scale(1.5);
-    -o-transform: scale(1.5);
-    transform: scale(1.5);
-    transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    z-index: +1;
 }

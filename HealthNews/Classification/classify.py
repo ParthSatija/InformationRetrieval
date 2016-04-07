@@ -184,7 +184,8 @@ class classify(object):
                 # print("F(W) Score :  %.5f" % (score[2]))
                 # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
                 result.append(
-                    [model_used[counter_model].title(), cv_used[counter_cv].upper(), travel, dining, politics, round(score[0], 5), round(score[1], 5), round(accuracy_score(y_true, y_pred), 5),
+                    [model_used[counter_model].title(), cv_used[counter_cv].upper(), travel, dining, politics,
+                     round(score[0], 5), round(score[1], 5), round(accuracy_score(y_true, y_pred), 5),
                      round(((score[1] * score[0] / (score[1] + score[0])) * 2), 5), round(score[2], 5)])
         joblib.dump(result, path + "classification_stats.txt")
         print result
