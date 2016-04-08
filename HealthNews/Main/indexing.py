@@ -8,6 +8,7 @@ import pysolr, os, json, sys
 import simplejson
 from nltk.corpus import wordnet as wn
 from itertools import chain
+import re
 
 
 class Indexing(object):
@@ -81,10 +82,23 @@ class Indexing(object):
         if(image == "false"):
             image=""
         else:
-            image="image=true"
+            image="image:true"
+
+        wordlst = []        #list of non negative words
+        notlst=[]           #list of negative words
+        for word in query.split():
+            print word
+            if(word[0]=='-'):
+                notlst.append(word[1:])
+            else:
+                wordlst.append(word)
+        query = ' '.join(wordlst)       #query with only positive words
+
         # Lemmatized query list
+        notlst = self.lem.lemmatizeWord(notlst)
         queryLst = self.lem.lemmatizeWord(self.lem.removeStopWords(query.lower().split(" ")))
         main_url = "http://localhost:8983/solr/test/select?q="+image
+
         ##keyword + headline AND #############################
 
         url = main_url
@@ -94,6 +108,8 @@ class Indexing(object):
             # url+="%2Bheadline:*\:*" + word[0].upper() + word[1:] + "*+" + "%2Bkeywords:*\:*" + word[0].upper() + word[1:] + "*+"
 
         url = url[:-1]
+        for word in notlst:
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -105,6 +121,8 @@ class Indexing(object):
             url += "%2Bkeywords:*\:*" + word + "*+"
             # url+="%2Bkeywords:*\:*" + word[0].upper() + word[1:] + "*+"
         url = url[:-1]
+        for word in notlst:
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -116,6 +134,8 @@ class Indexing(object):
             # url+="%2Bheadline:*\:*" + word[0].upper() + word[1:] + "*+"
 
         url = url[:-1]
+        for word in notlst:
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -128,6 +148,8 @@ class Indexing(object):
             # url+="%2Blead_paragraph:*\:*" + word[0].upper() + word[1:] + "*+"
 
         url = url[:-1]
+        for word in notlst:
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -141,6 +163,8 @@ class Indexing(object):
             # url+="headline:*\:*" + word[0].upper() + word[1:] + "*+" + "keywords:*\:*" + word[0].upper() + word[1:] + "*+" + "lead_paragraph:*" + word[0].upper() + word[1:]  + "*+" + "news_desk:*" + word[0].upper() + word[1:]  +"*+"
 
         url = url[:-1]
+        for word in notlst:
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -153,6 +177,8 @@ class Indexing(object):
             # url+=word[0].upper() + word[1:] + "+"
 
         url = url[:-1]
+        for word in notlst:
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
         url += "\"&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -165,6 +191,8 @@ class Indexing(object):
             # url+=word[0].upper() + word[1:] + "+"
 
         url = url[:-1]
+        for word in notlst:
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
         url += "\"&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -183,6 +211,8 @@ class Indexing(object):
                 # url+="headline:*\:*" + word[0].upper() + word[1:] + "*+"
 
             url = url[:-1]
+            for word in notlst:
+                url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
             url += "&wt=json&rows=15"
             print "url: " + url
             self.exec_query(url)
