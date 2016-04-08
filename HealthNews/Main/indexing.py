@@ -226,35 +226,37 @@ class Indexing(object):
             doc_ids = doc_ids + "'" + item + "',"
         doc_ids = doc_ids[:-1]
         sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url from cz4034_original where docID in (" + doc_ids + ") and image_url != \"null\";"
-        # sql = "select typeOfMaterial, word_count, publication_date, headline, lead_paragraph from cz4034_original where docID in (" + doc_ids + ");"
         print sql
         data = self.mysql_object.execute_query(sql)
         res = []
-        for record in data:
-            dict = {}
-            type_of_material = record[0]
-            word_count = record[1]
-            pub_date = record[2][0:10]
-            printheadline = record[3]
-            headline = record[4]
-            lead_paragraph = record[5]
-            web_url = record[6]
-            image_url = record[7]
-            dict["type_of_material"] = type_of_material
-            dict["word_count"] = word_count
-            dict["pub_date"] = pub_date
-            dict["printheadline"] = printheadline
-            dict["headline"] = headline
-            dict["lead_paragraph"] = lead_paragraph
-            dict["web_url"] = web_url
-            dict["image_url"] = image_url
-            res.append(dict)
-        #print res
-        d = {}
-        d["docs"] = res
+        if(data is not None):
+            for record in data:
+                dict = {}
+                type_of_material = record[0]
+                word_count = record[1]
+                pub_date = record[2][0:10]
+                printheadline = record[3]
+                headline = record[4]
+                lead_paragraph = record[5]
+                web_url = record[6]
+                image_url = record[7]
+                dict["type_of_material"] = type_of_material
+                dict["word_count"] = word_count
+                dict["pub_date"] = pub_date
+                dict["printheadline"] = printheadline
+                dict["headline"] = headline
+                dict["lead_paragraph"] = lead_paragraph
+                dict["web_url"] = web_url
+                dict["image_url"] = image_url
+                res.append(dict)
+            #print res
+            d = {}
+            d["docs"] = res
+        else:
+            d = {}
+            d["docs"] = []
         return json.dumps(d)
 
-'''
 path = "../Crawl/jsonFiles/"
 count = 0
 x = []
@@ -269,6 +271,6 @@ for i in os.listdir(path):
             print(data_file.name)
             data = json.load(data_file)
             index.send_file_to_Solr(data)
-'''
+
 #i = Indexing()
 #i.search("health","true")
