@@ -49,16 +49,21 @@ class jsonToDatabase(object):
 
             # checking if type of material exists
             if ('type_of_material' in current_response and current_response["type_of_material"] is not None):
-                type_of_material = current_response["type_of_material"].replace("\"", "\\\"")
+                type_of_material = current_response["type_of_material"].replace("\"", "\\\"").title()
 
             # checking if type of material exists
             if ('web_url' in current_response and current_response["web_url"] is not None):
                 web_url = current_response["web_url"].replace("\"", "\\\"")
 
             # checking if type of material exists
-            if ('multimedia' in current_response and "url" in current_response["multimedia"] and current_response["multimedia"] is not None and len(current_response["multimedia"])!=0):
-                image_url = current_response["multimedia"][0]["url"].replace("\"", "\\\"")
-            else:
+            try:
+                # checking if type of material exists
+                if ('multimedia' in current_response and current_response["multimedia"] is not None and len(
+                        current_response["multimedia"]) != 0):
+                    image_url = current_response["multimedia"][0]["url"].replace("\"", "\\\"")
+                else:
+                    image_url = "null"
+            except:
                 image_url = "null"
 
             # checking if news desk exists
@@ -156,5 +161,7 @@ class jsonToDatabase(object):
                     data = json.load(data_file)
                     transfer_to_database.add_to_database(data)
 
-# j = jsonToDatabase()
-# j.transferall()
+#j = jsonToDatabase()
+#with open("../Crawl/jsonFiles/health_science245.json") as data_file:
+#    j.add_to_database(json.load(data_file))
+#j.transferall()
