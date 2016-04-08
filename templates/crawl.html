@@ -95,13 +95,18 @@
 
 <script type="text/javascript">
     function ShowHide() {
-        categoryCheck = document.getElementById("categoryCheck");
-        queryCheck = document.getElementById("queryCheck");
+        categoryCheck = document.getElementById("id_selection_0");
+        queryCheck = document.getElementById("id_selection_1");
         var categoryDiv = document.getElementById("categories");
         var queryDiv = document.getElementById("query");
         categoryDiv.style.display = categoryCheck.checked ? "block" : "none";
         queryDiv.style.display = queryCheck.checked ? "block" : "none";
     }
+
+    $(document).ready(function(){
+        document.getElementById("id_selection_0").setAttribute('onclick', 'ShowHide()');
+        document.getElementById("id_selection_1").setAttribute('onclick', 'ShowHide()');
+    });
 </script>
 
 </html>
