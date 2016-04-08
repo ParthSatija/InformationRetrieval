@@ -19,6 +19,7 @@ class Indexing(object):
         database_name = "cz4034"
         table_name = "CZ4034_Original"
         self.mysql_object = MySQL()
+        self.mysql_object.create_database(database_name)
         self.mysql_object.use_database(database_name)
 
     def delete_index(self):
@@ -254,7 +255,7 @@ class Indexing(object):
         d["docs"] = res
         return json.dumps(d)
 
-'''
+
 path = "../Crawl/jsonFiles/"
 count = 0
 x = []
@@ -268,7 +269,10 @@ for i in os.listdir(path):
             #    continue
             print(data_file.name)
             data = json.load(data_file)
-            index.send_file_to_Solr(data)
-'''
+            try:
+                index.send_file_to_Solr(data)
+            except:
+                print("")
+
 #i = Indexing()
 #i.search("health","true")

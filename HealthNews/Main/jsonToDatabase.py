@@ -1,5 +1,6 @@
 import os, json
 from HealthNews.Utility.MySQL import MySQL
+from _mysql_exceptions import OperationalError
 
 
 class jsonToDatabase(object):
@@ -40,9 +41,9 @@ class jsonToDatabase(object):
             people = " "
             keywords = " "
             glocations = " "
-            web_url = ""
-            image_url = ""
-            printheadline = ""
+            web_url = " "
+            image_url = " "
+            printheadline = " "
             current_response = data["response"]["docs"][j]
             DocId = current_response["_id"]
             x = []
@@ -144,8 +145,18 @@ class jsonToDatabase(object):
                 # Rollback in case there is any error
                 print(e.message)
                 continue
-        self.mysql_object.close_db()
+            except TypeError as e:
+                # Rollback in case there is any error
+                print(e.message)
+                continue
+            except OperationalError as e:
+                # Rollback in case there is any error
+                print(e.message)
+                continue
 
+
+    def closeConnection(self):
+        self.mysql_object.close_db()
 
     def transferall(self):
         # change the following path accordingly!
@@ -161,7 +172,8 @@ class jsonToDatabase(object):
                     data = json.load(data_file)
                     transfer_to_database.add_to_database(data)
 
-#j = jsonToDatabase()
+j = jsonToDatabase()
 #with open("../Crawl/jsonFiles/health_science245.json") as data_file:
 #    j.add_to_database(json.load(data_file))
-#j.transferall()
+j.transferall()
+j.closeConnection()
