@@ -15,6 +15,7 @@ class jsonToDatabase(object):
                            "typeOfMaterial TEXT, " \
                            "news_desk TEXT, " \
                            "headline MEDIUMTEXT, " \
+                           "printheadline MEDIUMTEXT, " \
                            "lead_paragraph MEDIUMTEXT, " \
                            "word_count TEXT," \
                            "publication_date TEXT," \
@@ -41,6 +42,7 @@ class jsonToDatabase(object):
             glocations = " "
             web_url = ""
             image_url = ""
+            printheadline = ""
             current_response = data["response"]["docs"][j]
             DocId = current_response["_id"]
             x = []
@@ -54,7 +56,7 @@ class jsonToDatabase(object):
                 web_url = current_response["web_url"].replace("\"", "\\\"")
 
             # checking if type of material exists
-            if ('multimedia' in current_response and current_response["multimedia"] is not None and len(current_response["multimedia"])!=0):
+            if ('multimedia' in current_response and "url" in current_response["multimedia"] and current_response["multimedia"] is not None and len(current_response["multimedia"])!=0):
                 image_url = current_response["multimedia"][0]["url"].replace("\"", "\\\"")
             else:
                 image_url = "null"
@@ -69,7 +71,7 @@ class jsonToDatabase(object):
                     headline += current_response["headline"]["main"].replace("\"", "\\\"") + " "
                 if ('print_headline' in current_response["headline"] and current_response["headline"][
                     "print_headline"] is not None):
-                    headline += current_response["headline"]["print_headline"].replace("\"", "\\\"")
+                    printheadline = current_response["headline"]["print_headline"].replace("\"", "\\\"")
 
             # checking if word_count exists
             if ('word_count' in current_response and current_response["word_count"] is not None):
@@ -119,6 +121,7 @@ class jsonToDatabase(object):
                   "\"" + type_of_material + "\", " \
                   "\"" + news_desk + "\", " \
                   "\"" + headline + "\", " \
+                  "\"" + printheadline +"\"," \
                   "\"" + lead_paragraph + "\", " \
                   "\"" + word_count + "\", " \
                   "\"" + pub_date + "\", " \
@@ -127,7 +130,7 @@ class jsonToDatabase(object):
                   "\"" + glocations + "\", " \
                   "\"" + web_url + "\", "\
                   "\"" + image_url + "\", " \
-                                     "\"" + section_name + "\");"
+                  "\"" + section_name + "\");"
             try:
                 sql = sql.encode('utf-8')
                 print(sql)
@@ -153,5 +156,5 @@ class jsonToDatabase(object):
                     data = json.load(data_file)
                     transfer_to_database.add_to_database(data)
 
-#j = jsonToDatabase()
-#j.transferall()
+# j = jsonToDatabase()
+# j.transferall()
