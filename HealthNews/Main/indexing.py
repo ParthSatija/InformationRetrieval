@@ -4,7 +4,7 @@ from urllib2 import urlopen
 from HealthNews.Utility.MySQL import MySQL
 
 from HealthNews.Main.lemmatization import lemmatization
-import pysolr, os, json
+import pysolr, os, json, sys
 import simplejson
 from nltk.corpus import wordnet as wn
 from itertools import chain
@@ -35,7 +35,7 @@ class Indexing(object):
             if ('news_desk' in current_response and current_response["news_desk"] is not None):
                 jsondata["news_desk"] = " ".join(
                     self.lem.lemmatizeWord(self.lem.removeStopWords(current_response["news_desk"].lower().split(" "))))
-
+                print("news_desk :", str(sys.getsizeof(jsondata["news_desk"])))
             # checking if print headline and main headline exists
             if ('headline' in current_response and current_response["headline"] is not None):
                 k = current_response["headline"]
@@ -240,8 +240,8 @@ for i in os.listdir(path):
             data = json.load(data_file)
             index.send_file_to_Solr(data)
 
-#i = Indexing()
 
+#i = Indexing()
 #i.search("health")
 """
     lem_query = lemmatization()
