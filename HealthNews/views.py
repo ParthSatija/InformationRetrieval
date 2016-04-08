@@ -51,7 +51,7 @@ def view_index(request):
             if int(form.cleaned_data['selection']) == 1:
                 print "DO ARTICLE SEARCH"
                 #Change test_search to search() and also remove test_search from Indexing class
-                json_results = indexing_obj.test_search(query)
+                json_results = indexing_obj.search(query, "false")
                 print json_results
                 return render(request, 'results_query.html', {'results': json_results, 'query': query})
             else:
