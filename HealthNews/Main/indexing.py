@@ -80,25 +80,25 @@ class Indexing(object):
             self.resplst.add(result["docID"][0])
 
     def search(self, query, image):
-        if(image == "false"):
-            image=""
+        if (image == "false"):
+            image = ""
         else:
-            image="multimedia*\:*true*+"
+            image = "multimedia*\:*true*+"
 
-        wordlst = []        #list of non negative words
-        notlst=[]           #list of negative words
+        wordlst = []  # list of non negative words
+        notlst = []  # list of negative words
         for word in query.split():
             print word
-            if(word[0]=='-'):
+            if (word[0] == '-'):
                 notlst.append(word[1:])
             else:
                 wordlst.append(word)
-        query = ' '.join(wordlst)       #query with only positive words
+        query = ' '.join(wordlst)  # query with only positive words
 
         # Lemmatized query list
         notlst = self.lem.lemmatizeWord(notlst)
         queryLst = self.lem.lemmatizeWord(self.lem.removeStopWords(query.lower().split(" ")))
-        main_url = "http://localhost:8983/solr/test/select?q="+image
+        main_url = "http://localhost:8983/solr/test/select?q=" + image
 
         ##keyword + headline AND #############################
 
@@ -172,7 +172,7 @@ class Indexing(object):
 
         ##phrase search in headline #############################
 
-        url = "http://localhost:8983/solr/test/select?q=headline:*\:\""+image
+        url = "http://localhost:8983/solr/test/select?q=headline:*\:\"" + image
         for word in queryLst:
             url += word + "+"
             # url+=word[0].upper() + word[1:] + "+"
@@ -186,7 +186,7 @@ class Indexing(object):
 
         ##phrase search in lead_paragraph #############################
 
-        url = "http://localhost:8983/solr/test/select?q=lead_paragraph:\""+image
+        url = "http://localhost:8983/solr/test/select?q=lead_paragraph:\"" + image
         for word in queryLst:
             url += word + "+"
             # url+=word[0].upper() + word[1:] + "+"
@@ -225,38 +225,46 @@ class Indexing(object):
         doc_ids = ""
         for item in resplst:
             doc_ids = doc_ids + "'" + item + "',"
-        doc_ids = doc_ids[:-1]
-        sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url from cz4034_original where docID in (" + doc_ids + ") and image_url != \"null\";"
-        print sql
-        data = self.mysql_object.execute_query(sql)
-        res = []
-        if(data is not None):
-            for record in data:
-                dict = {}
-                type_of_material = record[0]
-                word_count = record[1]
-                pub_date = record[2][0:10]
-                printheadline = record[3]
-                headline = record[4]
-                lead_paragraph = record[5]
-                web_url = record[6]
-                image_url = record[7]
-                dict["type_of_material"] = type_of_material
-                dict["word_count"] = word_count
-                dict["pub_date"] = pub_date
-                dict["printheadline"] = printheadline
-                dict["headline"] = headline
-                dict["lead_paragraph"] = lead_paragraph
-                dict["web_url"] = web_url
-                dict["image_url"] = image_url
-                res.append(dict)
-            #print res
-            d = {}
-            d["docs"] = res
+        if (len(doc_ids) != 0):
+            doc_ids = doc_ids[:-1]
+
+            sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url from cz4034_original where docID in (" + doc_ids + ") and image_url != \"null\";"
+            print sql
+            data = self.mysql_object.execute_query(sql)
+            res = []
+            if (data is not None):
+                for record in data:
+                    dict = {}
+                    type_of_material = record[0]
+                    word_count = record[1]
+                    pub_date = record[2][0:10]
+                    printheadline = record[3]
+                    headline = record[4]
+                    lead_paragraph = record[5]
+                    web_url = record[6]
+                    image_url = record[7]
+                    dict["type_of_material"] = type_of_material
+                    dict["word_count"] = word_count
+                    dict["pub_date"] = pub_date
+                    dict["printheadline"] = printheadline
+                    dict["headline"] = headline
+                    dict["lead_paragraph"] = lead_paragraph
+                    dict["web_url"] = web_url
+                    dict["image_url"] = image_url
+                    res.append(dict)
+                # print res
+                d = {}
+                d["docs"] = res
+            else:
+                d = {}
+                d["docs"] = []
+            return json.dumps(d)
         else:
             d = {}
             d["docs"] = []
-        return json.dumps(d)
+            return json.dumps(d)
+
+
 '''
 path = "../Crawl/jsonFiles/"
 count = 0
@@ -276,5 +284,5 @@ for i in os.listdir(path):
             except:
                 print("")
 '''
-#i = Indexing()
-#i.search("health","true")
+# i = Indexing()
+# i.search("health","true")
