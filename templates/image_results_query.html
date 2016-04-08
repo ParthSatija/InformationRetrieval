@@ -143,8 +143,7 @@
             materialList.push(lst[i]['type_of_material']);
 
             img_url = "http://www.nytimes.com/" + lst[i]['image_url'];
-            display_image += "<a href=\"" + lst[i]['web_url'] + "\"><div class=\"col-md-2\" style=\"width:200px;height:200px;\"><img src=\"" + img_url + "\" class=\"thumbnail img-zoom img-rounded\" style=\"width:100px;height:100px;\"></div></a>";
-
+            display_image += "<a href=\"" + lst[i]['web_url'] + "\"><div class=\"col-md-2\" style=\"width:200px;\"><img src=\"" + img_url + "\" class=\"thumbnail img-zoom img-rounded\" style=\"width:100%;\" title=\"" + lst[i]['headline'] + "\"></div></a>";
         }
 
         uniqueList = _.uniq(materialList);
@@ -156,7 +155,7 @@
                 document.getElementById("count").innerHTML = lst.length + " images available!";
         }
         else
-            document.getElementById("count").innerHTML = "No images available!";
+            document.getElementById("count").innerHTML = "No images available.";
     }
 
     window.getResults(obj.docs);
