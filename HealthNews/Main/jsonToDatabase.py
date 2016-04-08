@@ -172,8 +172,8 @@ class jsonToDatabase(object):
                     data = json.load(data_file)
                     transfer_to_database.add_to_database(data)
 
-j = jsonToDatabase()
+# j = jsonToDatabase()
 #with open("../Crawl/jsonFiles/health_science245.json") as data_file:
 #    j.add_to_database(json.load(data_file))
-j.transferall()
-j.closeConnection()
+# j.transferall()
+# j.closeConnection()
