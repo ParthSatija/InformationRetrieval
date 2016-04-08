@@ -257,7 +257,7 @@ class Indexing(object):
             d = {}
             d["docs"] = []
         return json.dumps(d)
-
+'''
 path = "../Crawl/jsonFiles/"
 count = 0
 x = []
@@ -275,6 +275,6 @@ for i in os.listdir(path):
                 index.send_file_to_Solr(data)
             except:
                 print("")
-
+'''
 #i = Indexing()
 #i.search("health","true")
