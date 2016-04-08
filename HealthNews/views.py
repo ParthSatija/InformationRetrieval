@@ -51,14 +51,14 @@ def view_index(request):
             if int(form.cleaned_data['selection']) == 1:
                 print "DO ARTICLE SEARCH"
                 #Change test_search to search() and also remove test_search from Indexing class
-                json_results = indexing_obj.search(query,"false")
+                json_results = indexing_obj.test_search(query)
                 print json_results
-                return render(request, 'results_query.html', {'results': json_results})
+                return render(request, 'results_query.html', {'results': json_results, 'query': query})
             else:
                 print "DO IMAGE SEARCH"
                 json_results=indexing_obj.search(query, "true")
                 print json_results
-                return render(request, 'image_results_query.html', {'results': json_results})
+                return render(request, 'image_results_query.html', {'results': json_results, 'query': query})
     else:
         form = SearchForm()
 
