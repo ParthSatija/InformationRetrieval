@@ -5,7 +5,7 @@ from .forms import ClassificationForm
 from HealthNews.Crawl.crawl import crawl
 from HealthNews.Classification.classify import classify
 from .Main.indexing import Indexing
-
+import json
 
 def view_result(request):
     return render(request, 'results_query.html')
@@ -51,11 +51,13 @@ def view_index(request):
             if int(form.cleaned_data['selection']) == 1:
                 print "DO ARTICLE SEARCH"
                 #Change test_search to search() and also remove test_search from Indexing class
-                json_results = indexing_obj.test_search(query)
+                json_results = indexing_obj.search(query,"false")
+                print json_results
                 return render(request, 'results_query.html', {'results': json_results})
             else:
                 print "DO IMAGE SEARCH"
-                json_results=indexing_obj.image_search(query)
+                json_results=indexing_obj.search(query, "true")
+                print json_results
                 return render(request, 'image_results_query.html', {'results': json_results})
     else:
         form = SearchForm()
