@@ -121,7 +121,7 @@ class classify(object):
                 test_categ.append('Dining')
             elif (ca.lower() == "politics"):
                 test_categ.append('Politics')
-        cv_used = ["COUNT VECTORIZER", "TFIDF VECTORIZER"]
+        cv_used = ["Count VECTORIZER", "tf-idf VECTORIZER"]
         model_used = ["SVM", "LOGISTIC REGRESSION", "GAUSSIAN NB",
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
@@ -132,7 +132,7 @@ class classify(object):
         result = []
         for counter_model in range(0, len(model_used)):
             for counter_cv in range(0, len(cv_used)):
-                model = joblib.load(path + model_used[counter_model] + "_" + cv_used[counter_cv] + ".pkl")
+                model = joblib.load(path + model_used[counter_model] + "_" + cv_used[counter_cv].replace('-', '') + ".pkl")
                 cv = cv_list[counter_cv]
                 Y = cv.fit_transform(test_data).toarray()
                 predicted = model.predict(Y)
@@ -184,9 +184,9 @@ class classify(object):
                 # print("F(W) Score :  %.5f" % (score[2]))
                 # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
                 result.append(
-                    [model_used[counter_model].title(), cv_used[counter_cv].upper(), travel, dining, politics,
-                     round(score[0], 5), round(score[1], 5), round(accuracy_score(y_true, y_pred), 5),
-                     round(((score[1] * score[0] / (score[1] + score[0])) * 2), 5), round(score[2], 5)])
+                    [model_used[counter_model].title(), cv_used[counter_cv][:-11], travel, dining, politics,
+                     round(score[0], 3), round(score[1], 3), round(accuracy_score(y_true, y_pred), 3),
+                     round(((score[1] * score[0] / (score[1] + score[0])) * 2), 3), round(score[2], 3)])
         joblib.dump(result, path + "classification_stats.txt")
         print result
         return result

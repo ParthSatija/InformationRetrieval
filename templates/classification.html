@@ -130,7 +130,7 @@
 
     <!-- Stats modal -->
     <div class="modal fade" id="modalStats" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -140,50 +140,28 @@
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
                     <table class="table">
+                    <tr style="text-align: center; font-weight: bold">
+                        <td style="font-weight: normal;"><b>Classifier</b><br>Vectorizer</td>
+                        <td>Travel (25)</td>
+                        <td>Dining (25)</td>
+                        <td>Politics (25)</td>
+                        <td>Precision</td>
+                        <td>Recall</td>
+                        <td>Accuracy</td>
+                        <td>F(1) Score</td>
+                        <td>F(W) Score</td>
+                    </tr>
                         {% for stat in stats %}
-                            <tr>
-                                <td width="40%" style="border: none;">Model</td>
-                                <td style="border: none;"><b>{{ stat.0 }}</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">Vecotrizer</td>
-                                <td style="border: none;"><b>{{ stat.1 }}</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">Travel Score</td>
-                                <td style="border: none;"><b>{{ stat.2 }} / 25</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">Dining Score</td>
-                                <td style="border: none;"><b>{{ stat.3 }} / 25</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">Politics Score</td>
-                                <td style="border: none;"><b>{{ stat.4 }} / 25</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">Precision</td>
-                                <td style="border: none;"><b>{{ stat.5 }}</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">Recall</td>
-                                <td style="border: none;"><b>{{ stat.6 }}</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">Accuracy</td>
-                                <td style="border: none;"><b>{{ stat.7 }}</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">F(1) Score</td>
-                                <td style="border: none;"><b>{{ stat.8 }}</b></td>
-                            </tr>
-                            <tr>
-                                <td style="border: none;">F(W) Score</td>
-                                <td style="border: none;"><b>{{ stat.9 }}</b></td>
-                            </tr>
-                            <tr>
-                                <td><br></td>
-                                <td><br></td>
+                            <tr style="text-align: center">
+                                <td style="border-right: 1px #dcdcdc; text-align: left"><b>{{ stat.0 }}</b><br>{{ stat.1 }}</td>
+                                <td>{{ stat.2 }}</td>
+                                <td>{{ stat.3 }}</td>
+                                <td>{{ stat.4 }}</td>
+                                <td>{{ stat.5 }}</td>
+                                <td>{{ stat.6 }}</td>
+                                <td>{{ stat.7 }}</td>
+                                <td>{{ stat.8 }}</td>
+                                <td>{{ stat.9 }}</td>
                             </tr>
                         {% endfor %}
                     </table>
