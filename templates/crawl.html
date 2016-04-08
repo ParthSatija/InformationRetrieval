@@ -33,12 +33,15 @@
 <form action="/crawl" method="get" id="crawlForm" name="crawlForm">
 
     <div>
-        <center>
-            <input type="radio" name="crawlCheck" id="categoryCheck" value="categoryCheck"
-                   onclick="ShowHide()"><b>&ensp;Crawl By Categories&ensp;</b></input>
-            <input type="radio" name="crawlCheck" id="queryCheck" value="queryCheck"
-                   onclick="ShowHide()" style="margin-left: 5em"><b>&ensp;Crawl By Query&ensp;</b></input>
-        </center>
+        <div class="text-center">
+        {% for choice in form.selection %}
+            <div class="radio-inline">
+                {{ choice }}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+        {% endfor %}
+        </div>
+
     </div>
     <div class="container col-md-12" id="categories" style="display: none">
         <div class="col-md-4" style="background:#DCDCDC"></div>
