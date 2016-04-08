@@ -45,18 +45,20 @@ def view_index(request):
         form = SearchForm(request.GET)
         # check whether it's valid:
         if form.is_valid():
+            indexing_obj = Indexing()
             print "Valid Form"
             query = form.cleaned_data['query']
             print query
             if int(form.cleaned_data['selection']) == 1:
                 print "DO ARTICLE SEARCH"
-                indexing_obj = Indexing()
                 #Change test_search to search() and also remove test_search from Indexing class
                 json_results = indexing_obj.test_search(query)
                 return render(request, 'results_query.html', {'results': json_results})
             else:
+                json_results=indexing_obj.image_search(query)
+                return render(request, 'image_results_query.html', {'results': json_results})
                 print "DO IMAGE SEARCH"
-                return HttpResponseRedirect('/results/')
+
     else:
         form = SearchForm()
 
@@ -72,8 +74,8 @@ def view_crawl(request):
             selection_list = form.cleaned_data['crawlSelection']
             print selection_list
             crawl_obj = crawl()
-            print crawl_obj.dynamic_crawl(selection_list)
-            return HttpResponseRedirect('/results/')
+            crawl_results = crawl_obj.dynamic_crawl(selection_list)
+            return render(request, 'results.html', {'results' : crawl_results})
     else:
         form = CrawlForm()
 
