@@ -183,7 +183,7 @@
             document.getElementById("count").innerHTML = "No results available.";
     }
 
-    window.getResults(obj.response.docs);
+    window.getResults(obj.docs);
 
     var div_cbox = "<div id='checkboxes'>";
     for (var i = 0; i < uniqueList.length; i++) {
@@ -240,7 +240,7 @@
         //window.alert(materialList.length);
         //window.alert(uniqueList.length);
         type_of_material = [];
-        var filtered = obj.response.docs.filter(filterByYear);
+        var filtered = obj.docs.filter(filterByYear);
         filtered = filtered.filter(filterByCount);
 
         $('#checkboxes input:checked').each(function () {
