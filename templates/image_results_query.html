@@ -1,7 +1,9 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -9,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
     <link rel="stylesheet" href="{% static 'css/jquery-ui.theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/images.css' %}">
 
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -17,7 +20,7 @@
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="{% static 'js/underscore-min.js' %}"></script>
 
-    <title>Results: CZ4034 Information Retrieval (Group 43)</title>
+    <title>Image Results: CZ4034 Information Retrieval (Group 43)</title>
 
 </head>
 
@@ -38,18 +41,19 @@
         <tr>
             <td style="width: 20%; padding-left: 3%;">
                 <a href="/">
-                    <img src="{% static 'img/The_New_York_Times_logo.png' %}" style="margin:0;padding:0;background:#DCDCDC" width="100%">
+                    <img src="{% static 'img/The_New_York_Times_logo.png' %}"
+                         style="margin:0;padding:0;background:#DCDCDC" width="100%">
                 </a>
             </td>
             <td style="width: 80%; padding-left: 3%;">
                 <div>
                     <div class="input-group col-md-12">
                         <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
                     </div>
                 </div>
             </td>
@@ -60,14 +64,8 @@
 
 <div class="col-md-12" style="height:80px;"></div>
 
+
 <div class="container">
-    <div class="row">
-
-    </div>
-</div>
-
-
-<div class="col-md-12">
     <div class="row">
         <div class="col-md-3" style="border-right: 1px solid black; margin-right: -1px;">
             <div class="col-md-12">
@@ -78,16 +76,6 @@
                     </label>
                 </div>
                 <div id="slider_year_range" class="col-md-12"></div>
-            </div>
-            <div class="col-md-12" style="height:40px;"></div>
-            <div class="col-md-12">
-                <div>
-                    <label for="word_count"><i>Filter by Word Count: </i>
-                        <input type="text" id="word_count" readonly
-                               style="border:0; color:#428bca; background:#DCDCDC; font-weight:bold;">
-                    </label>
-                </div>
-                <div id="slider_count_range" class="col-md-12"></div>
             </div>
             <div class="col-md-12" style="height:40px;"></div>
             <div class="col-md-12">
@@ -107,24 +95,20 @@
             <div class="row">
                 <h4 class="text-center" id="count"></h4>
             </div>
+            <div class="col-md-12" style="height:40px;"></div>
             <div class="row">
-                <table id="tbl" class="table-hover">
+                <table id="tbl">
                     <tbody id="tbody"></tbody>
                 </table>
             </div>
-
+            <div class="col-md-12 text-center">
+                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="col-md-12 text-center">
-        <ul class="pagination pagination-lg pager" id="myPager"></ul>
-    </div>
-</div>
 <!--<div class="col-md-12" style="height:20px;"></div>-->
-
-
 <script>
 
     var data = '{{ results|escapejs }}'
@@ -134,22 +118,21 @@
 
     var max_year = -1;
     var min_year = 1000000;
-    var max_count = -1;
-    var min_count = 1000000;
+    //var max_count = -1;
+    //var min_count = 1000000;
     var materialList = [];
     var uniqueList = [];
     var type_of_material = [];
     //function for returning results
     function getResults(lst) {
-        var tr = "";
+        var display_image = "";
         for (var i = 0; i < lst.length; i++) {
-
             var dateString = lst[i]['pub_date'].slice(0, 10);
             var year = dateString.substring(0, 4);
             var month = dateString.substring(5, 7);
             var day = dateString.substring(8, 10);
             var date = new Date(year, month, day);
-            var word_count = parseInt(lst[i]['word_count']);
+            //var word_count = parseInt(lst[i]['word_count']);
             if (parseInt(year) > max_year) {
                 max_year = parseInt(year);
             }
@@ -157,37 +140,30 @@
                 min_year = parseInt(year);
             }
 
-            if (word_count > max_count) {
-                max_count = word_count;
-            }
-            if (word_count < min_count) {
-                min_count = word_count;
-            }
-
             materialList.push(lst[i]['type_of_material']);
 
-
-            tr += "<tr>";
-
-            tr += "<td><h4><b><a href=" + lst[i]['web_url'] + ">" + lst[i]['headline']['print_headline'] + "</a></b></h4><br>" + "<i>Published on " + date.toDateString() + "</i>" + "<br><h5>" + lst[i]['snippet'] + ".." + "</h5></td></tr><br></br>";
+            img_url = "http://www.nytimes.com/" + lst[i]['multimedia'][1]['url'];
+            display_image += "<div class=\"col-md-2\" style=\"width:200px;height:200px;\"><img src=\"" + img_url + "\" class=\"thumbnail img-zoom img-rounded\" style=\"width:100px;height:100px;\"></div>";
 
         }
 
-
         uniqueList = _.uniq(materialList);
-
-        document.getElementById("tbody").innerHTML = tr;
-        if (lst.length != 0)
-            document.getElementById("count").innerHTML = lst.length + " results available.";
+        document.getElementById("tbody").innerHTML = display_image;
+        if (lst.length != 0) {
+            if (lst.length == 1)
+                document.getElementById("count").innerHTML = lst.length + " image available!";
+            else
+                document.getElementById("count").innerHTML = lst.length + " images available!";
+        }
         else
-            document.getElementById("count").innerHTML = "No results available.";
+            document.getElementById("count").innerHTML = "No images available!";
     }
 
     window.getResults(obj.response.docs);
 
     var div_cbox = "<div id='checkboxes'>";
     for (var i = 0; i < uniqueList.length; i++) {
-        div_cbox += "<input type=\"checkbox\" value=\"" + uniqueList[i] + "\">" + uniqueList[i] + "<br>";
+        div_cbox += "<input type=\"checkbox\" value=\"" + uniqueList[i] + "\">" + "<span style=\"padding-left:3%\">" + uniqueList[i] + "</span><br>";
     }
     div_cbox += "</div>";
 
@@ -215,33 +191,13 @@
                 " - " + $("#slider_year_range").slider("values", 1));
     });
 
-    var value_count = [min_count, max_count];
-    $(function () {
-        $("#slider_count_range").slider({
-            range: true,
-            min: value_count[0],
-            max: value_count[1],
-            animate: "fast",
-            values: [value_count[0], value_count[1]],
-            slide: function (event, ui) {
-                $("#word_count").val(ui.values[0] + " - " + ui.values[1]);
-            },
-            change: function (event, ui) {
-                value_count[0] = ui.values[0];
-                value_count[1] = ui.values[1];
-            }
-        });
-        $("#word_count").val($("#slider_count_range").slider("values", 0) +
-                " - " + $("#slider_count_range").slider("values", 1));
-    });
-
     function display() {
 
         //window.alert(materialList.length);
         //window.alert(uniqueList.length);
         type_of_material = [];
         var filtered = obj.response.docs.filter(filterByYear);
-        filtered = filtered.filter(filterByCount);
+        //filtered = filtered.filter(filterByCount);
 
         $('#checkboxes input:checked').each(function () {
             type_of_material.push($(this).attr('value'));
@@ -249,7 +205,8 @@
         if (type_of_material.length > 0)
             filtered = filtered.filter(filterByMaterial);
         getResults(filtered);
-        $('#tbody').pageMe({pagerSelector: '#myPager', showPrevNext: true, hidePageNumbers: false, perPage: 30});
+        zoomIn();
+        $('#tbody').pageMe({pagerSelector: '#myPager', showPrevNext: true, hidePageNumbers: false, perPage: 16});
     }
 
 
@@ -258,16 +215,24 @@
         return parseInt(objectLst.pub_date.slice(0, 4)) >= value_year[0] && parseInt(objectLst.pub_date.slice(0, 4)) <= value_year[1];
     }
 
-    function filterByCount(objectLst) {
-        //window.alert("Got here");
-        return parseInt(objectLst.word_count) >= value_count[0] && parseInt(objectLst.word_count) <= value_count[1];
-    }
+    /*function filterByCount(objectLst){
+     //window.alert("Got here");
+     return parseInt(objectLst.word_count) >=value_count[0] && parseInt(objectLst.word_count) <= value_count[1];
+     }*/
 
     function filterByMaterial(objectLst) {
         for (var i = 0; i < type_of_material.length; i++)
             if (type_of_material[i] == objectLst.type_of_material)
                 return true;
         return false;
+    }
+
+    function zoomIn() {
+        $('.img-zoom').hover(function () {
+            $(this).addClass('transition');
+        }, function () {
+            $(this).removeClass('transition');
+        });
     }
 
 
