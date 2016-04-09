@@ -110,7 +110,7 @@ class Indexing(object):
 
         url = url[:-1]
         for word in notlst:
-            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
         url += "&wt=json&rows=30"
         print "url: " + url
         self.exec_query(url)
@@ -123,7 +123,7 @@ class Indexing(object):
             # url+="%2Bkeywords:*\:*" + word[0].upper() + word[1:] + "*+"
         url = url[:-1]
         for word in notlst:
-            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -136,7 +136,7 @@ class Indexing(object):
 
         url = url[:-1]
         for word in notlst:
-            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -150,7 +150,7 @@ class Indexing(object):
 
         url = url[:-1]
         for word in notlst:
-            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -165,7 +165,7 @@ class Indexing(object):
 
         url = url[:-1]
         for word in notlst:
-            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
         url += "&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -179,7 +179,7 @@ class Indexing(object):
 
         url = url[:-1]
         for word in notlst:
-            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
         url += "\"&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -193,7 +193,7 @@ class Indexing(object):
 
         url = url[:-1]
         for word in notlst:
-            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
+            url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
         url += "\"&wt=json&rows=15"
         print "url: " + url
         self.exec_query(url)
@@ -201,7 +201,6 @@ class Indexing(object):
         ## SYNONYM headline OR search
 
 
-        print "New list"
         for item in queryLst:
             synonyms = wn.synsets(item)
             lst = set(chain.from_iterable([word.lemma_names() for word in synonyms]))
@@ -213,7 +212,7 @@ class Indexing(object):
 
             url = url[:-1]
             for word in notlst:
-                url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*"
+                url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
             url += "&wt=json&rows=15"
             print "url: " + url
             self.exec_query(url)
