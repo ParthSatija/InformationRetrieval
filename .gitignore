@@ -2,3 +2,5 @@
 *.pyc
 *.txt
 */MySQL.py
+*.npy
+*.pkl
