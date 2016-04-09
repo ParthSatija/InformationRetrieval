@@ -7,13 +7,6 @@ from HealthNews.Classification.classify import classify
 from .Main.indexing import Indexing
 import json
 
-def view_result(request):
-    return render(request, 'results_query.html')
-
-def view_image_result(request):
-    return render(request, 'image_results_query.html')
-
-
 def view_classification(request):
     print "Classification waala page"
     classification_obj = classify()
@@ -50,7 +43,6 @@ def view_index(request):
             print query
             if int(form.cleaned_data['selection']) == 1:
                 print "DO ARTICLE SEARCH"
-                #Change test_search to search() and also remove test_search from Indexing class
                 json_results = indexing_obj.search(query, "false")
                 print json_results
                 return render(request, 'results_query.html', {'results': json_results, 'query': query})
@@ -69,13 +61,22 @@ def view_crawl(request):
     print "Crawl waala page"
     if request.method == 'GET':
         form = CrawlForm(request.GET)
+        crawl_obj = crawl()
         if form.is_valid():
-            print "Valid Form"
-            selection_list = form.cleaned_data['crawlSelection']
-            print selection_list
-            crawl_obj = crawl()
-            crawl_results = crawl_obj.dynamic_crawl(selection_list)
-            return render(request, 'results.html', {'results' : crawl_results})
+            if int(form.cleaned_data['selection']) == 1:
+                print "Crawling by Categories"
+                selection_list = form.cleaned_data['crawlSelection']
+                print selection_list
+                crawl_results = crawl_obj.dynamic_crawl(selection_list)
+                #Modal
+                return render(request, 'crawl.html', {'crawl_results' : crawl_results})
+            else:
+                print "Crawling by Query"
+                query = form.cleaned_data['query']
+                print "Query = ",query
+                crawl_results = crawl_obj.crawl_by_query(query)
+                #pass Json objects similar to results
+                return render(request, 'results_query.html', {'results': crawl_results, 'query': query})
     else:
         form = CrawlForm()
 
