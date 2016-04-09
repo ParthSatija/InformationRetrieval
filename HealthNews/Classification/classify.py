@@ -28,28 +28,22 @@ class classify(object):
         mysql_object = MySQL()
         mysql_object.use_database(database_name)
         path = os.getcwd() + "/HealthNews/Classification/model files/"
-
-        sql = "(SELECT lead_paragraph, news_desk, docID FROM " + table_name + " WHERE news_desk LIKE \"travel\" order by DocID asc  LIMIT 50) " \
-                                                                              "UNION " \
-                                                                              "(SELECT lead_paragraph, news_desk, docID FROM " + table_name + " WHERE news_desk LIKE \"dining\" order by DocID asc LIMIT 50) " \
-                                                                                                                                              "UNION " \
-                                                                                                                                              "(SELECT lead_paragraph, news_desk, docID FROM " + table_name + " WHERE news_desk LIKE \"Politics\" order by DocID asc LIMIT 50);"
+        # path = "C:/Users/user/Documents/PyCharm Projects/InformationRetrieval/HealthNews/Classification/model files/"
+        sql = "(select distinct lead_paragraph, 'Dining', docID from cz4034_original where ((headline like '%dinner%' or lead_paragraph like '%dinner%') and typeOfMaterial not in ('Blog','Biography','Schedule') and headline not like '%Super-Duper%') or news_desk like '%dining%' order by DocID asc LIMIT 300)" \
+              "UNION" \
+              "(select distinct lead_paragraph, 'Travel', docID from cz4034_original where ((headline  like '%flight%' or lead_paragraph like '%flight%'))	or news_desk like '%travel%' or ((headline  like '%driving%' and (headline like '%road%' or headline like '%rage%')) or (lead_paragraph like '%driving%' and (lead_paragraph like '%road%' or lead_paragraph like '%rage%'))) order by DocID asc LIMIT 300)" \
+              "UNION" \
+              "(select distinct lead_paragraph, 'Politics', docID from cz4034_original where news_desk not like '%politics%' and lead_paragraph like '%government%' and lead_paragraph like '%congress%' and typeOfMaterial not in ('Blog','Summary') and news_desk not in ('Magazine') order by DocID asc LIMIT 300)"
         sql = sql.encode('utf-8')
         data = mysql_object.execute_query(sql)
 
         dict = []
         categ = []
-        train_data = []
+        train = []
         for record in data:
-            train_data.append(record[0])
+            train.append(record[0])
             ca = record[1]
-
-            if (ca.lower() == "travel"):
-                categ.append('Travel')
-            elif (ca.lower() == "dining"):
-                categ.append('Dining')
-            elif (ca.lower() == "politics"):
-                categ.append('Politics')
+            categ.append(ca)
 
             d = record[0].lower()
             d = d.translate(None, string.punctuation)
@@ -83,16 +77,18 @@ class classify(object):
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
                       "Voting", "Voting With Weights"]
         cv_used = ["COUNT VECTORIZER", "TFIDF VECTORIZER"]
+
         joblib.dump(dict, path + "DICTIONARY")
 
         for counter_model in range(0, len(model_list)):
             for counter_cv in range(0, len(cv_list)):
                 model = model_list[counter_model]
                 cv = cv_list[counter_cv]
-                X = cv.fit_transform(train_data).toarray()
+                X = cv.fit_transform(train).toarray()
                 model.fit(X, categ)
-                joblib.dump(path + model_used[counter_model] + "_" + cv_used[
+                joblib.dump(model, path + model_used[counter_model] + "_" + cv_used[
                     counter_cv] + ".pkl")  # Save as file
+                print model_used[counter_model] + " done."
 
     def classification_results(self):
 
@@ -103,24 +99,21 @@ class classify(object):
         mysql_object = MySQL()
         mysql_object.use_database(database_name)
         path = os.getcwd() + "/HealthNews/Classification/model files/"
-        sql = "(SELECT lead_paragraph, news_desk FROM " + table_name + " WHERE news_desk LIKE \"Travel\" order by DocID desc  LIMIT 25) " \
-                                                                       "UNION " \
-                                                                       "(SELECT lead_paragraph, news_desk FROM " + table_name + " WHERE news_desk LIKE \"dining\" order by DocID desc LIMIT 25) " \
-                                                                                                                                "UNION " \
-                                                                                                                                "(SELECT lead_paragraph, news_desk FROM " + table_name + " WHERE news_desk LIKE \"Politics\" order by DocID desc LIMIT 25);"
-        sql = sql.encode('utf-8')
-        data = mysql_object.execute_query(sql)
+        #       path = "C:/Users/user/Documents/PyCharm Projects/InformationRetrieval/HealthNews/Classification/model files/"
+        test_sql = "(select distinct lead_paragraph, 'Dining', docID from cz4034_original where ((headline like '%dinner%' or lead_paragraph like '%dinner%') and typeOfMaterial not in ('Blog','Biography','Schedule') and headline not like '%Super-Duper%') or news_desk like '%dining%' order by DocID desc LIMIT 80)" \
+                      "UNION" \
+                      "(select distinct lead_paragraph, 'Travel', docID from cz4034_original where ((headline  like '%flight%' or lead_paragraph like '%flight%')) or news_desk like '%travel%' or ((headline  like '%driving%' and (headline like '%road%' or headline like '%rage%')) or (lead_paragraph like '%driving%' and (lead_paragraph like '%road%' or lead_paragraph like '%rage%'))) order by DocID desc LIMIT 80)" \
+                      "UNION" \
+                      "(select distinct lead_paragraph, 'Politics', docID from cz4034_original where news_desk not like '%politics%' and lead_paragraph like '%government%' and lead_paragraph like '%congress%' and typeOfMaterial not in ('Blog','Summary') and news_desk not in ('Magazine') order by DocID desc LIMIT 80)"
+        test_sql = test_sql.encode('utf-8')
+        data = mysql_object.execute_query(test_sql)
         test_data = []
         test_categ = []
         for record in data:
             test_data.append(record[0])
             ca = record[1]
-            if (ca.lower() == "travel"):
-                test_categ.append('Travel')
-            elif (ca.lower() == "dining"):
-                test_categ.append('Dining')
-            elif (ca.lower() == "politics"):
-                test_categ.append('Politics')
+            test_categ.append(ca)
+
         cv_used = ["Count VECTORIZER", "tf-idf VECTORIZER"]
         model_used = ["SVM", "LOGISTIC REGRESSION", "GAUSSIAN NB",
                       "MULTINOMIAL NB", "BERNOULLI NB", "RANDOM FOREST", "BAGGING", "GRADIENT",
@@ -132,7 +125,8 @@ class classify(object):
         result = []
         for counter_model in range(0, len(model_used)):
             for counter_cv in range(0, len(cv_used)):
-                model = joblib.load(path + model_used[counter_model] + "_" + cv_used[counter_cv].replace('-', '') + ".pkl")
+                model = joblib.load(
+                    path + model_used[counter_model] + "_" + cv_used[counter_cv].replace('-', '') + ".pkl")
                 cv = cv_list[counter_cv]
                 Y = cv.fit_transform(test_data).toarray()
                 predicted = model.predict(Y)
@@ -187,6 +181,7 @@ class classify(object):
                     [model_used[counter_model].title(), cv_used[counter_cv][:-11], travel, dining, politics,
                      round(score[0], 3), round(score[1], 3), round(accuracy_score(y_true, y_pred), 3),
                      round(((score[1] * score[0] / (score[1] + score[0])) * 2), 3), round(score[2], 3)])
+                print result
         joblib.dump(result, path + "classification_stats.txt")
         print result
         return result
@@ -200,7 +195,7 @@ class classify(object):
         print ("The keyword: ", keyword)
         print ("The content: ", content)
 
-        model = joblib.load(path + "LOGISTIC REGRESSION_COUNT VECTORIZER" + ".pkl")
+        model = joblib.load(path + "LOGISTIC REGRESSION_TFIDF VECTORIZER" + ".pkl")
         dict = joblib.load(path + "DICTIONARY")
         cv = feature_extraction.text.CountVectorizer(vocabulary=dict)
         Y = cv.fit_transform([content + headline + keyword]).toarray()
@@ -220,9 +215,9 @@ class classify(object):
             print ("Classification statistics do not exist. Creating one...")
             return self.classification_results()
 
-# c = classify()
-# c.train_data()
-# c.classification_results()
+#c = classify()
+#c.train_data()
+#c.classification_results()
 
 # c.classify_on("green potato poisonous", "",
 #              "fact sound like joke, perhaps urban legend grew dr. seuss's ''green egg ham.'' food scientist say one myth. reality green potato contain high level toxin, solanine, cause nausea, headache neurological problems")
