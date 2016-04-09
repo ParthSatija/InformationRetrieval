@@ -4,6 +4,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
@@ -139,21 +140,22 @@
                     <h4><span class="glyphicon glyphicon-stats"></span> Statistics</h4>
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
-                    <table class="table">
-                    <tr style="text-align: center; font-weight: bold">
-                        <td style="font-weight: normal;"><b>Classifier</b><br>Vectorizer</td>
-                        <td>Travel (25)</td>
-                        <td>Dining (25)</td>
-                        <td>Politics (25)</td>
-                        <td>Precision</td>
-                        <td>Recall</td>
-                        <td>Accuracy</td>
-                        <td>F(1) Score</td>
-                        <td>F(W) Score</td>
-                    </tr>
+                    <table class="table table-hover">
+                        <tr style="text-align: center; font-weight: bold">
+                            <td style="font-weight: normal;"><b>Classifier</b><br>Vectorizer</td>
+                            <td>Travel (25)</td>
+                            <td>Dining (25)</td>
+                            <td>Politics (25)</td>
+                            <td>Precision</td>
+                            <td>Recall</td>
+                            <td>Accuracy</td>
+                            <td>F(1) Score</td>
+                            <td>F(W) Score</td>
+                        </tr>
                         {% for stat in stats %}
                             <tr style="text-align: center">
-                                <td style="border-right: 1px #dcdcdc; text-align: left"><b>{{ stat.0 }}</b><br>{{ stat.1 }}</td>
+                                <td style="border-right: 1px #dcdcdc; text-align: left">
+                                    <b>{{ stat.0 }}</b><br>{{ stat.1 }}</td>
                                 <td>{{ stat.2 }}</td>
                                 <td>{{ stat.3 }}</td>
                                 <td>{{ stat.4 }}</td>
