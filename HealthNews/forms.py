@@ -11,7 +11,7 @@ class CrawlForm(forms.Form):
     CHOICES=[(1,'Crawl By Categories'),
              (2,'Crawl By Query')]
     selection = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
-    query = forms.CharField(label='Query')
+    query = forms.CharField(label='Query', required=False)
 
     CATEGORIES=[('health','Health'),
              ('health_fitness','Health & Fitness'),
@@ -20,7 +20,8 @@ class CrawlForm(forms.Form):
              ('women_health','Women\'s Health')]
     crawlSelection = forms.MultipleChoiceField(
         choices = CATEGORIES,
-        widget  = forms.CheckboxSelectMultiple
+        widget  = forms.CheckboxSelectMultiple,
+        required=False
     )
 
 class ClassificationForm(forms.Form):

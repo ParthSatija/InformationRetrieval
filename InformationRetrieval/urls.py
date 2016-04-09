@@ -5,8 +5,6 @@ from HealthNews import views
 urlpatterns = [
     url(r'^$', views.view_index),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^results/', views.view_result),
     url(r'^classification/', views.view_classification),
     url(r'^crawl/', views.view_crawl),
-    url(r'^image_results/', views.view_image_result)
 ]

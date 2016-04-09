@@ -12,6 +12,10 @@ class crawl:
     def __init__(self):
         print ("Instantiated")
 
+
+    def crawl_by_query(self, query):
+        return "Crawled by query"
+
     def dynamic_crawl(self, crawl_list):
         print "Dynamically crawling: ", crawl_list
         result = ""
