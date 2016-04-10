@@ -137,7 +137,7 @@
 <script>
 
     var data = '{{ results|escapejs }}'
-
+    var query_time = '{{ query_time|escapejs }}'
 
     obj = JSON.parse(data);
 
@@ -157,7 +157,7 @@
             var year = dateString.substring(0, 4);
             var month = dateString.substring(5, 7);
             var day = dateString.substring(8, 10);
-            var date = new Date(year, month, day);
+            var date = new Date(year, parseInt(month)-1, day);
             var word_count = parseInt(lst[i]['word_count']);
             if (parseInt(year) > max_year) {
                 max_year = parseInt(year);
@@ -195,9 +195,9 @@
 
         document.getElementById("tbody").innerHTML = tr;
         if (lst.length != 0)
-            document.getElementById("count").innerHTML = lst.length + " results available.";
+            document.getElementById("count").innerHTML = lst.length + " results available in (" + query_time +"milliseconds)";
         else
-            document.getElementById("count").innerHTML = "No results available.";
+            document.getElementById("count").innerHTML = "No results available (" + query_time +"milliseconds)";
     }
 
     window.getResults(obj.docs);
