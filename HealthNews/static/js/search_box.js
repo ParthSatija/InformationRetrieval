@@ -2,14 +2,17 @@
 
 function search() {
     var query = document.getElementById("search_box").value;
-    var current_url = window.location.href.split("/");
-    window.location.href = current_url[0] + "//" + current_url[2] + "/?query=" + query + "&selection=" + current_url[current_url.length - 1].substr(current_url[current_url.length - 1].length - 1);
+    var url = window.location.href;
+    var current_url = url.split("/");
+    window.location.href = current_url[0] + "//" + current_url[2] + "/?query=" + query + "&selection=" + url.substring(url.indexOf("selection=")+10,url.indexOf("selection=")+11);
 }
 
 function toggle() {
-    var current_url = window.location.href;
-    var value = (parseInt(current_url.substring(current_url.length - 1)) % 2) + 1;
-    window.location.href = current_url.substring(0, current_url.length - 1) + value.toString();
+    var url = window.location.href;
+    var query = document.getElementById("search_box").value;
+    var value = (parseInt(url.substring(url.indexOf("selection=")+10,url.indexOf("selection=")+11)) % 2) + 1;
+    var current_url = url.split("/");
+    window.location.href = current_url[0] + "//" + current_url[2] + "/?query=" + query + "&selection=" + value;
 }
 
 $("#search_box").keyup(function (event) {
