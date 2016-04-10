@@ -1,11 +1,12 @@
 from django.shortcuts import render
+
+from HealthNews.Classification.classify import classify
+from HealthNews.Crawl.crawl import crawl
+from HealthNews.Utility.spellChecker import spellChecker
+from .Main.indexing import Indexing
+from .forms import ClassificationForm
 from .forms import CrawlForm
 from .forms import SearchForm
-from .forms import ClassificationForm
-from HealthNews.Crawl.crawl import crawl
-from HealthNews.Classification.classify import classify
-from .Main.indexing import Indexing
-import json
 
 
 def view_classification(request):
@@ -41,20 +42,24 @@ def view_index(request):
             indexing_obj = Indexing()
             print "Valid Form"
             query = form.cleaned_data['query']
-            print query
+            spell_check = spellChecker().correct(query).title()
+            flag = True
+            if (spell_check.lower().strip() == query.lower().strip()):
+                flag = False
+            # print query
+            # print spell_check
             if int(form.cleaned_data['selection']) == 1:
                 print "DO ARTICLE SEARCH"
                 json_results = indexing_obj.search(query, "false")
                 print json_results[0]
-
                 return render(request, 'results_query.html',
-                              {'results': json_results[0], 'query': query, 'query_time': json_results[1]})
+                              {'results': json_results[0], 'query': query, 'query_time': json_results[1], 'suggested': spell_check, 'flag_suggested':flag})
             else:
                 print "DO IMAGE SEARCH"
                 json_results = indexing_obj.search(query, "true")
-                print json_results
+                print json_results[0]
                 return render(request, 'image_results_query.html',
-                              {'results': json_results[0], 'query': query, 'query_time': json_results[1]})
+                              {'results': json_results[0], 'query': query, 'query_time': json_results[1], 'suggested': spell_check, 'flag_suggested':flag})
         else:
             form = SearchForm()
 
@@ -81,9 +86,13 @@ def view_crawl(request):
                 indexing_obj = Indexing()
                 crawl_obj.crawl_by_query(query)
                 crawl_results = indexing_obj.search(query, "false")
+                spell_check = spellChecker().correct(query).title()
+                flag = True
+                if (spell_check.lower().strip() == query.lower().strip()):
+                    flag = False
                 # print crawl_results
                 # pass Json objects similar to results
-                return render(request, 'results_query.html', {'results': crawl_results, 'query': query})
+                return render(request, 'results_query.html', {'results': crawl_results[0], 'query': query, 'suggested': spell_check, 'flag_suggested':flag})
         else:
             form = CrawlForm()
 
