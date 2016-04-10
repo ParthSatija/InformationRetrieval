@@ -18,6 +18,7 @@ import string, os
 
 from HealthNews.Main.lemmatization import lemmatization
 from HealthNews.Utility.MySQL import MySQL
+import time
 
 
 class classify(object):
@@ -101,10 +102,10 @@ class classify(object):
         path = os.getcwd() + "/HealthNews/Classification/model files/"
         #       path = "C:/Users/user/Documents/PyCharm Projects/InformationRetrieval/HealthNews/Classification/model files/"
         test_sql = "(select distinct lead_paragraph, 'Dining', docID from cz4034_original where ((headline like '%dinner%' or lead_paragraph like '%dinner%') and typeOfMaterial not in ('Blog','Biography','Schedule') and headline not like '%Super-Duper%') or news_desk like '%dining%' order by DocID desc LIMIT 80)" \
-                      "UNION" \
-                      "(select distinct lead_paragraph, 'Travel', docID from cz4034_original where ((headline  like '%flight%' or lead_paragraph like '%flight%')) or news_desk like '%travel%' or ((headline  like '%driving%' and (headline like '%road%' or headline like '%rage%')) or (lead_paragraph like '%driving%' and (lead_paragraph like '%road%' or lead_paragraph like '%rage%'))) order by DocID desc LIMIT 80)" \
-                      "UNION" \
-                      "(select distinct lead_paragraph, 'Politics', docID from cz4034_original where news_desk not like '%politics%' and lead_paragraph like '%government%' and lead_paragraph like '%congress%' and typeOfMaterial not in ('Blog','Summary') and news_desk not in ('Magazine') order by DocID desc LIMIT 80)"
+                   "UNION" \
+                   "(select distinct lead_paragraph, 'Travel', docID from cz4034_original where ((headline  like '%flight%' or lead_paragraph like '%flight%')) or news_desk like '%travel%' or ((headline  like '%driving%' and (headline like '%road%' or headline like '%rage%')) or (lead_paragraph like '%driving%' and (lead_paragraph like '%road%' or lead_paragraph like '%rage%'))) order by DocID desc LIMIT 80)" \
+                   "UNION" \
+                   "(select distinct lead_paragraph, 'Politics', docID from cz4034_original where news_desk not like '%politics%' and lead_paragraph like '%government%' and lead_paragraph like '%congress%' and typeOfMaterial not in ('Blog','Summary') and news_desk not in ('Magazine') order by DocID desc LIMIT 80)"
         test_sql = test_sql.encode('utf-8')
         data = mysql_object.execute_query(test_sql)
         test_data = []
@@ -194,14 +195,16 @@ class classify(object):
         print ("The headline: ", headline)
         print ("The keyword: ", keyword)
         print ("The content: ", content)
+        t0 = time.clock()
 
-        model = joblib.load(path + "LOGISTIC REGRESSION_TFIDF VECTORIZER" + ".pkl")
+        model = joblib.load(path + "SVM_TFIDF VECTORIZER" + ".pkl")
         dict = joblib.load(path + "DICTIONARY")
         cv = feature_extraction.text.CountVectorizer(vocabulary=dict)
         Y = cv.fit_transform([content + headline + keyword]).toarray()
         predicted = model.predict(Y)
+
         print predicted
-        return predicted
+        return predicted, str(round(time.clock() - t0, 3)) + " seconds"
 
     def get_classification_stats(self):
         try:
@@ -215,9 +218,9 @@ class classify(object):
             print ("Classification statistics do not exist. Creating one...")
             return self.classification_results()
 
-#c = classify()
-#c.train_data()
-#c.classification_results()
+# c = classify()
+# c.train_data()
+# c.classification_results()
 
 # c.classify_on("green potato poisonous", "",
 #              "fact sound like joke, perhaps urban legend grew dr. seuss's ''green egg ham.'' food scientist say one myth. reality green potato contain high level toxin, solanine, cause nausea, headache neurological problems")
