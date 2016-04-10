@@ -66,12 +66,13 @@
                 <br><br>
                 <b><a href= "javascript:toggle()">Article</a>&nbsp;&nbsp;&nbsp;&nbsp;Image</b>
             </td>
+            <td id="count" style="text-align: right;"></td>
         </tr>
     </table>
     <hr class="divide" style="border: 1px solid #090909;">
 </div>
 
-<div class="col-md-12" style="height:80px;"></div>
+<div class="col-md-12" style="height:40px;"></div>
 
 
 <div class="col-md-12">
@@ -98,14 +99,12 @@
             <div class="col-md-6">
                 <input type="button" class=" col-md-8 btn btn-primary btn-md" onclick="display();" value="Apply">
             </div>
+            <div class="col-md-12" style="height:40px;"></div>
         </div>
 
         <div class="col-md-9" style="padding-left: 3%; border-left: 1px solid black;">
             <div class="row">
-                <h4 class="text-center" id="count"></h4>
-            </div>
-            <div class="col-md-12" style="height:40px;"></div>
-            <div class="row">
+                <div style="display: none" id="suggestions"></div>
                 <table id="tbl">
                     <tbody id="tbody"></tbody>
                 </table>
@@ -120,7 +119,8 @@
 <!--<div class="col-md-12" style="height:20px;"></div>-->
 <script>
 
-    var data = '{{ results|escapejs }}'
+    var data = '{{ results|escapejs }}';
+    var query_time = '{{ query_time|escapejs }}';
 
 
     obj = JSON.parse(data);
@@ -157,14 +157,11 @@
 
         uniqueList = _.uniq(materialList);
         document.getElementById("tbody").innerHTML = display_image;
-        if (lst.length != 0) {
-            if (lst.length == 1)
-                document.getElementById("count").innerHTML = lst.length + " image available!";
-            else
-                document.getElementById("count").innerHTML = lst.length + " images available!";
-        }
+        if (lst.length != 0)
+            document.getElementById("count").innerHTML = "<br><br><i><b>" + lst.length + " results</b> available in " + query_time +" milliseconds<i>";
         else
-            document.getElementById("count").innerHTML = "No images available.";
+            document.getElementById("count").innerHTML = "<br><br><i><b>No results</b> available in " + query_time +" milliseconds</i>";
+
     }
 
     window.getResults(obj.docs);
@@ -246,6 +243,13 @@
 
     $(document).ready(function () {
         display();
+        if("{{ flag_suggested }}".length == 4){
+            document.getElementById("suggestions").style.display = "block";
+            var url = window.location.href;
+            var current_url = url.split("/");
+            direct_url = current_url[0] + "//" + current_url[2] + "/?query={{ suggested }}&selection=" + url.substring(url.indexOf("selection=")+10,url.indexOf("selection=")+11);
+            document.getElementById("suggestions").innerHTML = "Did you mean: <b><i><a href = '" + direct_url + "'>{{ suggested }}</a></i></b>";
+        }
     });
 
 </script>
