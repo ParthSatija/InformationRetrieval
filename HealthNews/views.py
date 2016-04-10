@@ -74,7 +74,9 @@ def view_crawl(request):
                 print "Crawling by Query"
                 query = form.cleaned_data['query']
                 print "Query = ",query
-                crawl_results = crawl_obj.crawl_by_query(query)
+                indexing_obj = Indexing()
+                crawl_obj.crawl_by_query(query)
+                crawl_results = indexing_obj.search(query, "false")
                 #pass Json objects similar to results
                 return render(request, 'results_query.html', {'results': crawl_results, 'query': query})
         else:
