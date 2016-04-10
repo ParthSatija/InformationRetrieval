@@ -118,6 +118,10 @@
                     <b><i>Classified as</i></b><br>
                     <p align="justify">{{ classified.0 }}</p>
                     <br>
+
+                    <b><i>Time Taken</i></b><br>
+                    <p align="justify">{{ time }}</p>
+                    <br>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span
@@ -187,6 +191,7 @@
             $("#modalStats").modal();
         });
         var classified = "{{ classified }}";
+        var time = "{{ time }}";
         if (classified.length != 0)
             $("#modalClass").modal();
     });
