@@ -41,7 +41,7 @@ def view_index(request):
             print "Valid Form"
             query = form.cleaned_data['query']
             print query
-            if int(form.cleaned_data['selection']) == 1:
+            if int(form.cleaned_data['selection']) == 0:
                 print "DO ARTICLE SEARCH"
                 json_results = indexing_obj.search(query, "false")
                 print json_results

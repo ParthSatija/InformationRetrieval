@@ -8,11 +8,10 @@ class SearchForm(forms.Form):
     selection = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
 
 class CrawlForm(forms.Form):
-    CHOICES=[(1,'Crawl By Categories'),
-             (2,'Crawl By Query')]
-    selection = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
     query = forms.CharField(label='Query', required=False)
-
+    CHOICES=[(0,'Crawl By Categories'),
+             (1,'Crawl By Query')]
+    selection = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
     CATEGORIES=[('health','Health'),
              ('health_fitness','Health & Fitness'),
              ('health_nutrition','Health & Nutrition'),
