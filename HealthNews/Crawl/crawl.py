@@ -12,9 +12,47 @@ class crawl:
     def __init__(self):
         print ("Instantiated")
 
-
     def crawl_by_query(self, query):
-        return "Crawled by query"
+        prefix = "http://api.nytimes.com/svc/search/v2/articlesearch.json"
+        sort = "sort=newest"
+        fq = "q=" + query + "&fq=news_desk.contains:(\"Health\") OR section_name.contains:(\"Health\")"
+        page = "page="
+        key = "api-key=bc6f4a013b593ac80ff7f31de9c52b80:11:74279314"
+        url = prefix + "?" + fq + "&" + "sort=newest" + "&" + page + str(0) + "&" + key
+        print url
+        resp = requests.get(url)
+        hits = resp.json()["response"]["meta"]["hits"]
+        pages = int(hits / 10)
+
+
+        if (pages * 10 < hits):
+            pages += 1
+        if (pages > 0):
+            json_to_database = jsonToDatabase()
+            index = Indexing()
+            database_name = "cz4034"
+            mysql_object = MySQL()
+            mysql_object.use_database(database_name)
+            query = "select distinct docID from cz4034_original"
+            query = query.encode('utf-8')
+            data = mysql_object.execute_query(query)
+
+            print("Number of pages = " + str(pages))
+            for i in range(0, pages):
+                url = prefix + "?&" + fq + "&" + sort + "&" + page + str(i) + "&" + key
+                resp = requests.get(url)
+                with open(os.getcwd() + "/jsonFiles/" + "dynamic_crawl" + ".json", 'w') as jsonFile:
+                    json.dump(resp.json(), jsonFile)
+                print("Writing to file: " + "dynamic_crawl" + ".json")
+                print("Page = " + str(i) + " done")
+                time.sleep(5)
+                with open(os.getcwd() + "/jsonFiles/" + "dynamic_crawl" + ".json", 'r') as jsonFile:
+                    data = json.load(jsonFile)
+                    index.send_file_to_Solr(data, True)
+                    json_to_database.add_to_database(data)
+        else:
+            print "Nothing to do"
+        return "done"
 
     def dynamic_crawl(self, crawl_list):
         print "Dynamically crawling: ", crawl_list
@@ -134,6 +172,5 @@ class crawl:
                     return (str(hits) + " new articles added.")
                 else:
                     return (str(hits) + " new article added.")
-
             else:
                 return ("Corpus already up to date")

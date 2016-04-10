@@ -26,48 +26,57 @@ class Indexing(object):
         # Delete existing indexed json files in solr
         self.solr.delete(q='*:*')
 
-    def send_file_to_Solr(self, data):
+    def send_file_to_Solr(self, data, check):
         for j in range(len(data["response"]["docs"])):
             jsondata = {}
             current_response = data["response"]["docs"][j]
             DocId = current_response["_id"].lower()
             jsondata["docID"] = DocId
-            # checking if news desk exists
-            if ('news_desk' in current_response and current_response["news_desk"] is not None):
-                jsondata["news_desk"] = " ".join(
-                    self.lem.lemmatizeWord(self.lem.removeStopWords(current_response["news_desk"].lower().split(" "))))
 
-            # checking if print headline and main headline exists
-            if ('headline' in current_response and current_response["headline"] is not None):
-                k = current_response["headline"]
-                d = dict()
-                for key, value in k.iteritems():
-                    d[" ".join(self.lem.lemmatizeWord(self.lem.removeStopWords(key.lower().split(" "))))] = " ".join(
-                        self.lem.lemmatizeWord(self.lem.removeStopWords(value.lower().split())))
-                jsondata['headline'] = d
+            sql = "select distinct docID from cz4034_original"
+            sql = self.mysql_object.execute_query(sql)
+            flag = True
+            for id in sql:
+                if (id == DocId):
+                    flag = False
+            if(not check or (check and flag)):
+                print ("Adding to slor")
+                # checking if news desk exists
+                if ('news_desk' in current_response and current_response["news_desk"] is not None):
+                    jsondata["news_desk"] = " ".join(
+                        self.lem.lemmatizeWord(self.lem.removeStopWords(current_response["news_desk"].lower().split(" "))))
 
-                # checking if lead paragraph exists
-            if ('lead_paragraph' in current_response and current_response["lead_paragraph"] is not None):
-                jsondata["lead_paragraph"] = " ".join(self.lem.lemmatizeWord(
-                    self.lem.removeStopWords(current_response["lead_paragraph"][0:1000].lower().split())))
-
-            if ('keywords' in current_response and current_response["keywords"] is not None):
-                k = current_response["keywords"]
-                l = []
-                for x in k:
+                # checking if print headline and main headline exists
+                if ('headline' in current_response and current_response["headline"] is not None):
+                    k = current_response["headline"]
                     d = dict()
-                    for key, v in x.iteritems():
-                        d[" ".join(self.lem.lemmatizeWord(key.lower().split(" ")))] = " ".join(
-                            self.lem.lemmatizeWord(v.lower().split(" ")))
-                        # d.add(key.lower(), v.lower())
-                    l.append(d)
-                jsondata["keywords"] = l
-            if ('multimedia' in current_response and current_response["multimedia"] is not None):
-                jsondata["multimedia"] = "true"
-            else:
-                jsondata["multimedia"] = "false"
-            print jsondata
-            self.solr.add([jsondata])
+                    for key, value in k.iteritems():
+                        d[" ".join(self.lem.lemmatizeWord(self.lem.removeStopWords(key.lower().split(" "))))] = " ".join(
+                            self.lem.lemmatizeWord(self.lem.removeStopWords(value.lower().split())))
+                    jsondata['headline'] = d
+
+                    # checking if lead paragraph exists
+                if ('lead_paragraph' in current_response and current_response["lead_paragraph"] is not None):
+                    jsondata["lead_paragraph"] = " ".join(self.lem.lemmatizeWord(
+                        self.lem.removeStopWords(current_response["lead_paragraph"][0:1000].lower().split())))
+
+                if ('keywords' in current_response and current_response["keywords"] is not None):
+                    k = current_response["keywords"]
+                    l = []
+                    for x in k:
+                        d = dict()
+                        for key, v in x.iteritems():
+                            d[" ".join(self.lem.lemmatizeWord(key.lower().split(" ")))] = " ".join(
+                                self.lem.lemmatizeWord(v.lower().split(" ")))
+                            # d.add(key.lower(), v.lower())
+                        l.append(d)
+                    jsondata["keywords"] = l
+                if ('multimedia' in current_response and current_response["multimedia"] is not None):
+                    jsondata["multimedia"] = "true"
+                else:
+                    jsondata["multimedia"] = "false"
+                #print jsondata
+                self.solr.add([jsondata])
         self.solr.commit()
 
     def exec_query(self, url):
@@ -79,8 +88,8 @@ class Indexing(object):
             print(result)
             self.resplst.add(result["docID"][0])
 
-    def search(self, query, image):
-        if (image == "false"):
+    def search(self, query, image_find):
+        if (image_find == "false"):
             image = ""
         else:
             image = "multimedia*\:*true*+"
@@ -218,16 +227,18 @@ class Indexing(object):
             self.exec_query(url)
 
             # Return data from db for the list of docIDs of relevant documents
-            return self.get_data_from_db(self.resplst)
+            return self.get_data_from_db(self.resplst, image_find)
 
-    def get_data_from_db(self, resplst):
+    def get_data_from_db(self, resplst, image):
         doc_ids = ""
         for item in resplst:
             doc_ids = doc_ids + "'" + item + "',"
         if (len(doc_ids) != 0):
             doc_ids = doc_ids[:-1]
-
-            sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url from cz4034_original where docID in (" + doc_ids + ") and image_url != \"null\";"
+            if(image == "true"):
+                    sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url from cz4034_original where docID in (" + doc_ids + ") and image_url != \"null\";"
+            else:
+                sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url from cz4034_original where docID in (" + doc_ids + ");"
             print sql
             data = self.mysql_object.execute_query(sql)
             res = []
@@ -264,24 +275,24 @@ class Indexing(object):
             return json.dumps(d)
 
 
-'''
-path = "../Crawl/jsonFiles/"
-count = 0
-x = []
-index = Indexing()
-index.delete_index()
-# print(os.listdir(path))
-for i in os.listdir(path):
-    if (i.endswith(".json")):
-        with open(path + i) as data_file:
-            # if(os.stat(data_file).st_size == 0):
-            #    continue
-            print(data_file.name)
-            data = json.load(data_file)
-            try:
-                index.send_file_to_Solr(data)
-            except:
-                print("")
-'''
+
+# path = "../Crawl/jsonFiles/"
+# count = 0
+# x = []
+# index = Indexing()
+# index.delete_index()
+# # print(os.listdir(path))
+# for i in os.listdir(path):
+#     if (i.endswith(".json")):
+#         with open(path + i) as data_file:
+#             # if(os.stat(data_file).st_size == 0):
+#             #    continue
+#             print(data_file.name)
+#             data = json.load(data_file)
+#             try:
+#                 index.send_file_to_Solr(data)
+#             except:
+#                 print("ERROR")
+
 # i = Indexing()
 # i.search("health","true")

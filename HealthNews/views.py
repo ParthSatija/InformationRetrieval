@@ -24,8 +24,8 @@ def view_classification(request):
                           {'form': form, 'stats': stats, 'classified': classified, 'headline': headline,
                            'keywords': keywords, 'content': content})
 
-    else:
-        form = ClassificationForm()
+        else:
+            form = ClassificationForm()
 
     return render(request, 'classification.html', {'form': form, 'stats': stats, 'classified': classified})
 
@@ -51,8 +51,8 @@ def view_index(request):
                 json_results=indexing_obj.search(query, "true")
                 print json_results
                 return render(request, 'image_results_query.html', {'results': json_results, 'query': query})
-    else:
-        form = SearchForm()
+        else:
+            form = SearchForm()
 
     return render(request, 'index.html', {'form': form})
 
@@ -74,10 +74,12 @@ def view_crawl(request):
                 print "Crawling by Query"
                 query = form.cleaned_data['query']
                 print "Query = ",query
-                crawl_results = crawl_obj.crawl_by_query(query)
+                indexing_obj = Indexing()
+                crawl_obj.crawl_by_query(query)
+                crawl_results = indexing_obj.search(query, "false")
                 #pass Json objects similar to results
                 return render(request, 'results_query.html', {'results': crawl_results, 'query': query})
-    else:
-        form = CrawlForm()
+        else:
+            form = CrawlForm()
 
     return render(request, 'crawl.html', {'form': form})
