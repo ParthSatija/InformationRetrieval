@@ -7,6 +7,7 @@ from HealthNews.Classification.classify import classify
 from .Main.indexing import Indexing
 import json
 
+
 def view_classification(request):
     print "Classification waala page"
     classification_obj = classify()
@@ -21,8 +22,8 @@ def view_classification(request):
             content = form.cleaned_data['content']
             classified = classification_obj.classify_on(headline, keywords, content)
             return render(request, 'classification.html',
-                          {'form': form, 'stats': stats, 'classified': classified, 'headline': headline,
-                           'keywords': keywords, 'content': content})
+                          {'form': form, 'stats': stats, 'classified': classified[0], 'headline': headline,
+                           'keywords': keywords, 'content': content, 'time': classified[1]})
 
         else:
             form = ClassificationForm()
@@ -41,16 +42,19 @@ def view_index(request):
             print "Valid Form"
             query = form.cleaned_data['query']
             print query
-            if int(form.cleaned_data['selection']) == 0:
+            if int(form.cleaned_data['selection']) == 1:
                 print "DO ARTICLE SEARCH"
                 json_results = indexing_obj.search(query, "false")
-                print json_results
-                return render(request, 'results_query.html', {'results': json_results, 'query': query})
+                print json_results[0]
+
+                return render(request, 'results_query.html',
+                              {'results': json_results[0], 'query': query, 'query_time': json_results[1]})
             else:
                 print "DO IMAGE SEARCH"
-                json_results=indexing_obj.search(query, "true")
+                json_results = indexing_obj.search(query, "true")
                 print json_results
-                return render(request, 'image_results_query.html', {'results': json_results, 'query': query})
+                return render(request, 'image_results_query.html',
+                              {'results': json_results[0], 'query': query, 'query_time': json_results[1]})
         else:
             form = SearchForm()
 
@@ -63,21 +67,22 @@ def view_crawl(request):
         form = CrawlForm(request.GET)
         crawl_obj = crawl()
         if form.is_valid():
-            if int(form.cleaned_data['selection']) == 1:
+            if int(form.cleaned_data['selection']) == 0:
                 print "Crawling by Categories"
                 selection_list = form.cleaned_data['crawlSelection']
                 print selection_list
                 crawl_results = crawl_obj.dynamic_crawl(selection_list)
-                #Modal
-                return render(request, 'crawl.html', {'crawl_results' : crawl_results})
+                # Modal
+                return render(request, 'crawl.html', {'crawl_results': crawl_results})
             else:
                 print "Crawling by Query"
                 query = form.cleaned_data['query']
-                print "Query = ",query
+                print "Query = ", query
                 indexing_obj = Indexing()
                 crawl_obj.crawl_by_query(query)
                 crawl_results = indexing_obj.search(query, "false")
-                #pass Json objects similar to results
+                # print crawl_results
+                # pass Json objects similar to results
                 return render(request, 'results_query.html', {'results': crawl_results, 'query': query})
         else:
             form = CrawlForm()
