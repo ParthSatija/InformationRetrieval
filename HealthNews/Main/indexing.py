@@ -116,7 +116,7 @@ class Indexing(object):
 
         ##phrase search in headline #############################
 
-        url = "http://localhost:8983/solr/test/select?q=headline:*\:\"" + image
+        url = "http://localhost:8983/solr/test/select?q=" + image[:-1] + "&headline:*\:\""
         for word in queryLst:
             url += word + "+"
             # url+=word[0].upper() + word[1:] + "+"
@@ -130,7 +130,7 @@ class Indexing(object):
 
         ##phrase search in lead_paragraph #############################
 
-        url = "http://localhost:8983/solr/test/select?q=lead_paragraph:\"" + image
+        url = "http://localhost:8983/solr/test/select?q=" + image[:-1] +"&lead_paragraph:\""
         for word in queryLst:
             url += word + "+"
             # url+=word[0].upper() + word[1:] + "+"
@@ -194,7 +194,7 @@ class Indexing(object):
         print "url: " + url
         self.exec_query(url)
 
-        ##keyword + headline+ lead_paragraph+news_desk OR #############################
+        ##keyword + headline + lead_paragraph+news_desk OR #############################
         url = main_url
 
         for word in queryLst:
