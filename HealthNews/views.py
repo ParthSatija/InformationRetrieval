@@ -89,7 +89,7 @@ def view_crawl(request):
                 print selection_list
                 crawl_results = crawl_obj.dynamic_crawl(selection_list)
                 # Modal
-                return render(request, 'crawl.html', {'crawl_results': crawl_results[0], 'database_time':crawl_results[1], 'indexing_time':crawl_results[2]})
+                return render(request, 'index.html', {'crawlTime': crawl_results[0], 'databaseTime':crawl_results[1], 'indexingTime':crawl_results[2]})
             else:
                 print "Crawling by Query"
                 query = form.cleaned_data['query']

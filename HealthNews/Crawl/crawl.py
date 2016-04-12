@@ -81,9 +81,6 @@ class crawl:
         Men's & Health - Men & Health
         Women's Health - Women's Health
         """
-        crawl_time = 0
-        solr_time = 0
-        database_time = 0
         fq = ""
         query = ""
         if (crawl_term == "health"):
@@ -122,10 +119,13 @@ class crawl:
         last_date = last_date + datetime.timedelta(days=1)
         count_num = data[0][1]
         JSON_FILE_NAME = "fq_" + file_name
+        crawl_time = 0
+        solr_time = 0
+        database_time = 0
 
         current_date_format = ((datetime.date.today() + datetime.timedelta(days=0)).strftime('%Y-%m-%d'))
         if ((str(last_date) == current_date_format)):
-            return ("No new articles found")
+            return ("Corpus already up to date"), crawl_time, database_time, solr_time
         else:
             current_date = ((datetime.date.today() + datetime.timedelta(days=0)).strftime('%Y%m%d'))
             prefix = "http://api.nytimes.com/svc/search/v2/articlesearch.json"
@@ -185,6 +185,9 @@ class crawl:
                 mysql_object.execute_query(
                     "UPDATE crawl_date set last_date = \"" + str(current_date_format) + "\" where news_desk = \"" + str(
                         news_desk) + "\"")
+                print (type(crawl_time))
+                print (type(database_time))
+                print (type(solr_time))
                 if (hits != 1):
                     return (str(hits) + " new articles crawled"), crawl_time, database_time, solr_time
                 else:
