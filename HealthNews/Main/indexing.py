@@ -2,6 +2,8 @@
 import string
 from urllib2 import urlopen
 
+import time
+
 from HealthNews.Utility.MySQL import MySQL
 
 from HealthNews.Main.lemmatization import lemmatization
@@ -38,7 +40,8 @@ class Indexing(object):
             sql = self.mysql_object.execute_query(sql)
             flag = True
             for id in sql:
-                if (id == DocId):
+                #print id[0]
+                if (id[0] == DocId):
                     flag = False
             if (not check or (check and flag)):
                 print ("Adding to slor")
@@ -124,7 +127,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "\"&wt=json&rows=15"
+        url += "\"&wt=json&rows=99"
         print "url: " + url
         self.exec_query(url)
 
@@ -138,7 +141,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "\"&wt=json&rows=15"
+        url += "\"&wt=json&rows=99"
         print "url: " + url
         self.exec_query(url)
 
@@ -152,7 +155,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=30"
+        url += "&wt=json&rows=99"
         print "url: " + url
         self.exec_query(url)
 
@@ -165,7 +168,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=15"
+        url += "&wt=json&rows=99"
         print "url: " + url
         self.exec_query(url)
 
@@ -178,7 +181,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=15"
+        url += "&wt=json&rows=99"
         print "url: " + url
         self.exec_query(url)
 
@@ -190,7 +193,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=15"
+        url += "&wt=json&rows=99"
         print "url: " + url
         self.exec_query(url)
 
@@ -204,7 +207,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=15"
+        url += "&wt=json&rows=99"
         print "url: " + url
         self.exec_query(url)
 
@@ -221,13 +224,14 @@ class Indexing(object):
             url = url[:-1]
             for word in notlst:
                 url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-            url += "&wt=json&rows=15"
+            url += "&wt=json&rows=99"
             print "url: " + url
             self.exec_query(url)
 
             print len(self.resplst)
             # Return data from db for the list of docIDs of relevant documents
-            return self.get_data_from_db(self.resplst, image_find), self.qtime
+            re = self.get_data_from_db(self.resplst, image_find)
+            return re[0], round(((self.qtime+re[1])/1000),3)
 
     def get_data_from_db(self, resplst, image):
         doc_ids = ""
@@ -240,6 +244,7 @@ class Indexing(object):
             else:
                 sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url, docID from cz4034_original where docID in (" + doc_ids + ") order by publication_date desc;"
             print sql
+            t0 = time.clock()
             data = self.mysql_object.execute_query(sql)
             print len(data)
             res = []
@@ -269,11 +274,11 @@ class Indexing(object):
             else:
                 d = {}
                 d["docs"] = []
-            return json.dumps(d)
+            return json.dumps(d), time.clock() - t0
         else:
             d = {}
             d["docs"] = []
-            return json.dumps(d)
+            return json.dumps(d), time.clock() - t0
 
 # path = "../Crawl/jsonFiles/"
 # count = 0

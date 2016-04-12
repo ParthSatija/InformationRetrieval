@@ -1,3 +1,4 @@
+import time
 from django.shortcuts import render
 
 from HealthNews.Classification.classify import classify
@@ -36,30 +37,40 @@ def view_index(request):
     print "Index waala page"
     if request.method == 'GET':
         # create a form instance and populate it with data from the request:
+        spl = spellChecker()
         form = SearchForm(request.GET)
         # check whether it's valid:
         if form.is_valid():
             indexing_obj = Indexing()
             print "Valid Form"
             query = form.cleaned_data['query']
-            spell_check = spellChecker().correct(query).title()
-            flag = True
-            if (spell_check.lower().strip() == query.lower().strip()):
-                flag = False
+            t0 = time.clock()
             # print query
             # print spell_check
             if int(form.cleaned_data['selection']) == 1:
                 print "DO ARTICLE SEARCH"
                 json_results = indexing_obj.search(query, "false")
-                print json_results[0]
+                flag = False
+                spell_check = ""
+                if(len(json_results[0]) <= 10):
+                    spell_check = spl.correct(query).title()
+                    flag = True
+                    if (spell_check.lower().strip() == query.lower().strip()):
+                        flag = False
                 return render(request, 'results_query.html',
-                              {'results': json_results[0], 'query': query, 'query_time': json_results[1], 'suggested': spell_check, 'flag_suggested':flag})
+                              {'results': json_results[0], 'query': query, 'query_time': round(json_results[1],3), 'suggested': spell_check, 'flag_suggested':flag})
             else:
                 print "DO IMAGE SEARCH"
                 json_results = indexing_obj.search(query, "true")
-                print json_results[0]
+                flag = False
+                spell_check = ""
+                if(len(json_results[0]) <= 10):
+                    spell_check = spl.correct(query).title()
+                    flag = True
+                    if (spell_check.lower().strip() == query.lower().strip()):
+                        flag = False
                 return render(request, 'image_results_query.html',
-                              {'results': json_results[0], 'query': query, 'query_time': json_results[1], 'suggested': spell_check, 'flag_suggested':flag})
+                              {'results': json_results[0], 'query': query, 'query_time': round(json_results[1],3), 'suggested': spell_check, 'flag_suggested':flag})
         else:
             form = SearchForm()
 
@@ -78,7 +89,7 @@ def view_crawl(request):
                 print selection_list
                 crawl_results = crawl_obj.dynamic_crawl(selection_list)
                 # Modal
-                return render(request, 'crawl.html', {'crawl_results': crawl_results})
+                return render(request, 'crawl.html', {'crawl_results': crawl_results[0], 'database_time':crawl_results[1], 'indexing_time':crawl_results[2]})
             else:
                 print "Crawling by Query"
                 query = form.cleaned_data['query']

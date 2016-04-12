@@ -190,9 +190,9 @@
 
         document.getElementById("tbody").innerHTML = tr;
         if (lst.length != 0)
-            document.getElementById("count").innerHTML = "<br><br><i><b>" + lst.length + " results</b> available in " + query_time +" milliseconds<i>";
+            document.getElementById("count").innerHTML = "<br><br><i><b>" + lst.length + " results</b> available in " + query_time +" seconds<i>";
         else
-            document.getElementById("count").innerHTML = "<br><br><i><b>No results</b> available in " + query_time +" milliseconds</i>";
+            document.getElementById("count").innerHTML = "<br><br><i><b>No results</b> available in " + query_time +" seconds</i>";
     }
 
     window.getResults(obj.docs);

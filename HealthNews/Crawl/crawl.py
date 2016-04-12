@@ -24,7 +24,6 @@ class crawl:
         hits = resp.json()["response"]["meta"]["hits"]
         pages = int(hits / 10)
 
-
         if (pages * 10 < hits):
             pages += 1
         if (pages > 0):
@@ -57,11 +56,19 @@ class crawl:
     def dynamic_crawl(self, crawl_list):
         print "Dynamically crawling: ", crawl_list
         result = ""
+        database_time = 0
+        solr_time = 0
         for i in crawl_list:
-            result += self.dynamic_crawl_old(i) + "\n"
-            #Call Indexing to add new documents to solr.
-        print result
-        return result
+            r = self.dynamic_crawl_old(i)
+            if("already" not in r[0].lower()):
+                result += i.replace("_"," ").title() + " - " + str(r[0]) + " in " + str(round(r[1],3)) + " secs.\n"
+            else:
+                result += i.replace("_"," ").title() + " - " + str(r[0]) + ".\n"
+            database_time += r[2]
+            solr_time += r[3]
+            # Call Indexing to add new documents to solr.
+        return result, round(database_time,3), round(solr_time,3)
+
     def dynamic_crawl_old(self, crawl_term):
         database_name = "cz4034"
 
@@ -74,6 +81,9 @@ class crawl:
         Men's & Health - Men & Health
         Women's Health - Women's Health
         """
+        crawl_time = 0
+        solr_time = 0
+        database_time = 0
         fq = ""
         query = ""
         if (crawl_term == "health"):
@@ -109,7 +119,7 @@ class crawl:
         last_date = data[0][0]
 
         print(last_date + datetime.timedelta(days=1))
-        last_date = last_date+ datetime.timedelta(days=1)
+        last_date = last_date + datetime.timedelta(days=1)
         count_num = data[0][1]
         JSON_FILE_NAME = "fq_" + file_name
 
@@ -130,6 +140,7 @@ class crawl:
                 last_date.strftime('%Y%m%d')) + "&" "end_date=" + current_date + "&" + "sort=newest" + "&" + page + str(
                 0) + "&" + key
             print (url)
+            t0 = time.clock()
             resp = requests.get(url)
             hits = resp.json()["response"]["meta"]["hits"]
 
@@ -157,20 +168,26 @@ class crawl:
                         key = key2
                     if (count_num % 150 == 101):
                         key = key3
-                    count_num += 1
+
                     time.sleep(5)
+                    crawl_time += time.clock() - t0
                     with open(os.getcwd() + "/jsonFiles/" + JSON_FILE_NAME + str(count_num) + ".json", 'r') as jsonFile:
+                        t1 = time.clock()
                         data = json.load(jsonFile)
                         json_to_database.add_to_database(data)
-                        index.send_file_to_Solr(data)
+                        database_time += time.clock() - t1
+                        t2 = time.clock()
+                        index.send_file_to_Solr(data, "True")
+                        solr_time += time.clock() - t2
+                    count_num += 1
                 mysql_object.execute_query(
                     "UPDATE crawl_date set count = " + str(count_num) + " where news_desk = \"" + str(news_desk) + "\"")
                 mysql_object.execute_query(
                     "UPDATE crawl_date set last_date = \"" + str(current_date_format) + "\" where news_desk = \"" + str(
                         news_desk) + "\"")
                 if (hits != 1):
-                    return (str(hits) + " new articles added.")
+                    return (str(hits) + " new articles crawled"), crawl_time, database_time, solr_time
                 else:
-                    return (str(hits) + " new article added.")
+                    return (str(hits) + " new article crawled"), crawl_time, database_time, solr_time
             else:
-                return ("Corpus already up to date")
+                return ("Corpus already up to date"), crawl_time, database_time, solr_time
