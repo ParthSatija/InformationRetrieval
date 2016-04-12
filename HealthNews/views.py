@@ -89,15 +89,16 @@ def view_crawl(request):
     if request.method == 'GET':
         form = CrawlForm(request.GET)
         crawl_obj = crawl()
+        t0 = time.clock()
         if form.is_valid():
             if int(form.cleaned_data['selection']) == 0:
+                form_search = SearchForm(request.GET)
                 print "Crawling by Categories"
                 selection_list = form.cleaned_data['crawlSelection']
                 print selection_list
                 crawl_results = crawl_obj.dynamic_crawl(selection_list)
                 # Modal
-                return render(request, 'index.html', {'crawlTime': crawl_results[0], 'databaseTime': crawl_results[1],
-                                                      'indexingTime': crawl_results[2]})
+                return render(request, 'index.html', {'form' : form_search, 'crawlTime': crawl_results[0], 'databaseTime': crawl_results[1], 'indexingTime': crawl_results[2]})
             else:
                 print "Crawling by Query"
                 query = form.cleaned_data['query']

@@ -6,7 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.naive_bayes import BernoulliNB
-
+from sklearn.metrics import confusion_matrix
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import GradientBoostingClassifier
@@ -178,13 +178,14 @@ class classify(object):
                 # print("F(1) Score :  %.5f" % ((score[1] * score[0] / (score[1] + score[0])) * 2))
                 # print("F(W) Score :  %.5f" % (score[2]))
                 # print("Accuracy   :  %.5f" % accuracy_score(y_true, y_pred))
-                result.append(
-                    [model_used[counter_model].title(), cv_used[counter_cv][:-11], travel, dining, politics,
-                     round(score[0], 3), round(score[1], 3), round(accuracy_score(y_true, y_pred), 3),
-                     round(((score[1] * score[0] / (score[1] + score[0])) * 2), 3), round(score[2], 3)])
-                print result
-        joblib.dump(result, path + "classification_stats.txt")
-        print result
+                print(confusion_matrix(y_true, y_pred))
+        #         result.append(
+        #             [model_used[counter_model].title(), cv_used[counter_cv][:-11], travel, dining, politics,
+        #              round(score[0], 3), round(score[1], 3), round(accuracy_score(y_true, y_pred), 3),
+        #              round(((score[1] * score[0] / (score[1] + score[0])) * 2), 3), round(score[2], 3)])
+        #         print result
+        # joblib.dump(result, path + "classification_stats.txt")
+        # print result
         return result
 
     def classify_on(self, headline, keyword, content):
