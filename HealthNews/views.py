@@ -37,7 +37,7 @@ def view_index(request):
     print "Index waala page"
     if request.method == 'GET':
         # create a form instance and populate it with data from the request:
-        spl = spellChecker()
+
         form = SearchForm(request.GET)
         # check whether it's valid:
         if form.is_valid():
@@ -52,25 +52,31 @@ def view_index(request):
                 json_results = indexing_obj.search(query, "false")
                 flag = False
                 spell_check = ""
-                if(len(json_results[0]) <= 10):
+                if ((json_results[2]) == 0):
+                    spl = spellChecker()
                     spell_check = spl.correct(query).title()
                     flag = True
                     if (spell_check.lower().strip() == query.lower().strip()):
                         flag = False
                 return render(request, 'results_query.html',
-                              {'results': json_results[0], 'query': query, 'query_time': round(json_results[1],3), 'suggested': spell_check, 'flag_suggested':flag})
+                              {'results': json_results[0], 'query': query,
+                               'query_time': round(json_results[1] + time.clock() - t0, 3),
+                               'suggested': spell_check, 'flag_suggested': flag})
             else:
                 print "DO IMAGE SEARCH"
                 json_results = indexing_obj.search(query, "true")
                 flag = False
                 spell_check = ""
-                if(len(json_results[0]) <= 10):
+                if ((json_results[2]) == 0):
+                    spl = spellChecker()
                     spell_check = spl.correct(query).title()
                     flag = True
                     if (spell_check.lower().strip() == query.lower().strip()):
                         flag = False
                 return render(request, 'image_results_query.html',
-                              {'results': json_results[0], 'query': query, 'query_time': round(json_results[1],3), 'suggested': spell_check, 'flag_suggested':flag})
+                              {'results': json_results[0], 'query': query,
+                               'query_time': round(json_results[1] + time.clock() - t0, 3),
+                               'suggested': spell_check, 'flag_suggested': flag})
         else:
             form = SearchForm()
 
@@ -78,6 +84,7 @@ def view_index(request):
 
 
 def view_crawl(request):
+
     print "Crawl waala page"
     if request.method == 'GET':
         form = CrawlForm(request.GET)
@@ -89,21 +96,27 @@ def view_crawl(request):
                 print selection_list
                 crawl_results = crawl_obj.dynamic_crawl(selection_list)
                 # Modal
-                return render(request, 'index.html', {'crawlTime': crawl_results[0], 'databaseTime':crawl_results[1], 'indexingTime':crawl_results[2]})
+                return render(request, 'index.html', {'crawlTime': crawl_results[0], 'databaseTime': crawl_results[1],
+                                                      'indexingTime': crawl_results[2]})
             else:
                 print "Crawling by Query"
                 query = form.cleaned_data['query']
                 print "Query = ", query
                 indexing_obj = Indexing()
                 crawl_obj.crawl_by_query(query)
-                crawl_results = indexing_obj.search(query, "false")
-                spell_check = spellChecker().correct(query).title()
-                flag = True
-                if (spell_check.lower().strip() == query.lower().strip()):
-                    flag = False
-                # print crawl_results
-                # pass Json objects similar to results
-                return render(request, 'results_query.html', {'results': crawl_results[0], 'query': query, 'suggested': spell_check, 'flag_suggested':flag})
+                json_results = indexing_obj.search(query, "false")
+                flag = False
+                spell_check = ""
+                if ((json_results[2]) == 0):
+                    spl = spellChecker()
+                    spell_check = spl.correct(query).title()
+                    flag = True
+                    if (spell_check.lower().strip() == query.lower().strip()):
+                        flag = False
+                return render(request, 'results_query.html',
+                              {'results': json_results[0], 'query': query,
+                               'query_time': round(json_results[1] + time.clock() - t0, 3),
+                               'suggested': spell_check, 'flag_suggested': flag})
         else:
             form = CrawlForm()
 

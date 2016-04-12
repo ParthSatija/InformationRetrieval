@@ -61,9 +61,9 @@ class crawl:
         for i in crawl_list:
             r = self.dynamic_crawl_old(i)
             if("already" not in r[0].lower()):
-                result += i.replace("_"," ").title() + " - " + str(r[0]) + " in " + str(round(r[1],3)) + " secs.\n"
+                result += i.replace("_"," ").title() + " - " + str(r[0]) + " in " + str(round(r[1],3)) + " secs.|"
             else:
-                result += i.replace("_"," ").title() + " - " + str(r[0]) + ".\n"
+                result += i.replace("_"," ").title() + " - " + str(r[0]) + ".|"
             database_time += r[2]
             solr_time += r[3]
             # Call Indexing to add new documents to solr.

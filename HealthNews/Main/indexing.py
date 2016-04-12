@@ -127,7 +127,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "\"&wt=json&rows=99"
+        url += "\"&wt=json&rows=30"
         print "url: " + url
         self.exec_query(url)
 
@@ -141,7 +141,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "\"&wt=json&rows=99"
+        url += "\"&wt=json&rows=30"
         print "url: " + url
         self.exec_query(url)
 
@@ -155,7 +155,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=99"
+        url += "&wt=json&rows=30"
         print "url: " + url
         self.exec_query(url)
 
@@ -168,7 +168,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=99"
+        url += "&wt=json&rows=30"
         print "url: " + url
         self.exec_query(url)
 
@@ -181,7 +181,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=99"
+        url += "&wt=json&rows=30"
         print "url: " + url
         self.exec_query(url)
 
@@ -193,7 +193,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=99"
+        url += "&wt=json&rows=30"
         print "url: " + url
         self.exec_query(url)
 
@@ -207,7 +207,7 @@ class Indexing(object):
         url = url[:-1]
         for word in notlst:
             url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-        url += "&wt=json&rows=99"
+        url += "&wt=json&rows=30"
         print "url: " + url
         self.exec_query(url)
 
@@ -224,29 +224,30 @@ class Indexing(object):
             url = url[:-1]
             for word in notlst:
                 url += "+-keywords:*\:*" + word + "*" + "+-headline:*\:*" + word + "*" + "+-lead_paragraph:*\:*" + word + "*" + "+-news_desk:*\:*" + word + "*"
-            url += "&wt=json&rows=99"
+            url += "&wt=json&rows=30"
             print "url: " + url
             self.exec_query(url)
 
-            print len(self.resplst)
             # Return data from db for the list of docIDs of relevant documents
             re = self.get_data_from_db(self.resplst, image_find)
-            return re[0], round(((self.qtime+re[1])/1000),3)
+            print (re[2])
+            return re[0], round(((self.qtime+re[1])/1000),3), re[2]
 
     def get_data_from_db(self, resplst, image):
         doc_ids = ""
         for item in resplst:
             doc_ids = doc_ids + "'" + item + "',"
+        t0 = time.clock()
         if (len(doc_ids) != 0):
             doc_ids = doc_ids[:-1]
             if (image == "true"):
                 sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url, docID from cz4034_original where docID in (" + doc_ids + ") and image_url != \"null\" order by publication_date desc;"
             else:
                 sql = "select distinct typeOfMaterial, word_count, publication_date, printheadline, headline, lead_paragraph, web_url, image_url, docID from cz4034_original where docID in (" + doc_ids + ") order by publication_date desc;"
-            print sql
+
             t0 = time.clock()
             data = self.mysql_object.execute_query(sql)
-            print len(data)
+            l = len(data)
             res = []
             if (data is not None):
                 for record in data:
@@ -271,14 +272,15 @@ class Indexing(object):
                 # print res
                 d = {}
                 d["docs"] = res
+                return json.dumps(d), time.clock() - t0, l
             else:
                 d = {}
                 d["docs"] = []
-            return json.dumps(d), time.clock() - t0
+            return json.dumps(d), time.clock() - t0, 0
         else:
             d = {}
             d["docs"] = []
-            return json.dumps(d), time.clock() - t0
+            return json.dumps(d), time.clock() - t0, 0
 
 # path = "../Crawl/jsonFiles/"
 # count = 0
@@ -298,5 +300,5 @@ class Indexing(object):
 #             except:
 #                 print("ERROR")
 
-# i = Indexing()
-# i.search("health","true")
+#i = Indexing()
+#i.search("obaama","true")
